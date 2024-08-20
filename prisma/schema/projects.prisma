@@ -1,0 +1,32 @@
+model Projects {
+  id             String          @id @default(uuid())
+  name           String
+  status         Status          @default(ACTIVE)
+  Invitation     Invitation[]
+  notification   Notification[]
+  workspaceId    String          @unique
+  workspace      Workspace       @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  Schedule       Schedule[]
+  workflows      Workflows[]
+  board          Board[]
+  funnel         Funnel[]
+  media          Media[]
+  memos          Memos[]
+  featureOption  FeatureOptions[]
+  Teams          Teams[]
+  
+  @@index([workspaceId])
+}
+
+
+model FeatureOptions {
+  id         String   @id @default(uuid())
+  name       String
+  link       String   @default("#")
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  projectId  String   @unique
+  project    Projects @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([projectId])
+}

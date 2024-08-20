@@ -1,0 +1,24 @@
+model Workspace {
+  id             String          @id @default(uuid())
+  name           String
+  status         Status          @default(ACTIVE)
+  workspace_logo String?
+  created_at     DateTime        @default(now())
+  updated_at     DateTime        @updatedAt
+  invitation     Invitation[]
+  notification   Notification[]
+  user_workspace UserWorkspace[]
+  project        Projects[]
+  teams          Teams[]
+  permission     Permissions[]
+  schedule       Schedule[]
+}
+
+model UserWorkspace {
+  userId      String
+  workspaceId String    @unique
+  user        User      @relation(fields: [userId], references: [id])
+  workspace   Workspace @relation(fields: [workspaceId], references: [id])
+
+  @@index([workspaceId])
+}
