@@ -7,8 +7,6 @@ model Teams {
   position    String
   members     UserTeams[]
   workspace   Workspace   @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
-  projectId   String
-  project     Projects     @relation(fields: [projectId], references: [id], onDelete: Cascade)
 
 }
 

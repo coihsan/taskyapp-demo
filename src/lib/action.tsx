@@ -1,6 +1,6 @@
 'use server'
 
-import { Projects, Role, User, UserWorkspace, Workspace } from '@prisma/client'
+import { Projects, Role, Tags, Task, User, UserWorkspace, Workspace } from '@prisma/client'
 import { db } from './db'
 import { currentUser } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
@@ -80,36 +80,6 @@ export const getAuthUserDetails = async () => {
     })
     return response
 };
-
-
-// Init User with Role
-
-export const initUser = async (newUser: Partial<User>) => {
-    const user = await currentUser()
-    if (!user) return
-
-    const userData = await db.user.upsert({
-        where: {
-            email_user: user.emailAddresses[0].emailAddress,
-        },
-        update: newUser,
-        create: {
-            id: user.id,
-            imageUrl: user.imageUrl,
-            full_name: user.fullName as string,
-            username: user.username as string,
-            email_user: user.emailAddresses[0].emailAddress,
-            role: newUser.role || 'CREATOR' || 'ADMIN',
-            clerkId: user.id,
-        },
-    })
-    await clerkClient.users.updateUserMetadata(user.id, {
-        privateMetadata: {
-            Role: userData.role || 'CREATOR' || 'ADMIN',
-        },
-    })
-    return userData
-}
 
 // Delete User Account
 
@@ -200,7 +170,7 @@ export const getUserPermissions = async (userId: Partial<User>) => {
 // CREATE WORKSPACE TEAM
 
 export const createWorkspaceTeam = async (workspaceId: string, user: User) => {
-    if (user.role === 'CREATOR') return null
+    if (!user) return null
     const response = await db.user.create({
         data: {
             ...user,
@@ -262,4 +232,36 @@ export const featureOptions = async (workspaceId: string, projectsId: string)=>{
         }
     })
     return response
+}
+
+// upsert new board
+export const upsertNewBoard = async (
+    projectId: string,
+    boardName: string,
+    tags: Tags[],
+    task: Task[]
+) =>{
+    const response = await db.board.upsert({
+        where:{
+            id: v4()
+        },
+        update: {
+            title: boardName,
+        },
+        create:{
+            id: v4(),
+            title: boardName,
+            projectId: projectId,
+            task:{
+                create:{
+                    ...task,
+                    tags: {
+                        create: {
+                            ...tags
+                        }
+                    }
+                }
+            }
+        }
+    })
 }

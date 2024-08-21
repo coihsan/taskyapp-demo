@@ -1,7 +1,7 @@
 "use client";
 import { useModal } from "@/providers/modal-provider";
 import React, { useCallback, useEffect, useState } from "react";
-import PanelBar from '@/app/app/(main)/[workspaceid]/_components/panel-bar'
+import PanelBar from '@/app/app/[workspaceid]/_components/panel-bar'
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
 import { DragDropContext, DropResult, Droppable } from "react-beautiful-dnd";
 
@@ -35,7 +35,7 @@ const Page = () => {
       >
         Board Page
       </DragDropContext>
-      <ScrollBar orientation="vertical" />
+      <ScrollBar />
     </ScrollArea>
   );
 };

@@ -5,7 +5,7 @@ import Logo from '@/components/global/logo'
 import FooterOnSidebar from '@/components/global/footer-on-sidebar'
 import SelectWorkspace from '../select-workspace'
 import WorkspaceMenu from '../workspace-menu'
-import EditWorkspace from "@/app/app/(main)/[workspaceid]/_components/edit-workspace";
+import EditWorkspace from "@/app/app/[workspaceid]/_components/edit-workspace";
 import Link from "next/link";
 import { SidebarContent } from "@/components/global/sidebar-content";
 import { FluentFolder24Regular } from "@/components/icons/folder-24-regular";
@@ -51,7 +51,7 @@ const Sidebar = ({ workspaceId } : Props) => {
                             <CommandItem className="grid w-full" key={list.id}>
                                 <Link
                                     href={`/app/${list.id}/projects/${list.id}`}
-                                    className="text-sm h-9 hover:bg-muted/50 px-2 rounded-md flex items-center justify-between"
+                                    className="text-sm h-6 hover:bg-muted/50 px-2 rounded-md flex items-center justify-between"
                                 >
                                     <div className="flex items-center gap-4">
                                         <FluentFolder24Regular className="size-5" />

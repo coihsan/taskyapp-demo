@@ -12,11 +12,11 @@ model User {
   updated_at     DateTime        @updatedAt
   notification   Notification[]
   permissions    Permissions[]
-  role           Role            @default(CREATOR)
-  position       String?
   status_account Status          @default(ACTIVE)
   user_workspace UserWorkspace[]
   teams          UserTeams[]
+  Comment        Comment[]
+  Task           Task[]
 
   @@index([clerkId])
 }

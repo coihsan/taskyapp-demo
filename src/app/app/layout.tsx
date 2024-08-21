@@ -1,5 +1,5 @@
-import Sidebar from "@/app/app/(main)/[workspaceid]/_components/sidebar";
-import HeaderBar from "@/app/app/(main)/[workspaceid]/_components/headerbar";
+import Sidebar from "@/app/app/[workspaceid]/_components/sidebar";
+import HeaderBar from "@/app/app/[workspaceid]/_components/headerbar";
 import { SWRProvider } from "@/providers/swr-provider";
 import { db } from "@/lib/db";
 
@@ -24,7 +24,7 @@ const MainLayout = async ({ children, params }: Props) => {
   }
   
   return (
-    <main className="flex overflow-hidden h-screen min-h-[100dvh] p-1">
+    <main className="flex overflow-hidden h-screen min-h-[100dvh] p-1 fixed w-full">
       <Sidebar workspaceId={workspaceDetails.id} />
       <aside className="w-full CardStyle rounded-2xl">
         <HeaderBar />

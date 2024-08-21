@@ -13,7 +13,6 @@ model Projects {
   media          Media[]
   memos          Memos[]
   featureOption  FeatureOptions[]
-  Teams          Teams[]
   
   @@index([workspaceId])
 }

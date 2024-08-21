@@ -7,7 +7,6 @@ import UserDetails from "@/components/form/user-details";
 
 const ProfilePage = () => {
   const { user } = useUserDetails()
-  if (!user) return redirect('/sign-in');
 
   return (
     <main className="p-4">

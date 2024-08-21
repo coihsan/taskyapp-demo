@@ -1,42 +1,30 @@
 model Board {
-  id            String   @id @default(uuid())
+  id            String     @id @default(uuid())
   title         String?
-  projectId    String
-  created_at    DateTime @default(now())
-  updated_at    DateTime @updatedAt
-  project      Projects    @relation(fields: [projectId], references: [id], onDelete: Cascade)
-  columns       Column[]
+  projectId     String
+  created_at    DateTime    @default(now())
+  updated_at    DateTime    @updatedAt
+  project       Projects    @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  task          Task[]
 
   @@index([projectId])
 }
 
-model Column {
-  id         String   @id @default(uuid())
-  name       String
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-  position   String
-  boardId    String
-  board      Board    @relation(fields: [boardId], references: [id], onDelete: Cascade)
-  cards      Card[]
-
-  @@index([boardId])
-}
-
-model Card {
+model Task {
   id          String    @id @default(uuid())
-  title       String?
+  title       String
   created_at  DateTime  @default(now())
   updated_at  DateTime  @updatedAt
-  description String?
-  content     String?   @db.Text
-  columnId    String
-  column      Column    @relation(fields: [columnId], references: [id], onDelete: Cascade)
+  content     String    @db.Text
+  boardId     String
+  board       Board     @relation(fields: [boardId], references: [id], onDelete: Cascade)
   is_complete Boolean   @default(false)
   sub_task    SubTask[]
   tags        Tags[]
+  userId      String
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@index([columnId])
+  @@index([boardId])
 }
 
 model SubTask {
@@ -47,18 +35,27 @@ model SubTask {
   created_at  DateTime   @default(now())
   updated_at  DateTime   @updatedAt
   status      TaskStatus @default(INPROGRESS)
-  cardId      String
-  card        Card       @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  taskId      String
+  task        Task       @relation(fields: [taskId], references: [id], onDelete: Cascade)
 }
 
 model Tags {
   id         String   @id @default(uuid())
-  name       String?
+  name       String
   color      String?
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
-  cardId     String
-  card       Card     @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  taskId     String
+  task       Task     @relation(fields: [taskId], references: [id], onDelete: Cascade)
 
-  @@index([cardId])
+  @@index([taskId])
+}
+
+model Comment {
+   id          String     @id @default(uuid())
+   userId      String
+   user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+   content     String
+
+   @@index([userId])
 }

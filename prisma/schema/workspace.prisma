@@ -2,6 +2,8 @@ model Workspace {
   id             String          @id @default(uuid())
   name           String
   status         Status          @default(ACTIVE)
+  role           Role            @default(CREATOR)
+  position       String?
   workspace_logo String?
   created_at     DateTime        @default(now())
   updated_at     DateTime        @updatedAt

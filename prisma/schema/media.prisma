@@ -1,11 +1,11 @@
 model Media {
-  id          String   @id @default(uuid())
-  title       String?
-  created_at  DateTime @default(now())
-  updated_at  DateTime @updatedAt
-  type        String
-  description String?
-  link        String   @unique
+  id            String   @id @default(uuid())
+  name          String?
+  created_at    DateTime @default(now())
+  updated_at    DateTime @updatedAt
+  type          String
+  description   String?
+  link          String   @unique
   projectId     String
   project       Projects    @relation(fields: [projectId], references: [id], onDelete: Cascade)
 
