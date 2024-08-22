@@ -1,4 +1,4 @@
-import { db } from '@/lib/db'
+import { db } from '@/lib/server/db'
 import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 
@@ -24,4 +24,17 @@ export const DetailsWorkspaceSchema = z.object({
 
 export const NewWorkflowFormSchema = z.object({
     name: z.string().min(1, 'Required'),
+})
+
+export const LoginSchema = z.object({
+    email: z.string().email({ message: "Invalid email address" }),
+    password: z.string().min(1, { message: "Password is required" }),
+})
+
+export const SignupSchema = z.object({
+    full_name: z.string().min(1, {
+        message: "Name is required"
+    }),
+    email_user: z.string().email({ message: "Invalid email address" }),
+    password: z.string().min(1, { message: "Password is required" }),
 })

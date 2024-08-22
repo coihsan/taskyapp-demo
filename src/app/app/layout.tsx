@@ -1,7 +1,7 @@
 import Sidebar from "@/app/app/[workspaceid]/_components/sidebar";
 import HeaderBar from "@/app/app/[workspaceid]/_components/headerbar";
 import { SWRProvider } from "@/providers/swr-provider";
-import { db } from "@/lib/db";
+import { db } from "@/lib/server/db";
 
 type Props = {
   children: React.ReactNode;

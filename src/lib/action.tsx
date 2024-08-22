@@ -1,25 +1,24 @@
 'use server'
 
 import { Projects, Role, Tags, Task, User, UserWorkspace, Workspace } from '@prisma/client'
-import { db } from './db'
-import { currentUser } from '@clerk/nextjs/server'
+import { db } from './server/db'
 import { redirect } from 'next/navigation'
 import { v4 } from 'uuid'
-import { clerkClient } from '@clerk/nextjs/server'
 import { workspaceTypes } from './types/db.types'
+import { auth } from './server/auth'
 
 // INVITATION
-export const verifyAndAcceptInvitation = async () => {
-    const user = await currentUser()
+// export const verifyAndAcceptInvitation = async () => {
+//     const user = await auth()
     
-    if (!user) return redirect('/sign-in')
-    const invitationExists = await db.invitation.findUnique({
-        where: {
-            email: user.emailAddresses[0].emailAddress,
-            workspaceId: user.id,
-        },
-    })
-}
+//     if (!user) return redirect('/sign-in')
+//     const invitationExists = await db.invitation.findUnique({
+//         where: {
+//             email: user.,
+//             workspaceId: user.id,
+//         },
+//     })
+// }
 
 // UPDATE USER INFORMATION
 
@@ -35,9 +34,9 @@ export const updateUser = async (user: Partial<User>) => {
 // Check user if logged in or not, and create new user if not logged in
 
 export const checkUser = async () => {
-    const user = await currentUser()
+    const session = await auth()
 
-    if (!user) {
+    if (!session) {
         return null
     }
     const loggedInUser = await db.user.findUnique({
@@ -58,6 +57,34 @@ export const checkUser = async () => {
         },
     })
     return createUser
+}
+
+// Init User with Role
+
+export const initUser = async (newUser: Partial<User>) => {
+    const user = await currentUser()
+    if (!user) return
+
+    const userData = await db.user.upsert({
+        where: {
+            email_user: user.emailAddresses[0].emailAddress,
+        },
+        update: newUser,
+        create: {
+            id: user.id,
+            imageUrl: user.imageUrl,
+            full_name: user.fullName as string,
+            username: user.username as string,
+            email_user: user.emailAddresses[0].emailAddress,
+            clerkId: user.id,
+        },
+    })
+    // await clerkClient.users.updateUserMetadata(user.id, {
+    //     privateMetadata: {
+    //         Role: userData.role || 'CREATOR' || 'ADMIN',
+    //     },
+    // })
+    return userData
 }
 
 // GET USER INFORMATION
@@ -136,6 +163,7 @@ export const createNewWorkspace = async ({
         data: {
             id: v4(),
             name: name,
+            role: "CREATOR",
             workspace_logo: workspace_logo,
             user_workspace: {
                 create: {

@@ -1,12 +1,11 @@
 "use server";
+
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import { sitelink } from "@/lib/const";
-import { currentUser } from "@clerk/nextjs/server";
 import Logo from "@/components/global/logo";
 import { Button } from "@/components/ui/button";
 import ChevronRight from "@/components/icons/chevron-right";
-
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -14,13 +13,14 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
+import { auth } from "@/lib/server/auth";
 
 
 const Navigation = async () => {
-  const user = await currentUser();
+  const user = await auth();
   return (
-    <NavigationMenu orientation="horizontal" className="flex w-full mx-auto max-w-screen-lg fixed top-2 left-0 right-0 z-50 px-6">
-      <NavigationMenuList className="flex items-center w-full justify-between max-w-screen-lg px-4 py-2 bg-white/50 borderStyle dark:bg-white/5 backdrop-blur-xl rounded-full">
+    <NavigationMenu orientation="horizontal" className="flex w-full mx-auto fixed top-2 left-0 right-0 z-50 px-6">
+      <NavigationMenuList className="flex items-center w-full justify-between px-4 py-2 bg-white/50 borderStyle dark:bg-white/5 backdrop-blur-xl rounded-full">
         <div className="flex">
           <Link className="flex items-center gap-2" href={"/"}>
             <Logo />

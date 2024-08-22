@@ -1,6 +1,5 @@
 model User {
   id             String          @id @default(uuid())
-  clerkId        String          @unique
   full_name      String
   username       String?          @unique
   email_user     String          @unique
@@ -18,7 +17,6 @@ model User {
   Comment        Comment[]
   Task           Task[]
 
-  @@index([clerkId])
 }
 
 
@@ -27,7 +25,7 @@ model Permissions {
   email_user  String
   userId      String
   access      Boolean
-  user        User      @relation(fields: [userId], references: [clerkId], onDelete: Cascade)
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   workspaceId String
   workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
 

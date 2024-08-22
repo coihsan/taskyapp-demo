@@ -22,7 +22,7 @@ const Section = ({ children }: { children: React.ReactNode }) => {
 };
 export default function Home() {
   return (
-    <section className="relative px-6">
+    <section className="relative">
       <Navigation />
       <GradientHero />
       <main className="container mx-auto pt-12">

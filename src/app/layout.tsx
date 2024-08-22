@@ -4,7 +4,7 @@ import "./globals.css";
 import ModalProvider from "@/providers/modal-provider";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as ToasterSonner } from "@/components/ui/sonner";
-import { ClerkProvider } from "@clerk/nextjs";
+
 export const metadata: Metadata = {
   title: "TaskyApp",
   description: "Organize your tasks with TaskyApp",
@@ -13,8 +13,6 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
-    signInFallbackRedirectUrl={'/app'}>
     <html lang="en" suppressHydrationWarning>
       <body>
         <ThemeProvider
@@ -31,6 +29,5 @@ export default function RootLayout({
         </ThemeProvider>
       </body>
     </html>
-    </ClerkProvider>
   );
 }

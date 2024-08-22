@@ -41,7 +41,7 @@ const SettingsPage = () => {
               <CardTitle>Storage for Actions and Packages</CardTitle>
               <CardDescription className="pt-3">
                 Shared storage consists of Actions artifacts and Packages usage.
-                This graph shows the account's storage usage in GB-months.
+                This graph shows the account{"'"}s storage usage in GB-months.
                 Removing stored artifacts will not reduce this number, but it
                 will lower its rate of growth. To see your account's current
                 storage, download a usage report.

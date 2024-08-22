@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { SignOutButton } from "@clerk/nextjs";
+import { SignOutButton } from "./signout-button";
 import { FluentPerson24Regular } from "../icons/person";
 import { FluentSettings24Regular } from "../icons/settings";
 import { FluentSignOut24Regular } from "../icons/sign-out";
@@ -66,7 +66,7 @@ const UserButtonCustom = () => {
           </DropdownMenuItem>
           <DropdownMenuItem className="flex items-center gap-2">
             <FluentSignOut24Regular />
-            <SignOutButton redirectUrl="/sign-in"/>
+            <SignOutButton />
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

@@ -8,7 +8,6 @@ const nextConfig = {
     images: {
       remotePatterns: [
         { protocol: "https", hostname: "ucarecdn.com",},
-        { protocol: "https", hostname: "img.clerk.com",},
         { hostname: "public.blob.vercel-storage.com" },
         { hostname: "www.google.com" },
         { hostname: "avatar.vercel.sh" },

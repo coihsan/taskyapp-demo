@@ -1,16 +1,18 @@
-import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+export { auth as middleware } from "@/lib/server/auth"
 import { redirect } from "next/navigation";
 import { NextResponse } from "next/server";
+import NextAuth from "next-auth"
+import { 
+  apiAuthPrefix,
+  publicRoutes,
+  authRoutes,
+  DEFAULT_LOGIN_REDIRECT
+ } from "../routes"
+import authConfig from "./lib/config /auth.config";
 
-const isPublicRoute = createRouteMatcher([
-  "/",
-  "/sign-in(.*)",
-  "/sign-up(.*)",
-  "/demo",
-  "/policy",
-]);
+ const { auth } = NextAuth(authConfig)
 
-export default clerkMiddleware((auth, req, res) => {
+export default auth((req, res) => {
   const user = auth();
   const url = req.nextUrl;
   const searchParams = url.searchParams.toString();
@@ -21,14 +23,14 @@ export default clerkMiddleware((auth, req, res) => {
   }`;
 
   // rewrites for app pages
-  if(url.pathname === '/app'){
-    if(user.userId){
-      const newPathname = path.replace(/^\/app/, "");
-      return NextResponse.rewrite(
-        new URL(`/app${newPathname}`, req.url),
-      );
-    }
-  };
+  // if(url.pathname === '/app'){
+  //   if(user){
+  //     const newPathname = path.replace(/^\/app/, "");
+  //     return NextResponse.rewrite(
+  //       new URL(`/app${newPathname}`, req.url),
+  //     );
+  //   }
+  // };
 
   // if (url.pathname === '/sign-in' || url.pathname === '/sign-up') {
   //   return NextResponse.redirect(new URL(`/app/sign-in`, req.url))
@@ -46,17 +48,10 @@ export default clerkMiddleware((auth, req, res) => {
     );
   }
 
-  if (!isPublicRoute(req)) {
-    auth().protect();
-  }
+  // if(url.pathname.startsWith('/workspace')){
+  //   return NextResponse.rewrite(new URL(`${pathWithSearchParams}`, req.url))
+  // }
 
-  if(url.pathname.startsWith('/workspace')){
-    return NextResponse.rewrite(new URL(`${pathWithSearchParams}`, req.url))
-  }
-
-  if (!user.userId && !isPublicRoute(req)) {
-    return user.redirectToSignIn();
-  }
 });
 
 
