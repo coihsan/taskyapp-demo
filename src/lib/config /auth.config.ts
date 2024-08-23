@@ -9,16 +9,16 @@ import bcrypt from 'bcryptjs';
 export default { providers: [
   Credentials({
     credentials: {
-      email: {},
+      email_user: {},
       password: {},
     },
    async authorize(credentials) {
     const validatedFieldss = LoginSchema.safeParse(credentials) 
 
     if(validatedFieldss.success){
-      const { email, password } = validatedFieldss.data
+      const { email_user, password } = validatedFieldss.data
 
-      const user = await getUserByEmail(email)
+      const user = await getUserByEmail(email_user)
       if (!user || !user.password) return null
 
       const passwordMatch = await bcrypt.compare(password, user.password)

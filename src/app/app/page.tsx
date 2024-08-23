@@ -1,6 +1,6 @@
-import { db } from '@/lib/db'
+import { db } from '@/lib/server/db'
 import { redirect, notFound } from 'next/navigation'
-import { checkUser } from '@/lib/action'
+import { checkUser } from '@/lib/action/user'
 import Unauthorized from '@/components/unauthorized'
 import NewWorkspaceForm from '@/components/form/new-workspace-form'
 

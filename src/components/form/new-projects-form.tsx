@@ -18,7 +18,7 @@ import { useRouter, useParams } from 'next/navigation'
 import { useModal } from '@/providers/modal-provider'
 import Loading from '../global/loading'
 import { useToast } from '../ui/use-toast'
-import { createNewProject } from '@/lib/action'
+import { createNewProject } from '@/lib/action/projects'
 
 const NewProjectsSchema = z.object({
     name: z.string().min(1, 'Required'),

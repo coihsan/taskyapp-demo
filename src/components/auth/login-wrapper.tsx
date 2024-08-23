@@ -39,7 +39,7 @@ const LoginWrapper = ({
           <span>Back</span>
         </Link>
       </Button>
-      <Card>
+      <Card className="CardStyle">
         <CardHeader className="w-full flex flex-col gap-y-4 items-center">
           <Logo />
           <div className="mt-4">

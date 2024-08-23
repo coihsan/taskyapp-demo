@@ -12,7 +12,8 @@
  */
 export const authRoutes = [
     "/sign-in",
-    "/sign-up"
+    "/sign-up",
+    "/app/*"
 ]
 
 /**
@@ -26,4 +27,4 @@ export const apiAuthPrefix = "/api/auth"
  @type {string}
  */
 
-export const DEFAULT_LOGIN_REDIRECT = "/account/profile"
+export const DEFAULT_LOGIN_REDIRECT = "/app"

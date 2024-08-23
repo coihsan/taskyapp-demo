@@ -9,7 +9,8 @@ import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { SignupSchema } from "@/lib/schema";
 import { SignupAction } from "@/lib/action/login";
-import {FromAuthError, FormAuthSuccess} from "@/components/auth/auth-control";
+import { FormAuthSuccess } from "../auth/form-auth-success";
+import { FromAuthError } from "../auth/form-auth-error";
 
 const SignupForm = () =>{
     const [error, setError] = useState<string | undefined>("")

@@ -21,7 +21,7 @@ import {
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
-import { createNewWorkspace } from '@/lib/action'
+import { createNewWorkspace } from '@/lib/action/workspace'
 import { useRouter } from 'next/navigation'
 import { useModal } from '@/providers/modal-provider'
 import Loading from '../global/loading'

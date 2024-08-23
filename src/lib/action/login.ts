@@ -16,10 +16,10 @@ export const loginAction = async (values : z.infer<typeof LoginSchema>) =>{
     if (!validatedFields.success){
         return {error : "Invalid credentials!" }
     }
-    const {email, password} = validatedFields.data;
+    const {email_user, password} = validatedFields.data;
     try {
         await signIn("credentials", {
-            email,
+            email_user,
             password,
             redirectTo: DEFAULT_LOGIN_REDIRECT
         });

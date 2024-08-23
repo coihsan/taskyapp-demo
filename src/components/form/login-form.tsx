@@ -16,34 +16,37 @@ import { Input } from "@/components/ui/input";
 import LoginWrapper from "../auth/login-wrapper";
 import { LoginSchema } from "@/lib/schema";
 import { loginAction } from "@/lib/action/login";
-import { FromAuthError, FormAuthSuccess } from "../auth/auth-control";
+import Loading from "../global/loading";
+import { FromAuthError } from "../auth/form-auth-error";
+import { FormAuthSuccess } from "../auth/form-auth-success";
 
 const LoginForm = () => {
-    const [error, setError] = useState<string | undefined>("");
-    const [success, setSuccess] = useState<string | undefined>("")
-    const [isPending, startTransition] = useTransition()
-    const form = useForm<z.infer<typeof LoginSchema>>({
-        resolver: zodResolver(LoginSchema),
-        defaultValues: {
-          email: "",
-          password: "",
-        },
-      });
+  const [error, setError] = useState<string | undefined>("");
+  const [success, setSuccess] = useState<string | undefined>("");
+  const [isPending, startTransition] = useTransition();
 
-const onSubmit = (values : z.infer<typeof LoginSchema>) =>{
-    setError("")
-    setSuccess("")
+  const form = useForm<z.infer<typeof LoginSchema>>({
+    resolver: zodResolver(LoginSchema),
+    defaultValues: {
+      email_user: "",
+      password: "",
+    },
+  });
+
+  const onSubmit = (values: z.infer<typeof LoginSchema>) => {
+    setError("");
+    setSuccess("");
 
     startTransition(() => {
-        loginAction(values)
-        .then((data) =>{
-            setError(data?.error)
+      loginAction(values)
+        .then((data) => {
+          setError(data?.error);
         })
-        .catch((error) =>{
-            setError(error)
-        })
-    })
-}
+        .catch((error) => {
+          setError(error);
+        });
+    });
+  };
 
   return (
     <>
@@ -59,11 +62,10 @@ const onSubmit = (values : z.infer<typeof LoginSchema>) =>{
             onSubmit={form.handleSubmit(onSubmit)}
             className="space-y-4 w-full"
           >
-            <div className="space-y-4">
               <FormField
                 control={form.control}
                 disabled={isPending}
-                name="email"
+                name="email_user"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Email</FormLabel>
@@ -96,11 +98,16 @@ const onSubmit = (values : z.infer<typeof LoginSchema>) =>{
                   </FormItem>
                 )}
               />
-            </div>
             <FromAuthError message={error} />
             <FormAuthSuccess message={success} />
-            <Button className="w-full" variant={"default"} type="submit">
-              Login
+            <Button className="w-full flex items-center justify-center gap-2" variant={"default"} type="submit">
+              {isPending ? (
+                <>
+                  <Loading /> Login...
+                </>
+              ) : (
+                "Login"
+              )}
             </Button>
           </form>
         </Form>

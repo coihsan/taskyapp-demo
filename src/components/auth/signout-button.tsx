@@ -3,7 +3,7 @@
 import { signOut } from "@/lib/server/auth"
 import { Button } from "../ui/button"
  
-export function SignOutButton() {
+export async function SignOutButton() {
   return (
     <form
       action={async () => {

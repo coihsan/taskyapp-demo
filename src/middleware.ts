@@ -1,6 +1,5 @@
 export { auth as middleware } from "@/lib/server/auth"
 import { redirect } from "next/navigation";
-import { NextResponse } from "next/server";
 import NextAuth from "next-auth"
 import { 
   apiAuthPrefix,
@@ -12,45 +11,32 @@ import authConfig from "./lib/config /auth.config";
 
  const { auth } = NextAuth(authConfig)
 
-export default auth((req, res) => {
-  const user = auth();
-  const url = req.nextUrl;
-  const searchParams = url.searchParams.toString();
-  let hostname = req.headers.get("host");
+export default auth((req) => {
+  const { nextUrl } = req;
+  const isLoggedIn = !!req.auth;
 
-  const path = `${url.pathname}${
-    searchParams.length > 0 ? `?${searchParams}` : ""
-  }`;
+  const isApiAuthRoutes = nextUrl.pathname.startsWith(apiAuthPrefix);
+  const isPublicRoutes = publicRoutes.includes(nextUrl.pathname)
+  const isAuthRoutes = authRoutes.includes(nextUrl.pathname)
 
-  // rewrites for app pages
-  // if(url.pathname === '/app'){
-  //   if(user){
-  //     const newPathname = path.replace(/^\/app/, "");
-  //     return NextResponse.rewrite(
-  //       new URL(`/app${newPathname}`, req.url),
-  //     );
-  //   }
-  // };
-
-  // if (url.pathname === '/sign-in' || url.pathname === '/sign-up') {
-  //   return NextResponse.redirect(new URL(`/app/sign-in`, req.url))
-  // }
-
-
-  const pathWithSearchParams = `${url.pathname}${
-    searchParams.length > 0 ? `?${searchParams}` : ""
-  }`;
-
-  // TODO : add `vercel.pub` domain
-  if (hostname === "vercel.pub") {
-    return NextResponse.redirect(
-      "https://vercel.com/blog/platforms-starter-kit",
-    );
+  // If the user access private route, and not logged in, redirect to login page
+  if (isApiAuthRoutes){
+    return null
   }
 
-  // if(url.pathname.startsWith('/workspace')){
-  //   return NextResponse.rewrite(new URL(`${pathWithSearchParams}`, req.url))
-  // }
+  // If the user access public route, and logged in, redirect to home page
+  if (isAuthRoutes){
+    if(isLoggedIn){
+      return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl))
+    }
+    return null
+  }
+
+  // If the user is not logged in and the user access private route, redirect to sign-in page
+  if(!isLoggedIn && !isPublicRoutes){
+    return Response.redirect(new URL("/sign-in", nextUrl))
+  }
+  return null
 
 });
 
