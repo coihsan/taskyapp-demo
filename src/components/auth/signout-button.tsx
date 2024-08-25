@@ -1,16 +1,18 @@
 "use server"
-
 import { signOut } from "@/lib/server/auth"
 import { Button } from "../ui/button"
  
-export async function SignOutButton() {
+export async function SignOutButton(props: React.ComponentPropsWithRef<typeof Button>) {
   return (
     <form
       action={async () => {
         await signOut()
       }}
+      className="w-full"
     >
-      <Button type="submit">Sign Out</Button>
+      <Button variant="ghost" className="w-full p-0" {...props}>
+        Sign Out
+      </Button>
     </form>
   )
 }
