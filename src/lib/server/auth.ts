@@ -1,14 +1,20 @@
-import NextAuth from "next-auth"
+import NextAuth, { type DefaultSession } from "next-auth"
 import { db } from "@/lib/server/db"
 import { PrismaAdapter } from "@auth/prisma-adapter"
-import { PrismaNeon } from "@prisma/adapter-neon"
-import { Pool } from "@neondatabase/serverless"
 import authConfig from "../config /auth.config"
 
-const neon = new Pool({
-  connectionString: process.env.AUTH_POSTGRES_PRISMA_URL,
-})
-const adapter = new PrismaNeon(neon)
+declare module "next-auth" {
+  interface Session {
+    user: {
+      email_user: string,
+      id: string,
+      full_name: string,
+      username: string,
+      imageUrl: string,
+      bio: string,
+    } & DefaultSession["user"]
+  }
+}
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(db),

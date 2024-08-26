@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { User } from "@prisma/client";
-import { getAuthUserDetails, initUser, updateUser } from "@/lib/action";
+import { getAuthUserDetails, initUser, updateUser } from "@/lib/action/user";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { redirect } from "next/navigation";
 import { useForm } from "react-hook-form";

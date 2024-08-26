@@ -81,7 +81,7 @@ export const checkUser = async () => {
             full_name: user?.name as string,
             username: user?.email as string,
             email_user: user?.email as string,
-            imageUrl: user?.email as string,
+            imageUrl: session.user?.image as string,
         },
     })
     return createUser

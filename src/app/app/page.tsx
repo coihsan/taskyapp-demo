@@ -1,13 +1,13 @@
 import { db } from '@/lib/server/db'
 import { redirect, notFound } from 'next/navigation'
-import { checkUser } from '@/lib/action/user'
+import { useSession, SessionProvider } from 'next-auth/react';
 import NewWorkspaceForm from '@/components/form/new-workspace-form'
 
 type Props = {
     searchParams: { workspaceId: string;  }
 }
 const Page = async ({ searchParams } : Props) => {
-    const users = await checkUser()
+    const session = useSession();
     
     const data = await db.workspace.findFirst({
         where:{
@@ -20,7 +20,7 @@ const Page = async ({ searchParams } : Props) => {
     if(data){
         return redirect(`/app/${data.id}`)
     }
-    if(!users && !data){
+    if(!data){
         notFound();
     }
 
