@@ -7,8 +7,6 @@ type Props = {
     searchParams: { workspaceId: string;  }
 }
 const Page = async ({ searchParams } : Props) => {
-    const session = useSession();
-    
     const data = await db.workspace.findFirst({
         where:{
             id: searchParams.workspaceId

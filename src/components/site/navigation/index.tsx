@@ -19,8 +19,8 @@ import { auth } from "@/lib/server/auth";
 const Navigation = async () => {
   const user = await auth();
   return (
-    <NavigationMenu orientation="horizontal" className="flex w-full mx-auto fixed top-2 left-0 right-0 z-50 px-6">
-      <NavigationMenuList className="flex items-center w-full justify-between px-4 py-2 bg-white/50 borderStyle dark:bg-white/5 backdrop-blur-xl rounded-full">
+    <NavigationMenu orientation="horizontal" className="flex w-full max-w-screen-xl mx-auto fixed top-2 left-0 right-0 z-50 px-6">
+      <NavigationMenuList className="flex items-center w-full max-w-screen-xl justify-between px-4 py-2 bg-white/50 borderStyle dark:bg-white/5 backdrop-blur-xl rounded-full drop-shadow-xl">
         <div className="flex">
           <Link className="flex items-center gap-2" href={"/"}>
             <Logo />
@@ -28,20 +28,15 @@ const Navigation = async () => {
               Beta
             </span>
           </Link>
-          <div className="hidden lg:flex ml-0 lg:ml-4 flex items-center gap-3">
             <Separator orientation="vertical" />
             <NavigationMenuItem className="hidden lg:flex items-center gap-8">
             {sitelink.map((link) => (
-                <Link key={link.id} href={link.url}>
-                  <NavigationMenuLink>
-                    {link.title}
-                  </NavigationMenuLink>
-                </Link>
+              <NavigationMenuLink key={link.id} href={link.url}>
+                {link.title}
+              </NavigationMenuLink>
             ))}
           </NavigationMenuItem>
           </div>
-        </div>
-        <div className="flex items-center h-7 space-x-2">
         <NavigationMenuItem>
           <Link href={user ? "/app" : "/sign-in"} legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
@@ -50,7 +45,6 @@ const Navigation = async () => {
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
-        </div>
       </NavigationMenuList>
     </NavigationMenu>
   );
