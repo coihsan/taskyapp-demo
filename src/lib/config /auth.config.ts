@@ -10,5 +10,12 @@ export default { providers: [
     Google ({
       clientId: process.env.AUTH_WEBAPP_GOOGLE_CLIENT_ID,
       clientSecret: process.env.AUTH_WEBAPP_GOOGLE_CLIENT_SECRET,
+      authorization: {
+        params: {
+          prompt: "consent",
+          access_type: "offline",
+          response_type: "code",
+        },
+      },
     }),
 ] } satisfies NextAuthConfig

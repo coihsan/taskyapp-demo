@@ -16,60 +16,52 @@ declare module "next-auth" {
   }
 }
 
+const createUser = async (profile: any, account: any) => {
+  try {
+    const user = await db.user.create({
+      data: {
+        full_name: profile?.name ?? "",
+        username: account?.provider === "github" ? profile?.login : profile?.name,
+        email_user: profile?.email,
+        imageUrl: profile?.picture ?? profile?.avatar_url,
+      },
+    });
+    return true;
+  } catch (error) {
+    console.error("Error creating user:", error);
+    return false;
+  }
+};
+
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(db),
   session: {
-    strategy: "jwt",
+    strategy: "database"
   },
   secret: process.env.AUTH_SECRET,
   basePath: "/api/auth",
   callbacks: {
-    signIn: async ({ account, profile, user }) => {
-      if (account?.provider === "credentials") {
-        const user = await db.user.findUnique({ 
-          where: { email_user: profile?.email as string } 
-        })
+    async signIn({ profile, account }) {
+      try {
+        const user = await db.user.findUnique({
+          where: {
+            email_user: profile?.email as string,
+          },
+        });
         if (user) {
-          return true
-        } else {
-          return false
-        }
-      } else if (account?.provider === "github") {
-        try {
-          const existingUser = await db.user.findUnique({
-            where: { email_user: profile?.email as string },
-          });
-
-          if (!existingUser) {
-            await db.user.create({
-              data: {
-                email_user: profile?.email as string,
-                full_name: profile?.name as string,
-                imageUrl: profile?.picture
-              },
-            });
-          }
           return true;
-        } catch (error) {
-          console.error("Error creating user:", error);
-          return false;
         }
-      } else if (account?.provider === "google") {
-        const response = await db.user.findUnique({
-          where: { email_user: profile?.email as string },
-        })
-        if(!response) {
-          await db.user.create({
-            data: {
-              email_user: profile?.email as string,
-              full_name: profile?.name as string,
-              imageUrl: profile?.picture
-            }
-          })
+        if (!user && profile?.email) {
+          if (account?.provider === "google" && !profile?.email_verified) {
+            return false;
+          }
+          return await createUser(profile, account);
         }
-        return true
+      } catch (error) {
+        console.error("Error in signIn callback:", error);
+        return false;
       }
-      return false 
+      return false;
     },
     async redirect({ url, baseUrl }) {
       return baseUrl;
@@ -98,6 +90,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   },
   pages: {
     signIn: "/sign-in",
+    error: '/authError',
   },
   ...authConfig,
 })
