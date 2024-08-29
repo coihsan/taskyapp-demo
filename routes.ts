@@ -3,7 +3,10 @@
  @type {string}
  */
  export const publicRoutes = [
-    "/"
+    "/",
+    "/demo",
+    "/how",
+    "/policy"
 ]
 
 /**

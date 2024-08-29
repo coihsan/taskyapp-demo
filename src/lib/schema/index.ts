@@ -27,14 +27,14 @@ export const NewWorkflowFormSchema = z.object({
 })
 
 export const LoginSchema = z.object({
-    email_user: z.string().email({ message: "Invalid email address" }),
+    email: z.string().email({ message: "Invalid email address" }),
     password: z.string().min(1, { message: "Password is required" }),
 })
 
 export const SignupSchema = z.object({
-    full_name: z.string().min(1, {
+    name: z.string().min(1, {
         message: "Name is required"
     }),
-    email_user: z.string().email({ message: "Invalid email address" }),
+    email: z.string().email({ message: "Invalid email address" }),
     password: z.string().min(1, { message: "Password is required" }),
 })

@@ -29,10 +29,10 @@ const UserDetails = ({userData} : Props) => {
     resolver: zodResolver(DetailsUserProfileSchema),
     mode: "onChange",
     defaultValues:{
-      fullName: userData?.full_name || undefined,
+      fullName: userData?.name || undefined,
       username: userData?.username || undefined,
-      email: userData?.email_user,
-      imageUrl: userData?.imageUrl || undefined,
+      email: userData?.email,
+      imageUrl: userData?.image || undefined,
       bio: userData?.bio || undefined,
     }
   })
@@ -40,10 +40,10 @@ const UserDetails = ({userData} : Props) => {
   const onSubmit = async (values: z.infer<typeof DetailsUserProfileSchema>) => {
     try {
       const updatedUser = await initUser({
-        full_name: values.fullName,
+        name: values.fullName,
         username: values.username,
-        email_user: values.email,
-        imageUrl: values.imageUrl,
+        email: values.email,
+        image: values.imageUrl,
         bio: values.bio,
       })
       startTransition(() => {

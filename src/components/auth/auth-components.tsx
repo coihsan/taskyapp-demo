@@ -23,7 +23,7 @@ export function SignInButton({
       >
         <Button size={'lg'} type="submit" variant={'default'} className="flex items-center justify-center gap-2 w-full">
             {provider === 'google' ? <RiGoogleFill /> : <RiGithubFill />}
-            {provider === 'google' ? 'Sign In with Google' : 'Sign In with GitHub'}
+            {provider === 'google' ? 'Google' : 'GitHub'}
         </Button>
       </form>
     )

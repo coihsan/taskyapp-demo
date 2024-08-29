@@ -11,9 +11,10 @@ import authConfig from "./lib/config /auth.config";
 
  const { auth } = NextAuth(authConfig)
 
-export default auth((req, ) => {
+export default auth((req) => {
   const { nextUrl } = req;
   const isLoggedIn = !!req.auth;
+  console.log(isLoggedIn)
 
   const isApiAuthRoutes = nextUrl.pathname.startsWith(apiAuthPrefix);
   const isPublicRoutes = publicRoutes.includes(nextUrl.pathname)

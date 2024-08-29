@@ -1,12 +1,13 @@
 model User {
   id             String          @id @default(uuid())
-  full_name      String
+  name           String?
+  email          String          @unique
+  emailVerified  DateTime?
+  image          String?
   username       String?         @unique
-  email_user     String          @unique
   bio            String?         @db.Text
   preferences    String?
   password       String?
-  imageUrl       String?
   created_at     DateTime        @default(now())
   updated_at     DateTime        @updatedAt
   notification   Notification[]
@@ -16,7 +17,6 @@ model User {
   teams          UserTeams[]
   Comment        Comment[]
   Task           Task[]
-
   accounts       Account[]
   sessions       Session[]
 }
@@ -62,7 +62,7 @@ model VerificationToken {
 
 model Permissions {
   id          String    @id @default(uuid())
-  email_user  String
+  email  String
   userId      String
   access      Boolean
   user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -70,5 +70,5 @@ model Permissions {
   workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
 
   @@index([workspaceId])
-  @@index([email_user])
+  @@index([email])
 }

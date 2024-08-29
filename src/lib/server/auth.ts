@@ -6,11 +6,11 @@ import authConfig from "../config /auth.config"
 declare module "next-auth" {
   interface Session {
     user: {
-      email_user: string,
+      email: string,
       id: string,
-      full_name: string,
+      name: string,
       username: string,
-      imageUrl: string,
+      image: string,
       bio: string,
     } & DefaultSession["user"]
   }
@@ -18,12 +18,12 @@ declare module "next-auth" {
 
 const createUser = async (profile: any, account: any) => {
   try {
-    const user = await db.user.create({
+    const userData = await db.user.create({
       data: {
-        full_name: profile?.name ?? "",
+        name: profile?.name ?? "",
         username: account?.provider === "github" ? profile?.login : profile?.name,
-        email_user: profile?.email,
-        imageUrl: profile?.picture ?? profile?.avatar_url,
+        email: profile?.email,
+        image: profile?.picture ?? profile?.avatar_url,
       },
     });
     return true;
@@ -36,61 +36,62 @@ const createUser = async (profile: any, account: any) => {
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(db),
   session: {
-    strategy: "database"
+    strategy: "jwt"
   },
   secret: process.env.AUTH_SECRET,
   basePath: "/api/auth",
   callbacks: {
-    async signIn({ profile, account }) {
-      try {
-        const user = await db.user.findUnique({
-          where: {
-            email_user: profile?.email as string,
-          },
-        });
-        if (user) {
-          return true;
-        }
-        if (!user && profile?.email) {
-          if (account?.provider === "google" && !profile?.email_verified) {
-            return false;
-          }
-          return await createUser(profile, account);
-        }
-      } catch (error) {
-        console.error("Error in signIn callback:", error);
-        return false;
-      }
-      return false;
-    },
-    async redirect({ url, baseUrl }) {
-      return baseUrl;
-    },
-    async session({ session, user, token }) {
-      if (user) {
-        session.user = {
-          ...session.user,
-          id: user.id,
-          email_user: user.email,
-          full_name: user.name as string,
-          imageUrl: user.image as string,
-        };
-      }
-      return session;
-    },
-    async jwt({ token, user, account, profile }) {
-      if (user) {
-        token.user = {
-          id: user.id,
-          email: user.email,
-        };
-      }
-      return token;
-    }
+    // async signIn({ profile, account }) {
+    //   try {
+    //     const user = await db.user.findUnique({
+    //       where: {
+    //         email: profile?.email as string,
+    //       },
+    //     });
+    //     if (user) {
+    //       return true;  
+    //     }
+    //     if (!user && profile?.email) {
+    //       if (account?.provider === "google" && profile?.email_verified) {
+    //         return true;
+    //       }
+    //       return await createUser(profile, account);
+    //     }
+    //   } catch (error) {
+    //     console.error("Error in signIn callback:", error);
+    //     return false;
+    //   }
+    //   return false;
+    // },
+    // async redirect({ url, baseUrl }) {
+    //   return baseUrl;
+    // },
+    // async session({ session, user, token }) {
+    //   if (user) {
+    //     session.user = {
+    //       ...session.user,
+    //       id: user.id,
+    //       email: user.email,
+    //       name: user.name as string,
+    //       image: user.image as string,
+    //     };
+    //   }
+    //   return session;
+    // },
+    // async jwt({ token, user, account, profile }) {
+    //   if (user) {
+    //     token.user = {
+    //       id: user.id,
+    //       email: user.email,
+    //     };
+    //   }
+    //   return token;
+    // }
   },
   pages: {
     signIn: "/sign-in",
     error: '/authError',
   },
   ...authConfig,
+  debug: true
 })

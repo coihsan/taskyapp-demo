@@ -20,7 +20,7 @@ const Navigation = async () => {
   const user = await auth();
   return (
     <NavigationMenu orientation="horizontal" className="flex w-full max-w-screen-xl mx-auto fixed top-2 left-0 right-0 z-50 px-6">
-      <NavigationMenuList className="flex items-center w-full max-w-screen-xl justify-between px-4 py-2 bg-white/50 borderStyle dark:bg-white/5 backdrop-blur-xl rounded-full drop-shadow-xl">
+      <NavigationMenuList className="flex items-center w-full max-w-screen-xl justify-between px-4 py-2 bg-white/50 borderStyle dark:bg-white/5 backdrop-blur-xl rounded-full drop-shadow-md">
         <div className="flex">
           <Link className="flex items-center gap-2" href={"/"}>
             <Logo />

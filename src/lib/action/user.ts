@@ -7,12 +7,18 @@ import { v4 } from 'uuid'
 import { workspaceTypes } from '@/lib/types/db.types'
 import { auth } from '@/lib/server/auth'
 import { userAgent } from 'next/server'
+import { AuthError } from 'next-auth';
+import { LoginSchema } from '../schema'
+import { signIn } from 'next-auth/react'
+import * as z from 'zod';
+import { DEFAULT_LOGIN_REDIRECT } from '../../../routes'
+
 
 export const getUserByEmail = async (email : string | undefined) => {
     try {
         const user = await db.user.findUnique({
             where: {
-                email_user: email,
+                email: email,
 
             }
         })
@@ -52,7 +58,7 @@ export const getUserById = async (id : string) =>{
 
 export const updateUser = async (user: Partial<User>) => {
     const response = await db.user.update({
-        where: { email_user: user.email_user },
+        where: { email: user.email },
         data: { ...user },
     })
 
@@ -69,7 +75,7 @@ export const checkUser = async () => {
     }
     const loggedInUser = await db.user.findUnique({
         where: {
-            email_user: session.user?.email as string
+            email: session.user?.email as string
         },
     })
     if (loggedInUser) {
@@ -78,10 +84,10 @@ export const checkUser = async () => {
     const user = session.user
     const createUser = await db.user.create({
         data: {
-            full_name: user?.name as string,
+            name: user?.name as string,
             username: user?.email as string,
-            email_user: user?.email as string,
-            imageUrl: session.user?.image as string,
+            email: user?.email as string,
+            image: session.user?.image as string,
         },
     })
     return createUser
@@ -95,15 +101,15 @@ export const initUser = async (newUser: Partial<User>) => {
 
     const userData = await db.user.upsert({
         where: {
-            email_user: session.user?.email as string,
+            email: session.user?.email as string,
         },
         update: newUser,
         create: {
             id: newUser.id,
-            imageUrl: newUser.imageUrl,
-            full_name: newUser.full_name as string,
+            image: newUser.image,
+            name: newUser.name as string,
             username: newUser.username,
-            email_user: newUser.email_user as string,
+            email: newUser.email as string,
         },
     })
     return userData
@@ -117,7 +123,7 @@ export const getAuthUserDetails = async () => {
 
     const response = await db.user.findUnique({
         where:{
-            email_user: user.user?.email as string
+            email: user.user?.email as string
         },
         include:{
             user_workspace: {

@@ -16,10 +16,10 @@ export const loginAction = async (values : z.infer<typeof LoginSchema>) =>{
     if (!validatedFields.success){
         return {error : "Invalid credentials!" }
     }
-    const {email_user, password} = validatedFields.data;
+    const {email, password} = validatedFields.data;
     try {
         await signIn("credentials", {
-            email_user,
+            email,
             password,
             redirectTo: DEFAULT_LOGIN_REDIRECT
         });
@@ -35,6 +35,7 @@ export const loginAction = async (values : z.infer<typeof LoginSchema>) =>{
         throw error;
     }
 }
+
 // For sign up
 export const SignupAction = async (values : z.infer<typeof SignupSchema>) =>{
     const validatedFields = SignupSchema.safeParse(values);
@@ -42,10 +43,10 @@ export const SignupAction = async (values : z.infer<typeof SignupSchema>) =>{
     if (!validatedFields.success){
         return {error : "Invalid credentials!" }
     }
-    const {email_user, password, full_name} = validatedFields.data;
+    const {email, password, name} = validatedFields.data;
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const existingUser = await getUserByEmail(email_user)
+    const existingUser = await getUserByEmail(email)
 
     if (existingUser){
         return {error: "User already exists"}
@@ -53,8 +54,8 @@ export const SignupAction = async (values : z.infer<typeof SignupSchema>) =>{
 
     await db.user.create({
         data:{
-            email_user,
-            full_name,
+            email,
+            name,
             password: hashedPassword
         }
     });
