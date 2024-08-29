@@ -48,6 +48,7 @@ const SignupForm = () => {
         })
         .catch((error) => {
           toast({
+            variant: 'destructive',
             title: `${error}`,
           });
         });

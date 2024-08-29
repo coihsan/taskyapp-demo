@@ -42,6 +42,7 @@ const LoginForm = () => {
         })
         .catch((error) => {
           toast({
+            variant: 'destructive',
             title: `${error}`,
             description: "Invalid credentials",
           });

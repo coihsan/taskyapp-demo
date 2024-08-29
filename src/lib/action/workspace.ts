@@ -27,7 +27,7 @@ export const createNewWorkspace = async ({
                 create: {
                     user: {
                         connect: {
-                            email_user: session?.user?.email as string,
+                            email: session?.user?.email as string,
                         },
                     },
                 },
@@ -41,7 +41,7 @@ export const createNewWorkspace = async ({
 
 export const getUserPermissions = async (userId: Partial<User>) => {
     const response = await db.user.findUnique({
-        where: { email_user: userId.email_user },
+        where: { email: userId.email },
         include: {
             permissions: {
                 include: {

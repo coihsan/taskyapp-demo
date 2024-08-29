@@ -64,7 +64,8 @@ const NewProjectsForm = ({ workspaceId } : Props) => {
             })
         } catch (error) {
             toast({
-                title: 'Error',
+                variant: 'destructive',
+                title: 'Oops!',
                 description: 'Failed to create space',
             })
         }

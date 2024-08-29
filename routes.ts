@@ -16,7 +16,7 @@
 export const authRoutes = [
     "/sign-in",
     "/sign-up",
-    "/app/*"
+    "/app/(.*)"
 ]
 
 /**

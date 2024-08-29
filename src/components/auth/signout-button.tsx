@@ -1,4 +1,3 @@
-"use server"
 import { signOut } from "@/lib/server/auth"
 import { Button } from "../ui/button"
  
@@ -6,6 +5,7 @@ export async function SignOutButton(props: React.ComponentPropsWithRef<typeof Bu
   return (
     <form
       action={async () => {
+        "use server"
         await signOut()
       }}
       className="w-full"

@@ -1,6 +1,5 @@
 import Sidebar from "@/app/app/[workspaceid]/_components/sidebar";
 import HeaderBar from "@/app/app/[workspaceid]/_components/headerbar";
-import { SWRProvider } from "@/providers/swr-provider";
 import { db } from "@/lib/server/db";
 
 type Props = {
@@ -28,9 +27,7 @@ const MainLayout = async ({ children, params }: Props) => {
       <Sidebar workspaceId={workspaceDetails.id} />
       <aside className="w-full CardStyle rounded-2xl">
         <HeaderBar />
-        <SWRProvider>
           {children}
-        </SWRProvider>
       </aside>
     </main>
   );

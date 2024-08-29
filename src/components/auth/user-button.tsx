@@ -1,5 +1,4 @@
-'use client'
-
+"use client"
 import React, { useEffect } from "react";
 import {
   DropdownMenu,
@@ -16,12 +15,13 @@ import { FluentPerson24Regular } from "../icons/person";
 import { FluentSettings24Regular } from "../icons/settings";
 import { FluentSignOut24Regular } from "../icons/sign-out";
 import { useUserDetails } from "@/lib/use-swr";
+import { signOut } from "next-auth/react";
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
 } from "@/components/ui/avatar"
-import { redirect } from "next/navigation";
+import { shortText } from "@/lib/utils";
 
 const UserButtonCustom = () => {
   const { user } = useUserDetails()
@@ -36,8 +36,8 @@ const UserButtonCustom = () => {
             className="rounded-full"
           >
             <Avatar>
-              <AvatarImage src={`${user?.imageUrl}`} alt="@taskyapp" />
-              <AvatarFallback>{user?.full_name}</AvatarFallback>
+              <AvatarImage src={`${user?.image}`} alt="@taskyapp" />
+              <AvatarFallback>{shortText(user?.name)}</AvatarFallback>
             </Avatar>
           </Button>
         </DropdownMenuTrigger>
@@ -46,9 +46,9 @@ const UserButtonCustom = () => {
           align="end"
         >
           <DropdownMenuLabel className="grid gap-1">
-            <span>{user?.full_name}</span>
+            <span>{user?.email}</span>
             <span className="text-xs text-muted-foreground">
-              {user?.username}
+              {user?.name}
             </span>
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
@@ -64,9 +64,11 @@ const UserButtonCustom = () => {
               <span>Settings</span>
             </Link>
           </DropdownMenuItem>
-          <DropdownMenuItem className="flex items-center gap-2">
-            <FluentSignOut24Regular />
-            <SignOutButton />
+          <DropdownMenuItem>
+            <button className="flex items-center gap-2" onClick={() => signOut()}>
+              <FluentSignOut24Regular />
+              Sign Out
+            </button>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

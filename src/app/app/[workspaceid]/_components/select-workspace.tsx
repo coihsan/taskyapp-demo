@@ -1,4 +1,5 @@
 'use client'
+
 import React, { Suspense, useEffect, useState } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
@@ -13,7 +14,6 @@ import {
 } from '@/components/ui/select';
 import Loading from '@/components/global/loading';
 import { shortText } from '@/lib/utils';
-import NewWorkspaceForm from '@/components/form/new-workspace-form';
 import { useUserDetails } from '@/lib/use-swr';
 import { SidebarContent } from '@/components/global/sidebar-content';
 import { useRouter } from "next/navigation";
@@ -47,7 +47,7 @@ const SelectWorkspace = () => {
 
     return (
         <SidebarContent borderBottom>
-            <Suspense>
+            <>
                 {user?.user_workspace && (
                     <Select
                         value={selectedWorkspace}
@@ -94,7 +94,7 @@ const SelectWorkspace = () => {
                         </SelectContent>
                     </Select>
                 )}
-            </Suspense>
+            </>
         </SidebarContent>
     )
 }

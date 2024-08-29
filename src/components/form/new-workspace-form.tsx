@@ -68,7 +68,8 @@ const NewWorkspaceForm = () => {
             })
         } catch (error) {
             toast({
-                title: "Error",
+                variant: 'destructive',
+                title: "Oops!",
                 description: "Failed to create workspace",
             });
         }

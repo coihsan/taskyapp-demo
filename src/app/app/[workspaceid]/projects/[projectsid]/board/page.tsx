@@ -16,7 +16,6 @@ const Page = () => {
     /*...*/
   }, []);
   const onDragUpdate = useCallback(() => {
-    /*...*/
   }, []);
   const onDragEnd = useCallback(() => {
     // the only one that is required

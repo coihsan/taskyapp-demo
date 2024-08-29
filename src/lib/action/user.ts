@@ -80,17 +80,10 @@ export const checkUser = async () => {
     })
     if (loggedInUser) {
         return loggedInUser
+    } else {
+        redirect('/sign-in')
     }
-    const user = session.user
-    const createUser = await db.user.create({
-        data: {
-            name: user?.name as string,
-            username: user?.email as string,
-            email: user?.email as string,
-            image: session.user?.image as string,
-        },
-    })
-    return createUser
+    
 }
 
 // Init User with Role
