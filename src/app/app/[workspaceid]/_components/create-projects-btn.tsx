@@ -11,13 +11,8 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { useParams } from 'next/navigation'
 
-type Props = {
-    workspaceId: string
-}
-
-const CreateNewProjectButton = ({ workspaceId } : Props) => {
+const CreateNewProjectButton = () => {
     const { setOpen } = useModal();
 
     return (
@@ -34,7 +29,7 @@ const CreateNewProjectButton = ({ workspaceId } : Props) => {
                                     title='Create new project'
                                     subheading='Create new project'
                                 >
-                                    <NewProjectsForm workspaceId={workspaceId} />
+                                    <NewProjectsForm />
                                 </CustomModal>
                             )
                         }}

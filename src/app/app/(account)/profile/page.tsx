@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { useUserDetails } from "@/lib/use-swr";
+import { useUserDetails } from "@/lib/hooks";
 import UserDetails from "@/components/form/user-details";
 
 const ProfilePage = () => {

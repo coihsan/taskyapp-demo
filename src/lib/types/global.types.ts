@@ -73,3 +73,5 @@ export interface SidebarProps {
     className: string;
   }
   
+
+export type useMediaQueryType = (query: string) => boolean;

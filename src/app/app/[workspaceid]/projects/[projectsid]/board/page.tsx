@@ -1,9 +1,22 @@
 "use client";
+
 import { useModal } from "@/providers/modal-provider";
 import React, { useCallback, useEffect, useState } from "react";
 import PanelBar from '@/app/app/[workspaceid]/_components/panel-bar'
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
 import { DragDropContext, DropResult, Droppable } from "react-beautiful-dnd";
+import { Button } from "@/components/ui/button"
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer"
+import BoardDetails from "./_components/board-details";
 
 const Page = () => {
   const onBeforeCapture = useCallback(() => {
@@ -32,7 +45,7 @@ const Page = () => {
         onDragUpdate={onDragUpdate}
         onDragEnd={onDragEnd}
       >
-        Board Page
+        <BoardDetails />
       </DragDropContext>
       <ScrollBar />
     </ScrollArea>

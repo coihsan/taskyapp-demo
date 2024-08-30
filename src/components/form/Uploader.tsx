@@ -48,8 +48,8 @@ export default function Uploader({
           "group relative mt-2 flex cursor-pointer flex-col items-center justify-center rounded-md border border-gray-300 shadow-sm transition-all hover:bg-gray-50",
           aspectRatio,
           {
-            "max-w-screen-md": aspectRatio === "aspect-video",
-            "max-w-xs": aspectRatio === "aspect-square",
+            "max-w-xs": aspectRatio === "aspect-video",
+            "max-w-36": aspectRatio === "aspect-square",
           },
         )}
       >
@@ -107,9 +107,9 @@ export default function Uploader({
             <path d="M12 12v9"></path>
             <path d="m16 16-4-4-4 4"></path>
           </svg>
-          <p className="mt-2 text-center text-sm text-gray-500">
+          {/* <p className="mt-2 text-center text-sm text-gray-500">
             Drag and drop or click to upload.
-          </p>
+          </p> */}
           <p className="mt-2 text-center text-sm text-gray-500">
             Max file size: 4MB
           </p>

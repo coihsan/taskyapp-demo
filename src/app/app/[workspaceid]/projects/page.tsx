@@ -1,5 +1,5 @@
 import React from 'react'
-import { db } from '@/lib/db';
+import { db } from '@/lib/server/db';
 import Unauthorized from '@/components/unauthorized'
 import { notFound } from 'next/navigation'
 

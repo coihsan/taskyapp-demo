@@ -1,12 +1,13 @@
-import Loading from '@/components/global/loading'
-import React from 'react'
+import React from "react";
+import Loading from "@/components/global/loading";
 
-const LoadingWorkspacePage = () => {
+const LoadingPage = () => {
   return (
-    <div className="h-screen w-screen flex justify-center items-center">
-      <Loading></Loading>
+    <div className="h-screen w-full flex flex-col justify-center items-center">
+      Redirect to dashboard
+      <Loading className="w-16 h-16" />
     </div>
-  )
-}
+  );
+};
 
-export default LoadingWorkspacePage
+export default LoadingPage;

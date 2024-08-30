@@ -24,12 +24,10 @@ const NewProjectsSchema = z.object({
     name: z.string().min(1, 'Required'),
 })
 type FormValues = z.infer<typeof NewProjectsSchema>
-type Props = {
-    workspaceId: string
-}
 
-const NewProjectsForm = ({ workspaceId } : Props) => {
+const NewProjectsForm = () => {
     const router = useRouter();
+    const params = useParams<{workspaceid: string}>()
     const [isPending, startTransition] = useTransition();
     const { toast } = useToast();
     const { setClose } = useModal();
@@ -42,12 +40,11 @@ const NewProjectsForm = ({ workspaceId } : Props) => {
         },
     });
 
-
     const onSubmit = async (values: FormValues) => {
         try {
             const response = await createNewProject(
                 values.name,
-                workspaceId,
+                params.workspaceid,
             );
 
             startTransition(() => {

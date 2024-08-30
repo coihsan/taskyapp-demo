@@ -14,7 +14,7 @@ import { SignOutButton } from "./signout-button";
 import { FluentPerson24Regular } from "../icons/person";
 import { FluentSettings24Regular } from "../icons/settings";
 import { FluentSignOut24Regular } from "../icons/sign-out";
-import { useUserDetails } from "@/lib/use-swr";
+import { useUserDetails } from "@/lib/hooks/use-swr";
 import { signOut } from "next-auth/react";
 import {
   Avatar,

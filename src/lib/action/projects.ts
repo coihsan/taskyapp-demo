@@ -11,12 +11,11 @@ import { auth } from '@/lib/server/auth'
 // Create new project
 
 export const createNewProject = async (name: string, workspaceId: string) =>{
-    const workspaceCreator = await db.userWorkspace.findUnique({
+    const workspaceCreator = await db.workspace.findUnique({
         where:{
-            workspaceId: workspaceId
+            id: workspaceId
         }
     })
-    console.log(`workspace ID is : `, + workspaceId)
 
     if(!workspaceCreator) return null
 
@@ -26,7 +25,7 @@ export const createNewProject = async (name: string, workspaceId: string) =>{
             name: name,
             workspace:{
                 connect:{
-                    id: workspaceCreator.workspaceId
+                    id: workspaceCreator.id
                 }
             }
         }
@@ -35,12 +34,14 @@ export const createNewProject = async (name: string, workspaceId: string) =>{
 }
 
 // get all space by workspaceId
-  
 export const getAllProjectsByWorkspaceId = async (workspaceId: string) =>{
-    const workspaceById = await db.workspace.findUnique({
+    const workspaceById = await db.userWorkspace.findUnique({
       where:{
-        id: workspaceId
+        workspaceId: workspaceId
       },
+      include:{
+        workspace: true
+      }
     })
     if(workspaceById){
       const response = await db.projects.findMany({

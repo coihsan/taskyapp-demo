@@ -1,7 +1,7 @@
 import useSWR from 'swr';
 import { Workspace } from "@prisma/client";
-import { checkUser, getAuthUserDetails } from './action/user';
-import { getAllProjectsByWorkspaceId } from './action/projects';
+import { checkUser, getAuthUserDetails } from '../action/user';
+import { getAllProjectsByWorkspaceId } from '../action/projects';
 
 
 export function useGetAllProjectsByWorkspaceId(workspaceId: string) {

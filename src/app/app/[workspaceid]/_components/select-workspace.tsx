@@ -14,7 +14,7 @@ import {
 } from '@/components/ui/select';
 import Loading from '@/components/global/loading';
 import { shortText } from '@/lib/utils';
-import { useUserDetails } from '@/lib/use-swr';
+import { useUserDetails } from '@/lib/hooks/use-swr';
 import { SidebarContent } from '@/components/global/sidebar-content';
 import { useRouter } from "next/navigation";
 import CreateWorkspaceButton from './create-workspace-btn';

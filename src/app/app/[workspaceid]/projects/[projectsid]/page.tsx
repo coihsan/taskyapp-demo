@@ -1,15 +1,13 @@
+"use client"
+import { useParams } from "next/navigation";
 import React from "react";
-type Props = {
-  params: {
-    projectsId: string;
-    workspaceId: string;
-  };
-};
 
-const Page = ({ params } : Props) => {
+const Page = () => {
+  const params  = useParams<{workspaceId: string, projectsId: string}>()
+  console.log('params is', params)
   return (
     <main className="p-4">
-      <h1>Projects ID Page {params.projectsId}</h1>
+      <h1>Projects ID Page {params.workspaceId}</h1>
     </main>
   );
 };

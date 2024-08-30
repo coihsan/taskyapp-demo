@@ -4,32 +4,31 @@ import NewWorkspaceForm from '@/components/form/new-workspace-form'
 import { checkUser } from '@/lib/action/user'
 
 type Props = {
-    searchParams: { workspaceId: string;  }
+    params: { workspaceId: string;  }
 }
-const Page = async ({ searchParams } : Props) => {
+const Page = async ({ params } : Props) => {
     const user = await checkUser()
-    const data = await db.workspace.findFirst({
+    const data = await db.userWorkspace.findFirst({
         where:{
-            id: searchParams.workspaceId
+            workspaceId: params.workspaceId
         },
-        include:{
-            user_workspace: true
+        select:{
+            workspaceId: true
         }
     })
     if(data){
-        return redirect(`/app/${data.id}`)
+        redirect(`/app/${data.workspaceId}`)
     }
     if(!data){
-        notFound();
+        return (
+            <div className="flex justify-center items-center mt-4 h-screen">
+                <div className="max-w-[850px] border-[1px] p-4 rounded-xl">
+                    <h1 className="text-4xl">Create New Workspace</h1>
+                    <NewWorkspaceForm />
+                </div>
+            </div>
+        )
     }
 
-    return (
-        <div className="flex justify-center items-center mt-4 h-screen">
-            <div className="max-w-[850px] border-[1px] p-4 rounded-xl">
-                <h1 className="text-4xl">Create New Workspace</h1>
-                <NewWorkspaceForm />
-            </div>
-        </div>
-    )
 }
 export default Page
