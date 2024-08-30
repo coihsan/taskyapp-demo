@@ -4,7 +4,7 @@ model Projects {
   status         Status          @default(ACTIVE)
   Invitation     Invitation[]
   notification   Notification[]
-  workspaceId    String          @unique
+  workspaceId    String          
   workspace      Workspace       @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
   Schedule       Schedule[]
   workflows      Workflows[]

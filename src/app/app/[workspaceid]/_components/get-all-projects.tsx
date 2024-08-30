@@ -44,7 +44,7 @@ const GetAllProjects = () => {
           {spaceByWorkspaceId.map((list) => (
             <CommandItem className="grid w-full" key={list.id}>
               <Link
-                href={`/app/${list.id}/projects/${list.id}`}
+                href={`/app/${params.workspaceid}/projects/${list.id}`}
                 className="text-sm h-6 hover:bg-muted/50 px-2 rounded-md flex items-center justify-between"
               >
                 <div className="flex items-center gap-4">

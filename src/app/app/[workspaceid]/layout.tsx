@@ -5,16 +5,16 @@ import { db } from "@/lib/server/db";
 type Props = {
   children: React.ReactNode;
   params: {
-    workspaceId: string;
+    workspaceid: string;
   };
 };
 
 const MainLayout = async ({ children, params }: Props) => {
-  console.log('WorkspaceId in MainLayout is :', params.workspaceId)
+  console.log('WorkspaceId in MainLayout is :', params.workspaceid)
 
   const workspaceDetails = await db.workspace.findFirst({
     where: {
-      id: params.workspaceId,
+      id: params.workspaceid,
     },
   });
 

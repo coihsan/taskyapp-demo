@@ -9,11 +9,10 @@ import { auth } from '@/lib/server/auth'
 
 
 // Create new project
-
 export const createNewProject = async (name: string, workspaceId: string) =>{
-    const workspaceCreator = await db.workspace.findUnique({
+    const workspaceCreator = await db.userWorkspace.findUnique({
         where:{
-            id: workspaceId
+            workspaceId: workspaceId
         }
     })
 
@@ -25,7 +24,7 @@ export const createNewProject = async (name: string, workspaceId: string) =>{
             name: name,
             workspace:{
                 connect:{
-                    id: workspaceCreator.id
+                    id: workspaceCreator.workspaceId
                 }
             }
         }

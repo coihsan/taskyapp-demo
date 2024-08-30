@@ -18,9 +18,9 @@ model Workspace {
 
 model UserWorkspace {
   userId      String
-  workspaceId String    @unique
+  workspaceId String    
   user        User      @relation(fields: [userId], references: [id])
-  workspace   Workspace @relation(fields: [workspaceId], references: [id])
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
 
-  @@index([workspaceId])
+  @@id([workspaceId])
 }

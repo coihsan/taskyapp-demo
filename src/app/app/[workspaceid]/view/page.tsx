@@ -29,7 +29,7 @@ import {
 
 type Props = {
   params:{
-    workspaceId: string
+    workspaceid: string
   }
 }
 
@@ -37,7 +37,7 @@ const View = ({ params } : Props) => {
   return (
     <Card className="bg-transparent">
       <CardHeader>
-        <span>Params ID is : {params.workspaceId}</span>
+        <span>Params ID is : {params.workspaceid}</span>
         <CardTitle>Products</CardTitle>
         <CardDescription>
           Manage your products and view their sales performance.
