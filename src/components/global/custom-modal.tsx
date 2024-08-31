@@ -27,8 +27,8 @@ const CustomModal = ({ children, defaultOpen, subheading, title }: Props) => {
         <DialogHeader className="text-left">
           <DialogTitle className="text-2xl font-bold">{title}</DialogTitle>
           <DialogDescription>{subheading}</DialogDescription>
-          {children}
         </DialogHeader>
+          {children}
       </DialogContent>
     </Dialog>
   )

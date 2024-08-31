@@ -26,8 +26,8 @@ const CreateNewProjectButton = () => {
                         onClick={() => {
                             setOpen(
                                 <CustomModal
-                                    title='Create new project'
-                                    subheading='Create new project'
+                                    title='Create project'
+                                    subheading='Deploy your new project in one-click.'
                                 >
                                     <NewProjectsForm />
                                 </CustomModal>

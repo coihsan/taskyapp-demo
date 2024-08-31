@@ -9,7 +9,7 @@ type Props = {
 const MainLayout = async ({ children }: Props) => {
   
   return (
-    <main className="flex justify-center overflow-hidden h-screen min-h-[100dvh] p-1 fixed w-full">
+    <main className="flex justify-center overflow-hidden h-screen min-h-[100dvh] w-full">
       {children}
     </main>
   );

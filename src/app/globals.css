@@ -75,7 +75,7 @@
     @apply border border-black/20 dark:border-white/15 dark:bg-gradient-to-t dark:from-white/5 dark:shadow-[0_0_12px_4px_rgba(0,0,0,0.05)_inset] dark:shadow-[0_0_12px_4px_rgba(255,255,255,0.05)_inset];
   }
   .ButtonStyle {
-    @apply border border-black/20 dark:border-white/15 bg-gradient-to-r from-black/10 dark:from-white/5 rounded-xl shadow-[0_0_12px_4px_rgba(0,0,0,0.05)_inset] dark:shadow-[0_0_12px_4px_rgba(255,255,255,0.05)_inset];
+    @apply border border-black/10 dark:border-white/15 dark:from-white/5 rounded-xl dark:shadow-[0_0_12px_4px_rgba(255,255,255,0.05)_inset];
   }
   .borderStyle {
     @apply border border-black/20 dark:border-white/10;

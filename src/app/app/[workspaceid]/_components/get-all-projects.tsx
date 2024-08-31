@@ -1,24 +1,17 @@
 "use client"
 
 import CreateNewProjectButton from "./create-projects-btn";
-import {
-  Command,
-  CommandDialog,
-  CommandEmpty,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/components/ui/command";
 import { SidebarContent } from "@/components/global/sidebar-content";
-import EditWorkspace from "@/app/app/[workspaceid]/_components/edit-workspace";
 import Link from "next/link";
 import { FluentFolder24Regular } from "@/components/icons/folder-24-regular";
-import { useParams } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import { useGetAllProjectsByWorkspaceId } from "@/lib/hooks/use-swr";
 import Loading from "@/components/global/loading";
+import clsx from "clsx";
 
 const GetAllProjects = () => {
     const params = useParams<{workspaceid: string}>()
+    const pathname = usePathname();
     const { spaceByWorkspaceId, isLoading, isError } = useGetAllProjectsByWorkspaceId(params.workspaceid)
     if (!spaceByWorkspaceId) return null;
 
@@ -37,15 +30,17 @@ const GetAllProjects = () => {
         </span>
         <CreateNewProjectButton />
       </div>
-      <Command className="mt-4 h-60">
-        <CommandInput placeholder="Search..." />
-        <CommandList>
-          <CommandEmpty>No project found.</CommandEmpty>
-          {spaceByWorkspaceId.map((list) => (
-            <CommandItem className="grid w-full" key={list.id}>
+      <div className="mt-4 h-60">
+      {spaceByWorkspaceId.map((list) => (
+            <div className="grid w-full" key={list.id}>
               <Link
                 href={`/app/${params.workspaceid}/projects/${list.id}`}
-                className="text-sm h-6 hover:bg-muted/50 px-2 rounded-md flex items-center justify-between"
+                className={clsx(
+                  "flex items-center text-sm h-9 gap-3 pl-3 text-black dark:text-foreground hover:bg-onyx-100 dark:hover:bg-onyx-800 hover:ring-2 hover:ring-onyx-100 dark:hover:ring-onyx-800 rounded-md transitionAll",
+                  {
+                    "bg-muted rounded-lg font-bold": pathname === `/app/${params.workspaceid}/projects/${list.id}`,
+                  }
+                )}
               >
                 <div className="flex items-center gap-4">
                   <FluentFolder24Regular className="size-5" />
@@ -53,12 +48,10 @@ const GetAllProjects = () => {
                     {list.name}
                   </span>
                 </div>
-                <EditWorkspace />
               </Link>
-            </CommandItem>
+            </div>
           ))}
-        </CommandList>
-      </Command>
+      </div>
     </SidebarContent>
   );
 };

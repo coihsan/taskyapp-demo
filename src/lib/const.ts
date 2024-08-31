@@ -1,13 +1,8 @@
-import { navlink } from './types/global.types'
 import { BoardIcons } from '@/components/icons/board-split'
-import CalenderDate from '@/components/icons/calender-date'
-import WorkspaceIcons from '@/components/icons/workspace'
 import FluentTaskListSquare24Regular from '@/components/icons/task-square'
 import FluentDocumentFolder24Regular from '@/components/icons/document-folder'
-import FluentPeopleTeam24Regular from '@/components/icons/people-team'
 import FluentDataFunnel24Regular from '@/components/icons/data-funnel'
 import { WorkflowsIcons } from '@/components/icons/workflows'
-import { FluentHome24Regular } from '@/components/icons/home'
 import { FluentPerson24Regular } from '@/components/icons/person'
 import { FluentSettings24Regular } from '@/components/icons/settings'
 import { FluentSignOut24Regular } from '@/components/icons/sign-out'
@@ -15,6 +10,7 @@ import { FluentDataUsage24Regular } from '@/components/icons/data-usage'
 import { FluentColor24Regular } from '@/components/icons/color-icons'
 import { FluentAppFolder24Regular } from '@/components/icons/app-folder-24-regular'
 import { FluentBuildingPeople24Regular } from '@/components/icons/building-people-24-regular'
+import { Edge } from '@xyflow/react';
 
 export const RoleTeam = [
     { id: 0, role: 'View', values: 'view', desc: 'Only view and comment' },

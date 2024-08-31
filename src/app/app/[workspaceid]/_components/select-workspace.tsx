@@ -39,10 +39,10 @@ const SelectWorkspace = () => {
         return <div>Error: {isError.message}</div>
     }
 
-    const handleWorkspaceChange = (workspaceId: string) => {
-        setSelectedWorkspace(workspaceId)
-        localStorage.setItem('workspaceId', workspaceId)
-        router.replace(`/app/${workspaceId}`)
+    const handleWorkspaceChange = (workspaceid: string) => {
+        setSelectedWorkspace(workspaceid)
+        localStorage.setItem('workspaceId', workspaceid)
+        router.replace(`/app/${workspaceid}`)
     }
 
     return (

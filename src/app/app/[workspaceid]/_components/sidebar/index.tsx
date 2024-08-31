@@ -18,7 +18,7 @@ const Sidebar = ({ workspaceId } : Props) => {
 
     return (
         <aside className="w-full h-full h-screen max-w-64 relative">
-            <SidebarContent borderBottom>
+            <SidebarContent>
                 <Logo />
             </SidebarContent>
             <SelectWorkspace />
