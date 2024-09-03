@@ -6,7 +6,7 @@ const Page = () => {
   const params  = useParams<{workspaceid: string, projectsid: string}>()
   
   return (
-    <main className="p-4">
+    <main>
       <h1>Projects ID Page {params.projectsid}</h1>
     </main>
   );

@@ -1,10 +1,8 @@
 'use server'
 
-import { Projects, Role, Tags, Task, User, UserWorkspace, Workspace } from '@prisma/client'
+import { User } from '@prisma/client'
 import { db } from '@/lib/server/db'
-import { redirect } from 'next/navigation'
 import { v4 } from 'uuid'
-import { workspaceTypes } from '@/lib/types/db.types'
 import { auth } from '@/lib/server/auth'
 
 // create new workspace
@@ -21,7 +19,6 @@ export const createNewWorkspace = async ({
         data: {
             id: v4(),
             name: name,
-            role: "CREATOR",
             workspace_logo: workspace_logo,
             user_workspace: {
                 create: {

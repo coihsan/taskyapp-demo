@@ -27,7 +27,9 @@ const MainLayout = async ({ children, params }: Props) => {
       <Sidebar workspaceId={workspaceDetails.id} />
       <aside className="w-full CardStyle rounded-2xl">
         <HeaderBar />
-          {children}
+          <div className="p-4">
+            {children}
+          </div>
       </aside>
     </main>
   );

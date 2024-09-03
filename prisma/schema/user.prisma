@@ -15,8 +15,8 @@ model User {
   status_account Status          @default(ACTIVE)
   user_workspace UserWorkspace[]
   teams          UserTeams[]
-  Comment        Comment[]
-  Task           Task[]
+  comments        Comment[]
+  cards             CardAssignees[]
   accounts       Account[]
   sessions       Session[]
 }

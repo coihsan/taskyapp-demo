@@ -16,7 +16,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer"
-import BoardDetails from "./_components/board-details";
+import BoardDetails from "./[boardid]/_components/board-details";
 
 const Page = () => {
   const onBeforeCapture = useCallback(() => {
@@ -36,7 +36,7 @@ const Page = () => {
 
   const { setOpen } = useModal();
   return (
-    <ScrollArea className="relative pb-32 h-screen w-full p-4">
+    <ScrollArea className="relative pb-32 h-screen w-full">
       <PanelBar />
       <DragDropContext
         onBeforeCapture={onBeforeCapture}
@@ -45,7 +45,7 @@ const Page = () => {
         onDragUpdate={onDragUpdate}
         onDragEnd={onDragEnd}
       >
-        <BoardDetails />
+        <h1>Hello</h1>
       </DragDropContext>
       <ScrollBar />
     </ScrollArea>

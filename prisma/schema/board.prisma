@@ -1,61 +1,106 @@
 model Board {
-  id            String     @id @default(uuid())
-  title         String?
-  projectId     String
-  created_at    DateTime    @default(now())
-  updated_at    DateTime    @updatedAt
-  project       Projects    @relation(fields: [projectId], references: [id], onDelete: Cascade)
-  task          Task[]
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  projectId   String
+  project     Projects @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  columns     Column[]
+  isPinned    Boolean  @default(false)
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+  labels      Label[]
 
   @@index([projectId])
 }
 
-model Task {
-  id          String    @id @default(uuid())
+model Column {
+  id          String   @id @default(uuid())
   title       String
-  created_at  DateTime  @default(now())
-  updated_at  DateTime  @updatedAt
-  content     String    @db.Text
+  column_index Int
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
   boardId     String
-  board       Board     @relation(fields: [boardId], references: [id], onDelete: Cascade)
-  is_complete Boolean   @default(false)
-  sub_task    SubTask[]
-  tags        Tags[]
-  userId      String
-  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  board       Board    @relation(fields: [boardId], references: [id], onDelete: Cascade)
+  cards       Card[]
 
   @@index([boardId])
 }
 
-model SubTask {
-  id          String     @id @default(uuid())
-  title       String?
-  content     String[]   @db.Text
-  is_complete Boolean    @default(false)
-  created_at  DateTime   @default(now())
-  updated_at  DateTime   @updatedAt
-  status      TaskStatus @default(INPROGRESS)
-  taskId      String
-  task        Task       @relation(fields: [taskId], references: [id], onDelete: Cascade)
+model Card {
+  id                String    @id @default(uuid())
+  title             String
+  description       String?
+  content           String    
+  is_complete       Boolean   @default(false)
+  sub_task          SubTask[]
+  card_labels       CardLabels[]
+  column_index      Int
+  row_index         Int
+  assignees         CardAssignees[]
+  comments          Comment[]
+  columnId          String
+  column            Column    @relation(fields: [columnId], references: [id], onDelete: Cascade)
+  created_at        DateTime @default(now())
+  updated_at        DateTime @updatedAt
+  attachment        Attachment[]
 }
 
-model Tags {
-  id         String   @id @default(uuid())
-  name       String
-  color      String?
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-  taskId     String
-  task       Task     @relation(fields: [taskId], references: [id], onDelete: Cascade)
+model CardAssignees {
+  id        String     @id @default(uuid())
+  cardId    String
+  card      Card    @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User    @relation(fields: [userId], references: [id])
+}
 
-  @@index([taskId])
+model SubTask {
+  id                String     @id @default(uuid())
+  title             String?
+  content           String     @db.Text
+  is_complete       Boolean    @default(false)
+  created_at        DateTime   @default(now())
+  updated_at        DateTime   @updatedAt
+  status            TaskStatus @default(INPROGRESS)
+  cardId            String
+  card              Card       @relation(fields: [cardId], references: [id], onDelete: Cascade)
+}
+
+model Label {
+  id                String       @id @default(uuid())
+  name              String
+  color             String
+  cards             CardLabels[]
+  boardId           String
+  board             Board        @relation(fields: [boardId], references: [id], onDelete: Cascade)
+}
+
+model CardLabels {
+  id                String @id @default(uuid())
+  cardId            String
+  card              Card   @relation(fields: [cardId], references: [id])
+  labelId           String
+  label             Label  @relation(fields: [labelId], references: [id])
+}
+
+model Attachment {
+  id                  String         @id @default(uuid())
+  path                String
+  title               String?
+  type                AttachmentType
+  commentId           String?
+  comment             Comment?       @relation(fields: [commentId], references: [id])
+  cardId              String?
+  card                Card?          @relation(fields: [cardId], references: [id])
 }
 
 model Comment {
-   id          String     @id @default(uuid())
-   userId      String
-   user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
-   content     String
-
-   @@index([userId])
+  id                    String       @id @default(uuid())
+  content               String
+  authorId              String
+  cardId                String
+  attachments           Attachment[]
+  card                  Card         @relation(fields: [cardId], references: [id])
+  author                User         @relation(fields: [authorId], references: [id])
+  createdAt             DateTime     @default(now())
+  updateAt              DateTime     @updatedAt
 }

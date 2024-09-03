@@ -1,18 +1,9 @@
 'use server'
 
-import { Projects, Role, Tags, Task, User, UserWorkspace, Workspace } from '@prisma/client'
+import { User } from '@prisma/client'
 import { db } from '@/lib/server/db'
 import { redirect } from 'next/navigation'
-import { v4 } from 'uuid'
-import { workspaceTypes } from '@/lib/types/db.types'
 import { auth } from '@/lib/server/auth'
-import { userAgent } from 'next/server'
-import { AuthError } from 'next-auth';
-import { LoginSchema } from '../schema'
-import { signIn } from 'next-auth/react'
-import * as z from 'zod';
-import { DEFAULT_LOGIN_REDIRECT } from '../../../routes'
-
 
 export const getUserByEmail = async (email : string | undefined) => {
     try {

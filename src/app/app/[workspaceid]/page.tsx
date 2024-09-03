@@ -8,7 +8,7 @@ type Props = {
 const WorkspaceIDPage = async ({ params } : Props) => {
 
     return (
-        <ScrollArea className="relative pb-32 h-screen w-full p-4">
+        <ScrollArea className="relative pb-32 h-screen w-full">
             <PanelBar />
             <h1>Workspace ID : {params.workspaceid}</h1>
             <ScrollBar orientation="vertical" />

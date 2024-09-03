@@ -2,7 +2,6 @@ model Workspace {
   id             String          @id @default(uuid())
   name           String
   status         Status          @default(ACTIVE)
-  role           Role            @default(CREATOR)
   position       String?
   workspace_logo String?
   created_at     DateTime        @default(now())
@@ -18,7 +17,8 @@ model Workspace {
 
 model UserWorkspace {
   userId      String
-  workspaceId String    
+  workspaceId String   
+  role        Role      @default(CREATOR) 
   user        User      @relation(fields: [userId], references: [id])
   workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
 

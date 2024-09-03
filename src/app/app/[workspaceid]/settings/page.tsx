@@ -24,7 +24,7 @@ const SettingsPage = () => {
     return () => clearTimeout(timer);
   }, []);
   return (
-    <section className="p-4">
+    <section>
       <h1>Settings</h1>
       <div>
         <h3>Workspace Name</h3>
