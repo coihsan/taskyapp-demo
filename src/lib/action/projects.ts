@@ -1,6 +1,6 @@
 'use server'
 
-import { Card, Column, SubTask } from '@prisma/client'
+import { Card, Column, Prisma, SubTask } from '@prisma/client'
 import { db } from '@/lib/server/db'
 import { v4 } from 'uuid'
 
@@ -121,25 +121,18 @@ export const getAllBoardsByProjectId = async (projectsId: string) => {
 }
 
 // Upsert new column 
-export const upsertColum = async (
-    title: string, boardId: string, columnIndex: number, columns: Column
+export const upsertColumn = async (
+    column: Column,
 ) => {
+
     const response = await db.column.upsert({
         where:{
             id: v4()
         },
-        update: {...columns},
-        create:{
-            id: v4(),
-            title: title,
-            column_index: columnIndex,
-            board:{
-                connect:{
-                    id: boardId
-                }
-            }
-        }
+        update: column,
+        create: column
     })
+    return response
 }
 
 // upsert new card

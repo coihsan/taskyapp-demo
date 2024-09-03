@@ -32,18 +32,14 @@ export const getUserById = async (id : string) =>{
     }
 }
 
-// INVITATION
-// export const verifyAndAcceptInvitation = async () => {
-//     const user = await auth()
-    
-//     if (!user) return redirect('/sign-in')
-//     const invitationExists = await db.invitation.findUnique({
-//         where: {
-//             email: user.,
-//             workspaceId: user.id,
-//         },
-//     })
-// }
+export const getUserPermissions = async (userId: string) => {
+    const response = await db.user.findUnique({
+      where: { id: userId },
+      select: { permissions: { include: { workspace: true } } },
+    })
+  
+    return response
+  }
 
 // UPDATE USER INFORMATION
 

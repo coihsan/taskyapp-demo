@@ -1,55 +1,18 @@
-"use client";
+import CreateNewBoardForm from '@/components/form/create-new-board-form';
+import { db } from '@/lib/server/db';
+import React from 'react';
 
-import { useModal } from "@/providers/modal-provider";
-import React, { useCallback, useEffect, useState } from "react";
-import PanelBar from '@/app/app/[workspaceid]/_components/panel-bar'
-import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
-import { DragDropContext, DropResult, Droppable } from "react-beautiful-dnd";
-import { Button } from "@/components/ui/button"
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer"
-import BoardDetails from "./[boardid]/_components/board-details";
-
-const Page = () => {
-  const onBeforeCapture = useCallback(() => {
-    /*...*/
-  }, []);
-  const onBeforeDragStart = useCallback(() => {
-    /*...*/
-  }, []);
-  const onDragStart = useCallback(() => {
-    /*...*/
-  }, []);
-  const onDragUpdate = useCallback(() => {
-  }, []);
-  const onDragEnd = useCallback(() => {
-    // the only one that is required
-  }, []);
-
-  const { setOpen } = useModal();
-  return (
-    <ScrollArea className="relative pb-32 h-screen w-full">
-      <PanelBar />
-      <DragDropContext
-        onBeforeCapture={onBeforeCapture}
-        onBeforeDragStart={onBeforeDragStart}
-        onDragStart={onDragStart}
-        onDragUpdate={onDragUpdate}
-        onDragEnd={onDragEnd}
-      >
-        <h1>Hello</h1>
-      </DragDropContext>
-      <ScrollBar />
-    </ScrollArea>
-  );
-};
-
-export default Page;
+type Props = {
+  params: {
+    boardid: string
+  }
+}
+const BoardPage = async ({ params } : Props) =>{
+  return(
+    <div>
+      <h1 className="text-4xl">Create New Board</h1>
+      <CreateNewBoardForm />
+    </div>
+  )
+}
+export default BoardPage

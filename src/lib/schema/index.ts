@@ -38,3 +38,15 @@ export const SignupSchema = z.object({
     email: z.string().email({ message: "Invalid email address" }),
     password: z.string().min(1, { message: "Password is required" }),
 })
+
+export const CreateNewBoardSchema = z.object({
+    title: z.string().min(1, {
+        message: "Title is required"
+    }),
+})
+export const CreateNewColumnSchema = z.object({
+    title: z.string().min(1, {
+        message: "Title is required"
+    }),
+    columnIndex: z.number(),
+})

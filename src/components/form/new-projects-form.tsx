@@ -54,7 +54,6 @@ const NewProjectsForm = () => {
                         title: 'Project Created',
                         description: 'Project created successfully',
                     })
-                    router.refresh();
                     router.push(`/app/${response.workspaceId}/projects/${response.id}`)
                     setClose()
                 }
