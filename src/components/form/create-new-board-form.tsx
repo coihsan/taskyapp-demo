@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -63,17 +64,16 @@ const CreateNewBoardForm = () => {
   };
 
   return (
-    <>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
+        <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
           <FormField
-            name="title"
             control={form.control}
+            name="title"
             render={({ field }) => (
               <FormItem>
+                <FormLabel>Title</FormLabel>
                 <FormControl>
-                  <FormLabel>Title</FormLabel>
-                  <Input type="text" {...field} />
+                  <Input placeholder="shadcn" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -85,17 +85,11 @@ const CreateNewBoardForm = () => {
             variant={"default"}
             type="submit"
           >
-            {isPending ? (
-              <>
-                <Loading /> Creating...
-              </>
-            ) : (
-              "Create"
-            )}
+            {isPending ? <Loading /> : "Create Board"}
           </Button>
         </form>
       </Form>
-    </>
   );
 };
+
 export default CreateNewBoardForm;

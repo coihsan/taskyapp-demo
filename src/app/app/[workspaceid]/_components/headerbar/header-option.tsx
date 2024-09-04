@@ -23,6 +23,7 @@ import {
 import { FluentAdd24Filled } from '@/components/icons/add-24-filled'
 import { workspaceMenu } from '@/lib/const'
 import { useState } from 'react'
+import ProjectProfile from '@/components/global/project-profile'
 
 const HeaderOption = () => {
     const pathname = usePathname()
@@ -30,18 +31,7 @@ const HeaderOption = () => {
     
     return (
         <div className="flex items-center space-x-2">
-            <div className="flex items-center">
-                <Image
-                    className="rounded-md"
-                    src={'/avatar/avatar2.png'}
-                    width={36}
-                    height={36}
-                    alt={'avatar'}
-                />
-                <div className="ml-3">
-                    <h1 className="text-sm font-semibold">Space Name</h1>
-                </div>
-            </div>
+            <ProjectProfile />
             <Separator orientation="vertical" />
             <div className="flex items-center space-x-2">
                 <TooltipProvider>

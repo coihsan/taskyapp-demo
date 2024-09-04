@@ -1,7 +1,7 @@
 import useSWR from 'swr';
 import { Workspace } from "@prisma/client";
 import { checkUser, getAuthUserDetails } from '../action/user';
-import { getAllProjectsByWorkspaceId } from '../action/projects';
+import { getAllProjectsByWorkspaceId, getProjectDetails } from '../action/projects';
 
 
 export function useGetAllProjectsByWorkspaceId(workspaceId: string) {
@@ -26,6 +26,16 @@ export function useUserDetails() {
   const { data, isLoading, error, mutate } = useSWR('userID', getAuthUserDetails)
   return {
     user: data,
+    isLoading,
+    isError: error,
+    mutate
+  }
+}
+
+export function useGetProjectDetails(projectsid: string){
+  const { data, isLoading, error, mutate } = useSWR('projectsid', ()=> getProjectDetails(projectsid))
+  return {
+    data: data,
     isLoading,
     isError: error,
     mutate

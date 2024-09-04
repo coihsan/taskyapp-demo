@@ -17,6 +17,7 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer"
 import BoardDetails from "./_components/board-details";
+import { useParams } from "next/navigation";
 
 const Page = () => {
   const onBeforeCapture = useCallback(() => {
@@ -35,6 +36,7 @@ const Page = () => {
   }, []);
 
   const { setOpen } = useModal();
+  const params = useParams<{boardid: string}>()
   return (
     <ScrollArea className="relative pb-32 h-screen w-full">
       <PanelBar />
@@ -45,7 +47,7 @@ const Page = () => {
         onDragUpdate={onDragUpdate}
         onDragEnd={onDragEnd}
       >
-        <h1>Hello</h1>
+        <h1>Board Page ID : {params.boardid}</h1>
       </DragDropContext>
       <ScrollBar />
     </ScrollArea>

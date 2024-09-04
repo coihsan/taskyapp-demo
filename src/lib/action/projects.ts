@@ -192,3 +192,12 @@ export const createSubTask = async (
     })
     return response
 }
+
+export const getProjectDetails = async (projectsid: string) =>{
+    const response = await db.projects.findUnique({
+        where: {
+            id: projectsid
+        },
+    })
+    return response
+} 
