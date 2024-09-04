@@ -1,6 +1,4 @@
-import Sidebar from "@/app/app/[workspaceid]/_components/sidebar";
-import HeaderBar from "@/app/app/[workspaceid]/_components/headerbar";
-import { db } from "@/lib/server/db";
+import React from 'react'
 
 type Props = {
   children: React.ReactNode;

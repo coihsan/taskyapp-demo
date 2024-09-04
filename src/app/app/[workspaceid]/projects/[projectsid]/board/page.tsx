@@ -10,9 +10,9 @@ import {
 } from "@/components/ui/card"
 import Link from 'next/link';
 import CreateNewBoardButton from '../../../_components/create-new-board-btn';
-
 type Props = {
   params: {
+    workspaceid: string,
     projectsid: string,
     boardid: string
   }
@@ -26,12 +26,12 @@ const BoardPage = async ({ params } : Props) =>{
  if(!boardData) return null
   
   return (
-    <div>
-      <h1 className="text-4xl">Create New Board</h1>
-      <div className='flex flex-nowrap gap-3 mt-4'>
+    <div className='relative h-screen'>
+      <h1 className="text-xs">Board : {params.projectsid}</h1>
+      <div className='grid grid-cols-4 gap-3 mt-4'>
         {boardData.map((board) => (
-          <Card className='max-w-64 w-full h-36'>
-              <Link href={'/'}>
+          <Card className='w-full'>
+              <Link className='' href={`/app/${params.workspaceid}/projects/${params.projectsid}/board/${board.id}`}>
               <CardHeader>
                 <CardTitle>{board.title}</CardTitle>
                 <CardDescription>Description example</CardDescription>
@@ -40,7 +40,7 @@ const BoardPage = async ({ params } : Props) =>{
             </Card>
         ))}
       </div>
-      <CreateNewBoardButton />
+      <CreateNewBoardButton className='absolute top-0 right-0' />
     </div>
   )
 }

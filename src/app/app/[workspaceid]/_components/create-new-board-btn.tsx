@@ -10,20 +10,23 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from "@/components/ui/tooltip";
-import NewWorkspaceForm from '@/components/form/new-workspace-form'
 import CreateNewBoardForm from '@/components/form/create-new-board-form'
 
+interface Props {
+    className?: string
+}
 
-const CreateNewBoardButton = () => {
+const CreateNewBoardButton = ({className} : Props) => {
     const { setOpen } = useModal();
 
     return (
-        <TooltipProvider>
+        <div className={className}>
+            <TooltipProvider>
             <Tooltip>
                 <TooltipTrigger asChild>
                     <Button
                         variant={'default'}
-                        className='flex items-center gap-2 w-full'
+                        size={'icon'}
                         onClick={() => {
                             setOpen(
                                 <CustomModal
@@ -35,7 +38,6 @@ const CreateNewBoardButton = () => {
                             )
                         }}
                     >
-                        New Board
                         <FluentAdd24Filled />
                     </Button>
                 </TooltipTrigger>
@@ -44,6 +46,7 @@ const CreateNewBoardButton = () => {
                 </TooltipContent>
             </Tooltip>
         </TooltipProvider>
+        </div>
     )
 }
 export default CreateNewBoardButton

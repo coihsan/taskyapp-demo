@@ -64,31 +64,37 @@ const CreateNewBoardForm = () => {
   };
 
   return (
-      <Form {...form}>
-        <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
-          <FormField
-            control={form.control}
-            name="title"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Title</FormLabel>
-                <FormControl>
-                  <Input placeholder="shadcn" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <Button
-            className="flex items-center justify-center gap-2"
-            disabled={isPending}
-            variant={"default"}
-            type="submit"
-          >
-            {isPending ? <Loading /> : "Create Board"}
-          </Button>
-        </form>
-      </Form>
+    <Form {...form}>
+      <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
+        <FormField
+          control={form.control}
+          name="title"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Title</FormLabel>
+              <FormControl>
+                <Input placeholder="shadcn" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button
+          className="flex items-center justify-center gap-2"
+          disabled={isPending}
+          variant={"default"}
+          type="submit"
+        >
+          {isPending ? (
+            <>
+              <Loading /> Creating...
+            </>
+          ) : (
+            "Create Board"
+          )}
+        </Button>
+      </form>
+    </Form>
   );
 };
 
