@@ -11,6 +11,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import SidebarMenuAccount from '@/components/global/sidebar-menu-account';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -32,7 +33,7 @@ const Page = () => {
     const { user } = useUserDetails()
 
   return (
-    <Card>
+      <Card>
       <CardHeader>
         <CardTitle>Workspace</CardTitle>
         <CardDescription>

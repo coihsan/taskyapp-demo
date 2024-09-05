@@ -37,14 +37,14 @@ const SelectProjects = () => {
 
   const handleProjectChange = (projectid: string) => {
     setSelectedProject(projectid);
-    router.replace(`/app/workspace/${params.workspaceid}/projects/${projectid}`);
+    router.replace(`/app/${params.workspaceid}/projects/${projectid}`);
   };
 
   return (
     <div>
       <Select value={selectedProject} onValueChange={handleProjectChange}>
         <SelectTrigger className="w-[180px] ButtonStyle">
-          <SelectValue placeholder="Project" />
+          <SelectValue placeholder="Select Project" />
         </SelectTrigger>
         <SelectContent>
           {spaceByWorkspaceId.length === 0 ? (

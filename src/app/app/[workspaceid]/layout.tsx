@@ -1,5 +1,5 @@
 import React from 'react'
-import Sidebar from "@/app/app/workspace/[workspaceid]/_components/sidebar";
+import Sidebar from "@/app/app/[workspaceid]/_components/sidebar";
 import { db } from "@/lib/server/db";
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
   };
 };
 
-const MainLayout = async ({ children, params }: Props) => {
+const WorkspaceLayout = async ({ children, params }: Props) => {
   console.log('WorkspaceId in MainLayout is :', params.workspaceid)
 
   const workspaceDetails = await db.workspace.findFirst({
@@ -25,11 +25,11 @@ const MainLayout = async ({ children, params }: Props) => {
   return (
     <main className="flex overflow-hidden h-screen min-h-[100vh] w-full">
       <Sidebar workspaceId={workspaceDetails.id} />
-          <div className="p-4 w-full border-x-[1px] CardStyle">
+          <div className="p-4 w-full border-x-[1px]">
             {children}
           </div>
     </main>
   );
 };
 
-export default MainLayout;
+export default WorkspaceLayout;

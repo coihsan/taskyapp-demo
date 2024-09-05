@@ -36,7 +36,7 @@ import {
     TableHeader,
     TableRow,
 } from '@/components/ui/table'
-import AddTeam from '@/app/app/workspace/[workspaceid]/_components/add-team'
+import AddTeam from '@/app/app/[workspaceid]/_components/add-team'
 import { Separator } from '@/components/ui/separator'
 import { Card, CardContent } from '@/components/ui/card'
 

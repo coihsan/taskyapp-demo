@@ -41,7 +41,7 @@ const SelectWorkspace = () => {
   const handleWorkspaceChange = (workspaceid: string) => {
     setSelectedWorkspace(workspaceid);
     localStorage.setItem("workspaceId", workspaceid);
-    router.replace(`/app/workspace/${workspaceid}`);
+    router.replace(`/app/${workspaceid}`);
   };
 
   return (
