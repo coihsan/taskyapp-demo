@@ -1,4 +1,4 @@
-import ButtonFilter from '@/app/app/[workspaceid]/_components/button-filter'
+import ButtonFilter from '@/app/app/workspace/[workspaceid]/_components/button-filter'
 import { Input } from '@/components/ui/input'
 
 const PanelBar = () => {

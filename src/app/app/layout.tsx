@@ -1,5 +1,5 @@
 import React from 'react'
-import PageHeader from './[workspaceid]/_components/pageheader/page';
+import PageHeader from './workspace/[workspaceid]/_components/pageheader/page';
 import SidebarMenuAccount from '@/components/global/sidebar-menu-account';
 
 type Props = {
@@ -13,7 +13,7 @@ const MainLayout = async ({ children }: Props) => {
       <PageHeader />
       <div className='flex'>
         <SidebarMenuAccount />
-        <div className='border-l-[1px] borderStyle w-full'>
+        <div className='border-l-[1px] borderStyle w-full p-4'>
           {children}
         </div>
       </div>

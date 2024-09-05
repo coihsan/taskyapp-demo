@@ -1,5 +1,5 @@
 import React from 'react'
-import PanelBar from '@/app/app/[workspaceid]/_components/panel-bar'
+import PanelBar from '@/app/app/workspace/[workspaceid]/_components/panel-bar'
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
 
 type Props = {

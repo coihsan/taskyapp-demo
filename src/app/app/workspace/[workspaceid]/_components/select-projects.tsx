@@ -37,7 +37,7 @@ const SelectProjects = () => {
 
   const handleProjectChange = (projectid: string) => {
     setSelectedProject(projectid);
-    router.replace(`/app/${params.workspaceid}/projects/${projectid}`);
+    router.replace(`/app/workspace/${params.workspaceid}/projects/${projectid}`);
   };
 
   return (

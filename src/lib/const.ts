@@ -59,7 +59,7 @@ export const sidebaraccountuser = [
     {
         id: 0,
         title: 'Profile',
-        url: '/profile',
+        url: '/app/profile',
         icon: FluentPerson24Regular,
     },
     {

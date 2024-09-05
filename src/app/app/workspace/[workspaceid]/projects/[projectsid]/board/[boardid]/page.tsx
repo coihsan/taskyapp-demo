@@ -2,7 +2,7 @@
 
 import { useModal } from "@/providers/modal-provider";
 import React, { useCallback, useEffect, useState } from "react";
-import PanelBar from '@/app/app/[workspaceid]/_components/panel-bar'
+import PanelBar from '@/app/app/workspace/[workspaceid]/_components/panel-bar'
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
 import { DragDropContext, DropResult, Droppable } from "react-beautiful-dnd";
 import { Button } from "@/components/ui/button"

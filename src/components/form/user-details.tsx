@@ -1,10 +1,17 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { User } from "@prisma/client";
 import { getAuthUserDetails, initUser, updateUser } from "@/lib/action/user";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { redirect } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { DetailsUserProfileSchema } from "@/lib/schema";
@@ -17,10 +24,9 @@ import { z } from "zod";
 
 type Props = {
   userData?: Partial<User>;
-  type?: 'workspace' | 'space'
 };
-const UserDetails = ({userData} : Props) => {
-  const [changes, setChanges] = useState(false)
+const UserDetails = ({ userData }: Props) => {
+  const [changes, setChanges] = useState(false);
   const [isPending, startTransition] = useTransition();
   const { toast } = useToast();
   const { setClose } = useModal();
@@ -28,97 +34,94 @@ const UserDetails = ({userData} : Props) => {
   const form = useForm<z.infer<typeof DetailsUserProfileSchema>>({
     resolver: zodResolver(DetailsUserProfileSchema),
     mode: "onChange",
-    defaultValues:{
-      fullName: userData?.name || undefined,
+    defaultValues: {
+      name: userData?.name || undefined,
       username: userData?.username || undefined,
       email: userData?.email,
       imageUrl: userData?.image || undefined,
       bio: userData?.bio || undefined,
-    }
-  })
+    },
+  });
 
   const onSubmit = async (values: z.infer<typeof DetailsUserProfileSchema>) => {
     try {
       const updatedUser = await initUser({
-        name: values.fullName,
+        name: values.name,
         username: values.username,
         email: values.email,
         image: values.imageUrl,
         bio: values.bio,
-      })
+      });
       startTransition(() => {
         if (updatedUser) {
           toast({
-            title: 'Profile Updated',
-            description: 'Profile updated successfully',
+            title: "Profile Updated",
+            description: "Profile updated successfully",
           });
           setClose();
         }
       });
-    } catch (error) {
-      
-    }
-  }
+    } catch (error) {}
+  };
 
   return (
     <>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <FormField
-          name="imageUrl"
-          control={form.control}
-          render={({ field }) =>(
-            <FormItem>
-              <FormControl>
-                <FormLabel>Profile Picture</FormLabel>
-                <Image src={`imageUrl`} width={100} height={100} alt="Profile Picture" />
-                <Input type="file" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-           />
+            control={form.control}
+            name="imageUrl"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Photo</FormLabel>
+                <FormControl>
+                  <Input placeholder="shadcn" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
           <FormField
-          name="fullName"
-          control={form.control}
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
+            name="name"
+            control={form.control}
+            render={({ field }) => (
+              <FormItem>
                 <FormLabel>Full Name</FormLabel>
-                <Input type="text" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+                <FormControl>
+                  <Input type="text" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
           />
           <FormField
-          name="username"
-          control={form.control}
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
+            name="username"
+            control={form.control}
+            render={({ field }) => (
+              <FormItem>
                 <FormLabel>Usernama</FormLabel>
-                <Input type="text" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+                <FormControl>
+                  <Input type="text" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
           />
           <FormField
-          name="email"
-          control={form.control}
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
+            name="email"
+            control={form.control}
+            render={({ field }) => (
+              <FormItem>
                 <FormLabel>E-Mail</FormLabel>
-                <Input type="email" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+                <FormControl>
+                  <Input type="email" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
           />
           {changes && <Button>Save</Button>}
-          </form>
+        </form>
       </Form>
     </>
   );

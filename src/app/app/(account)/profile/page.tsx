@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { useUserDetails } from "@/lib/hooks";
+import { useUserDetails } from "@/lib/hooks/use-swr";
 import UserDetails from "@/components/form/user-details";
 
 const ProfilePage = () => {
@@ -21,6 +21,7 @@ const ProfilePage = () => {
           height={200}
           alt={`${user?.name}`}
         />
+        <UserDetails />
           <div className="flex flex-col rounded-lg border border-destructive bg-destructive/10 gap-4 p-4 mt-4">
               <div className="text-destructive">Danger Zone</div>
             <div className="text-muted-foreground">
@@ -29,7 +30,6 @@ const ProfilePage = () => {
             </div>
             <Button variant={'destructive'}>Delete</Button>
           </div>
-          <UserDetails />
     </main>
   );
 };
