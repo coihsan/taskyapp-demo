@@ -1,101 +1,81 @@
-'use client'
+"use client";
 
-import React, { Suspense, useEffect, useState } from 'react';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import React, { Suspense, useEffect, useState } from "react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
-    Select,
-    SelectContent,
-    SelectGroup,
-    SelectItem,
-    SelectLabel,
-    SelectTrigger,
-    SelectValue,
-    SelectSeparator
-} from '@/components/ui/select';
-import Loading from '@/components/global/loading';
-import { shortText } from '@/lib/utils';
-import { useUserDetails } from '@/lib/hooks/use-swr';
-import { SidebarContent } from '@/components/global/sidebar-content';
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+  SelectSeparator,
+} from "@/components/ui/select";
+import Loading from "@/components/global/loading";
+import { shortText } from "@/lib/utils";
+import { useUserDetails } from "@/lib/hooks/use-swr";
 import { useRouter } from "next/navigation";
-import CreateWorkspaceButton from './create-workspace-btn';
+import CreateWorkspaceButton from "./create-workspace-btn";
 
 const SelectWorkspace = () => {
-    const router = useRouter()
-    const [selectedWorkspace, setSelectedWorkspace] = useState('')
-    const { user, isLoading, isError } = useUserDetails()
+  const router = useRouter();
+  const [selectedWorkspace, setSelectedWorkspace] = useState("");
+  const { user, isLoading, isError } = useUserDetails();
 
-    useEffect(() =>{
-        const storedWorkspaceId = localStorage.getItem('workspaceId')
+  useEffect(() => {
+    const storedWorkspaceId = localStorage.getItem("workspaceId");
 
-        if(storedWorkspaceId){
-            setSelectedWorkspace(storedWorkspaceId)
-        }
-    }, [])
-    
-    if (isLoading) {
-        return <Loading className="flex justify-center w-full" />
+    if (storedWorkspaceId) {
+      setSelectedWorkspace(storedWorkspaceId);
     }
-    if (isError) {
-        return <div>Error: {isError.message}</div>
-    }
+  }, []);
 
-    const handleWorkspaceChange = (workspaceid: string) => {
-        setSelectedWorkspace(workspaceid)
-        localStorage.setItem('workspaceId', workspaceid)
-        router.replace(`/app/${workspaceid}`)
-    }
+  if (isLoading) {
+    return <Loading className="flex justify-center w-full" />;
+  }
+  if (isError) {
+    return <div>Error: {isError.message}</div>;
+  }
 
-    return (
-        <SidebarContent borderBottom>
-            <>
-                {user?.user_workspace && (
-                    <Select
-                        value={selectedWorkspace}
-                        onValueChange={handleWorkspaceChange}
-                    >
-                        <SelectTrigger className="w-full h-[50px] ButtonStyle">
-                            <SelectValue placeholder="Select a workspace" />
-                        </SelectTrigger>
-                        <SelectContent className="CardStyle">
-                        <SelectGroup>
-                            <SelectLabel className='text-xs'>Your own</SelectLabel>
-                            {user.user_workspace.length === 0
-                                ? (
-                                    <div className="text-muted-foreground text-center text-xs py-4 italic">
-                                        No Workspace
-                                    </div>
-                                ) 
-                                : user.user_workspace.map((list) => (
-                                    <SelectItem
-                                        className="py-2"
-                                        key={list.workspace.id}
-                                        value={`${list.workspace.id}`}
-                                    >
-                                        <div className="flex items-center gap-2">
-                                            <Avatar className="w-8 h-8">
-                                                <AvatarImage
-                                                    sizes="28"
-                                                    src={`${list.workspace.workspace_logo}`}
-                                                    alt={`${list.workspace.workspace_logo}`}
-                                                />
-                                                <AvatarFallback className="bg-accent">
-                                                    <span>
-                                                        {shortText(list.workspace.name)}
-                                                    </span>
-                                                </AvatarFallback>
-                                            </Avatar>
-                                            <span>{list.workspace.name}</span>
-                                        </div>
-                                    </SelectItem>
-                                ))}
-                            <SelectSeparator />
-                                <CreateWorkspaceButton />
-                        </SelectGroup>
-                        </SelectContent>
-                    </Select>
-                )}
-            </>
-        </SidebarContent>
-    )
-}
-export default SelectWorkspace
+  const handleWorkspaceChange = (workspaceid: string) => {
+    setSelectedWorkspace(workspaceid);
+    localStorage.setItem("workspaceId", workspaceid);
+    router.replace(`/app/${workspaceid}`);
+  };
+
+  return (
+    <>
+      {user?.user_workspace && (
+        <Select value={selectedWorkspace} onValueChange={handleWorkspaceChange}>
+          <SelectTrigger className="w-[180px] ButtonStyle">
+            <SelectValue placeholder="Select a workspace" />
+          </SelectTrigger>
+          <SelectContent className="CardStyle">
+            <SelectGroup>
+              <SelectLabel className="text-xs text-muted-foreground">Your own</SelectLabel>
+              {user.user_workspace.length === 0 ? (
+                <div className="text-muted-foreground text-center text-xs py-4 italic">
+                  No Workspace
+                </div>
+              ) : (
+                user.user_workspace.map((list) => (
+                  <SelectItem
+                    className="py-2"
+                    key={list.workspace.id}
+                    value={`${list.workspace.id}`}
+                  >
+                    {list.workspace.name}
+                  </SelectItem>
+                ))
+              )}
+              <SelectSeparator />
+              <CreateWorkspaceButton />
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+      )}
+    </>
+  );
+};
+export default SelectWorkspace;

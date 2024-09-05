@@ -16,12 +16,7 @@ interface Props {
 const Sidebar = ({ workspaceId }: Props) => {
   return (
     <aside className="w-full h-full h-screen max-w-64 relative">
-      <SidebarContent>
-        <Logo />
-      </SidebarContent>
-      <SelectWorkspace />
       <WorkspaceMenu />
-      <GetAllProjects />
       <SidebarContent className="absolute left-4 bottom-4" borderTop>
         <FooterOnSidebar />
       </SidebarContent>

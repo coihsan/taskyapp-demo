@@ -11,7 +11,7 @@ const HeaderBar = () => {
     const params = useParams<{ workspaceId: string; projectsId: string }>()
 
     return (
-        <header className="flex dark:bg-gradient-to-r dark:from-white/5 space-x-4 items-center w-full h-16 py-2 px-3 relative rounded-t-2xl border-b-[1px] border-onyx-100 dark:border-onyx-50/10">
+        <header className="flex dark:bg-gradient-to-r dark:from-white/5 space-x-4 items-center w-full h-16 py-2 px-3 relative rounded-t-2xl border-b-[1px] border-black/20 dark:border-white/15">
             <BreadcrumbSegment baseName='Board' />
             <Separator orientation='vertical' />
             <HeaderOption  />

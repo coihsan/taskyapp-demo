@@ -1,6 +1,8 @@
+import React from 'react'
 import Sidebar from "@/app/app/[workspaceid]/_components/sidebar";
 import HeaderBar from "@/app/app/[workspaceid]/_components/headerbar";
 import { db } from "@/lib/server/db";
+import PageHeader from './_components/pageheader/page';
 
 type Props = {
   children: React.ReactNode;
@@ -23,11 +25,10 @@ const MainLayout = async ({ children, params }: Props) => {
   }
   
   return (
-    <main className="flex overflow-hidden h-screen min-h-[100dvh] p-1 fixed w-full">
+    <main className="overflow-hidden h-screen min-h-[100vh] w-full">
+      <aside className="flex w-full">
       <Sidebar workspaceId={workspaceDetails.id} />
-      <aside className="w-full CardStyle rounded-2xl">
-        <HeaderBar />
-          <div className="p-4">
+          <div className="p-4 w-full border-x-[1px] CardStyle">
             {children}
           </div>
       </aside>

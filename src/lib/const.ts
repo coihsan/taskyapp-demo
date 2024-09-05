@@ -11,6 +11,7 @@ import { FluentColor24Regular } from '@/components/icons/color-icons'
 import { FluentAppFolder24Regular } from '@/components/icons/app-folder-24-regular'
 import { FluentBuildingPeople24Regular } from '@/components/icons/building-people-24-regular'
 import { Edge } from '@xyflow/react';
+import { FluentHome24Regular } from '@/components/icons/home'
 
 export const RoleTeam = [
     { id: 0, role: 'View', values: 'view', desc: 'Only view and comment' },
@@ -51,9 +52,9 @@ export const menuUser = [
 export const sidebaraccountuser = [
     {
         id: 9,
-        title: 'Workspace',
-        url: '/workspace',
-        icon: FluentBuildingPeople24Regular,
+        title: 'Home',
+        url: '/app',
+        icon: FluentHome24Regular,
     },
     {
         id: 0,
