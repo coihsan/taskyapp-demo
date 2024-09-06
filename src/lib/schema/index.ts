@@ -50,3 +50,10 @@ export const CreateNewColumnSchema = z.object({
     }),
     columnIndex: z.number(),
 })
+
+export const NewCalenderSchema = z.object({
+    title: z.string().min(1, 'Required'),
+    dates: z.date().min(new Date(), 'Invalid date'),
+    notes: z.string().optional(),
+    times: z.string()
+})

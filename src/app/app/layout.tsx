@@ -1,7 +1,5 @@
 "use client"
 import React from 'react'
-import PageHeader from '../../components/global/pageheader/page';
-import SidebarMenuAccount from '@/components/global/sidebar-menu-account';
 
 type Props = {
   children: React.ReactNode;

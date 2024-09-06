@@ -61,3 +61,20 @@ export const createWorkspaceTeam = async (workspaceId: string, user: User) => {
     })
     return response
 }
+
+// Get notification and User
+
+export const getNotificationAndUser = async (workspaceid: string) =>{
+    try {
+        const response = await db.notification.findMany({
+            where:{id: workspaceid},
+            include: {user: true},
+            orderBy:{
+                created_at: 'desc'
+            }
+        })
+        return response
+    } catch (error) {
+        console.log(error)
+    }
+}

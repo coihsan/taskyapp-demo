@@ -1,5 +1,5 @@
 import React from "react";
-import { db } from "@/lib/db";
+import { db } from "@/lib/server/db";
 
 const DeleteWorkspace = () => {
   return (

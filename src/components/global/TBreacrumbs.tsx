@@ -10,21 +10,22 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { usePathname } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 
 const TBreadcrumbs = () => {
+  const params = useParams<{workspaceid: string}>()
   const paths = usePathname();
   const pathNames = paths.split("/").filter((path) => path);
   return (
     <>
       <Breadcrumb>
         <BreadcrumbList>
-          <BreadcrumbItem>
+          {/* <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link href="/app">App</Link>
+              <Link href={`/app/${params.workspaceid}`}>App</Link>
             </BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
+          </BreadcrumbItem> */}
+          {/* <BreadcrumbSeparator /> */}
           {pathNames.map((link, index) => {
             let href = `${pathNames.slice(0, index + 1).join("/")}`;
             let itemLink = link[0].toUpperCase() + link.slice(1, link.length);
