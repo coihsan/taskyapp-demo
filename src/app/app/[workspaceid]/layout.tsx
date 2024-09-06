@@ -1,5 +1,5 @@
 import React from 'react'
-import Sidebar from "@/app/app/[workspaceid]/_components/sidebar";
+import Sidebar from "@/components/global/sidebar";
 import { db } from "@/lib/server/db";
 
 type Props = {
@@ -23,9 +23,9 @@ const WorkspaceLayout = async ({ children, params }: Props) => {
   }
   
   return (
-    <main className="flex overflow-hidden h-screen min-h-[100vh] w-full">
+    <main className="flex overflow-hidden h-screen min-h-[100vh] p-1 w-full">
       <Sidebar workspaceId={workspaceDetails.id} />
-          <div className="p-4 w-full border-x-[1px]">
+          <div className="p-4 w-full rounded-2xl CardStyle border borderStyle">
             {children}
           </div>
     </main>

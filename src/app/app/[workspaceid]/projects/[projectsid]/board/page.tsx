@@ -9,7 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Link from "next/link";
-import CreateNewBoardButton from "../../../_components/create-new-board-btn";
+import CreateNewBoardButton from "../../../../../../components/global/create-new-board-btn";
 type Props = {
   params: {
     workspaceid: string;

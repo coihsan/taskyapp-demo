@@ -12,11 +12,11 @@ import {
   SelectValue,
   SelectSeparator,
 } from "@/components/ui/select";
-import Loading from "@/components/global/loading";
 import { shortText } from "@/lib/utils";
 import { useUserDetails } from "@/lib/hooks/use-swr";
 import { useRouter } from "next/navigation";
 import CreateWorkspaceButton from "./create-workspace-btn";
+import { Skeleton } from "../ui/skeleton";
 
 const SelectWorkspace = () => {
   const router = useRouter();
@@ -32,7 +32,7 @@ const SelectWorkspace = () => {
   }, []);
 
   if (isLoading) {
-    return <Loading className="flex justify-center w-full" />;
+    return <Skeleton className="w-full h-12" />;
   }
   if (isError) {
     return <div>Error: {isError.message}</div>;
@@ -48,7 +48,7 @@ const SelectWorkspace = () => {
     <>
       {user?.user_workspace && (
         <Select value={selectedWorkspace} onValueChange={handleWorkspaceChange}>
-          <SelectTrigger className="w-[180px] ButtonStyle">
+          <SelectTrigger className="w-full h-12 bg-muted dark:bg-onyx-900 rounded-xl border borderStyle">
             <SelectValue placeholder="Select a workspace" />
           </SelectTrigger>
           <SelectContent className="CardStyle">

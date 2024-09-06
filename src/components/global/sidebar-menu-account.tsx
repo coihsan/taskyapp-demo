@@ -6,11 +6,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
+// TODO : This component will be delete
 const SidebarMenuAccount = () => {
   const pathname = usePathname();
   
   return (
-    <div className="w-full max-w-52 relative h-full overflow-y-scroll h-screen">
+    <div className="w-full max-w-56 relative h-full overflow-y-scroll h-screen">
       <SidebarContent>
         <div className="flex flex-col gap-1">
           {sidebaraccountuser.map((item) => (

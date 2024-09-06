@@ -22,7 +22,6 @@ const CreateNewProjectButton = () => {
                     <Button
                         size={'icon'}
                         variant={'ghost'}
-                        className="flex items-center gap-2 w-full"
                         onClick={() => {
                             setOpen(
                                 <CustomModal
@@ -35,7 +34,6 @@ const CreateNewProjectButton = () => {
                         }}
                         >
                         <FluentAdd24Filled />
-                        New project
                     </Button>
                 </TooltipTrigger>
                 <TooltipContent>

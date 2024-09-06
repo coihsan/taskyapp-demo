@@ -6,18 +6,18 @@ import Link from "next/link";
 import { FluentFolder24Regular } from "@/components/icons/folder-24-regular";
 import { useParams, usePathname } from "next/navigation";
 import { useGetAllProjectsByWorkspaceId } from "@/lib/hooks/use-swr";
-import Loading from "@/components/global/loading";
 import clsx from "clsx";
+import { Skeleton } from "../ui/skeleton";
 
 const GetAllProjects = () => {
-  const params = useParams<{ workspaceid: string }>();
+  const params = useParams<{ workspaceid: string, projectsid: string }>();
   const pathname = usePathname();
   const { spaceByWorkspaceId, isLoading, isError } =
     useGetAllProjectsByWorkspaceId(params.workspaceid);
   if (!spaceByWorkspaceId) return null;
 
   if (isLoading) {
-    return <Loading />;
+    return <Skeleton className="w-full h-9" />;
   }
   if (isError) {
     return <div>Error: {isError.message}</div>;

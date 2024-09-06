@@ -3,11 +3,11 @@ import React from "react";
 import { SidebarContent } from "@/components/global/sidebar-content";
 import { useParams, usePathname } from "next/navigation";
 import CalenderDate from "@/components/icons/calender-date";
-import WorkspaceIcons from "@/components/icons/workspace";
 import FluentPeopleTeam24Regular from "@/components/icons/people-team";
 import { FluentSettings24Regular } from "@/components/icons/settings";
 import Link from "next/link";
 import clsx from "clsx";
+import WorkspaceIcons from "../icons/workspace";
 
 export const sidebar = [
   { id: 1, title: "View", url: `/view`, icon: WorkspaceIcons },
