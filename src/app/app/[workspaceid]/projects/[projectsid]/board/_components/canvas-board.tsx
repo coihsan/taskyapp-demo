@@ -2,7 +2,6 @@
 
 import { useModal } from "@/providers/modal-provider";
 import React, { useCallback, useEffect, useState } from "react";
-import PanelBar from '@/components/global/panel-bar'
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
 import { DragDropContext, DropResult, Droppable } from "react-beautiful-dnd";
 import { Button } from "@/components/ui/button"
@@ -16,7 +15,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer"
-import BoardDetails from "./_components/board-details";
+import BoardDetails from "./board-details";
 import { useParams } from "next/navigation";
 
 const Page = () => {
@@ -36,10 +35,9 @@ const Page = () => {
   }, []);
 
   const { setOpen } = useModal();
-  const params = useParams<{boardid: string}>()
+  const params = useParams<{projectsid: string}>()
   return (
     <ScrollArea className="relative pb-32 h-screen w-full">
-      <PanelBar />
       <DragDropContext
         onBeforeCapture={onBeforeCapture}
         onBeforeDragStart={onBeforeDragStart}
@@ -47,7 +45,7 @@ const Page = () => {
         onDragUpdate={onDragUpdate}
         onDragEnd={onDragEnd}
       >
-        <h1>Board Page ID : {params.boardid}</h1>
+        <h1>Board Page ID : {params.projectsid}</h1>
       </DragDropContext>
       <ScrollBar />
     </ScrollArea>

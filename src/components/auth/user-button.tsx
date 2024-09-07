@@ -32,13 +32,13 @@ const UserButtonCustom = () => {
         <DropdownMenuTrigger asChild>
           <Button
             variant="outline"
-            size="icon"
-            className="rounded-full"
+            className="flex items-center gap-2 rounded-lg"
           >
             <Avatar>
               <AvatarImage src={`${user?.image}`} alt="@taskyapp" />
               <AvatarFallback>{shortText(user?.name)}</AvatarFallback>
             </Avatar>
+            <span>{user?.name}</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent

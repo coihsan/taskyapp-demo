@@ -20,7 +20,7 @@ import {
 
 const labels = ["Up", "To top", "To down", "down"];
 
-const EditWorkspace = () => {
+const WorkspaceSettings = () => {
   const [label, setLabel] = React.useState("feature");
   const [open, setOpen] = React.useState(false);
 
@@ -48,4 +48,4 @@ const EditWorkspace = () => {
     </div>
   );
 };
-export default EditWorkspace;
+export default WorkspaceSettings;

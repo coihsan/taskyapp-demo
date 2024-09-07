@@ -3,9 +3,9 @@ import { addEdge, applyNodeChanges, applyEdgeChanges } from '@xyflow/react';
 
 import initialNodes from '@/lib/data/workflows/nodes'
 import initialEdges from '@/lib/data/workflows/edges'
-import { AppState } from '../types/db.types';
+import { AppState, StatePerson, PersonAction } from '../types/db.types';
 
-const useStore = create<AppState>((set, get) => ({
+export const useStore = create<AppState>((set, get) => ({
   nodes: initialNodes,
   edges: initialEdges,
   onNodesChange: (changes) => {
@@ -31,4 +31,15 @@ const useStore = create<AppState>((set, get) => ({
   },
 }));
 
-export default useStore;
+export const usePersonStore = create<StatePerson & PersonAction>((set) => ({
+  fullName: '',
+  image: '',
+  username: '',
+  bio: '',
+  password: '',
+  updateFullName: (fullName) => set(() => ({ fullName: fullName })),
+  updateImage: (image) => set(() => ({ image: image })),
+  updateUsername: (username) => set(() => ({ username: username})),
+  updateBio: (bio) => set(() => ({bio : bio})),
+  updatePassword: (password) => set(() => ({password: password}))
+}))

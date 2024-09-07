@@ -1,11 +1,15 @@
 import Link from "next/link";
 import UseNetworkStatus from "./online-status";
 import { ModeToggle } from "./mode-toggle";
+import UserButtonCustom from "../auth/user-button";
 
 const FooterOnSidebar = () => {
   return (
     <footer className="w-full flex flex-col items-start space-y-2">
-      <ModeToggle />
+      <div className="flex items-center space-x-2">
+        <ModeToggle />
+        <UserButtonCustom />
+      </div>
       <UseNetworkStatus />
         <div className="flex items-center space-x-2">
           <Link className="text-xs" href="/privacy">

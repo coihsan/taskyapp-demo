@@ -17,14 +17,12 @@ import { createNewWorkspace } from '@/lib/action/workspace'
 import { useRouter } from 'next/navigation'
 import { useModal } from '@/providers/modal-provider'
 import Loading from '../global/loading'
-import Uploader from './Uploader'
 import { useToast } from '../ui/use-toast'
 
 type FormValues = z.infer<typeof NewWorkspaceSchema>;
 
 const NewWorkspaceSchema = z.object({
     name: z.string().min(1, 'Required'),
-    workspace_logo: z.any().optional(),
 })
 
 const NewWorkspaceForm = () => {
@@ -38,15 +36,13 @@ const NewWorkspaceForm = () => {
         resolver: zodResolver(NewWorkspaceSchema),
         defaultValues: {
             name: '',
-            workspace_logo: '',
         },
     })
 
     const onSubmit = async (values: FormValues) => {
         try {
             const workspace = await createNewWorkspace({
-                name: values.name,
-                workspace_logo: values?.workspace_logo,
+                name: values.name
             })
             startTransition(() => {
                 if (workspace) {
@@ -73,19 +69,6 @@ const NewWorkspaceForm = () => {
                     className="space-y-4"
                     onSubmit={form.handleSubmit(onSubmit)}
                 >
-                    <FormField
-                        control={form.control}
-                        name="workspace_logo"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>Logo</FormLabel>
-                                <FormControl>
-                                    <Uploader defaultValue={''} {...field} />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
                     <FormField
                         control={form.control}
                         name="name"

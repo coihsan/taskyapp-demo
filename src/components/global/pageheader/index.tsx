@@ -1,8 +1,8 @@
-import UserButtonCustom from '@/components/auth/user-button'
 import React from 'react'
 import NotificationUser from '../notification-user'
 import BreadcrumbSegment from '../breadcrumb-segment'
 import TBreadcrumbs from '../TBreacrumbs'
+import WorkspaceSettings from '../workspace-settings'
 
 const PageHeader = () =>{
     return(
@@ -10,7 +10,7 @@ const PageHeader = () =>{
             <TBreadcrumbs />
             <div className='flex items-center gap-3'>
                 <NotificationUser />
-                <UserButtonCustom />
+                <WorkspaceSettings />
             </div>
         </div>
     )

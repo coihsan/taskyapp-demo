@@ -42,7 +42,7 @@ const TBreadcrumbs = () => {
                 {index === 1 && (
                   <BreadcrumbItem>
                     <BreadcrumbPage>{itemLink}</BreadcrumbPage>
-                    {pathNames.length !== index + 1 && <BreadcrumbSeparator />}
+                    {pathNames.length !== index + 1}
                   </BreadcrumbItem>
                 )}
               </React.Fragment>

@@ -3,7 +3,6 @@ model Workspace {
   name           String
   status         Status          @default(ACTIVE)
   position       String?
-  workspace_logo String?
   created_at     DateTime        @default(now())
   updated_at     DateTime        @updatedAt
   invitation     Invitation[]

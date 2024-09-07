@@ -35,7 +35,7 @@ const NotificationUser = () => {
         </SheetTrigger>
         <SheetContent className="CardStyle">
           <SheetHeader>
-            <SheetTitle>Notifikasi</SheetTitle>
+            <SheetTitle>Notification</SheetTitle>
             <SheetDescription>
               <div>
                 {allNotification?.length === 0 ? (

@@ -1,4 +1,5 @@
 import React from "react"
+import HeaderBarProject from "./_components/headerbar"
 
 type Props = {
     children: React.ReactNode
@@ -7,7 +8,7 @@ type Props = {
 const ProjectLayout = ({children} : Props) =>{
     return(
         <div>
-            hello layout project ID
+            <HeaderBarProject />
             {children}
         </div>
     )

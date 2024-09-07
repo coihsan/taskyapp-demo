@@ -1,6 +1,5 @@
 "use client";
 
-import CreateNewProjectButton from "./create-projects-btn";
 import { SidebarContent } from "@/components/global/sidebar-content";
 import Link from "next/link";
 import { FluentFolder24Regular } from "@/components/icons/folder-24-regular";
@@ -8,6 +7,9 @@ import { useParams, usePathname } from "next/navigation";
 import { useGetAllProjectsByWorkspaceId } from "@/lib/hooks/use-swr";
 import clsx from "clsx";
 import { Skeleton } from "../ui/skeleton";
+import CreateButtonGlobal from "./create-button-global";
+import { FluentAdd24Filled } from "../icons/add-24-filled";
+import NewProjectsForm from "../form/new-projects-form";
 
 const GetAllProjects = () => {
   const params = useParams<{ workspaceid: string, projectsid: string }>();
@@ -29,7 +31,15 @@ const GetAllProjects = () => {
         <span className="text-[11px] text-muted-foreground font-medium uppercase">
           project
         </span>
-        <CreateNewProjectButton />
+        <CreateButtonGlobal
+        title="Create Project" 
+        subheading="Deploy your new project in one-click."
+        variant="ghost"
+        size="icon"
+        useIcon
+        >
+          <NewProjectsForm />
+        </CreateButtonGlobal>
       </div>
       <div className="mt-4 h-60">
         {spaceByWorkspaceId.map((list) => (

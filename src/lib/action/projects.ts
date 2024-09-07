@@ -82,45 +82,6 @@ export const featureOptionAction = async (
   return response
 }
 
-// Create new board
-
-export const createNewBoard = async (title: string, projectsId: string) => {
-  const projectOwner = await db.projects.findUnique({
-    where: {
-      id: projectsId,
-    },
-  });
-  if (!projectOwner) return null;
-
-  const response = await db.board.create({
-    data: {
-      id: v4(),
-      title: title,
-      project: {
-        connect: {
-          id: projectOwner.id,
-        },
-      },
-    },
-  });
-  return response;
-};
-
-// Get All Board by Projects ID
-export const getAllBoardsByProjectId = async (projectsId: string) => {
-  const response = await db.board.findMany({
-    where: {
-      projectId: projectsId,
-    },
-    select: {
-      title: true,
-      id: true,
-      projectId: true,
-    },
-  });
-  return response;
-};
-
 // Upsert new column
 export const upsertColumn = async (column: Column) => {
   const response = await db.column.upsert({
@@ -134,7 +95,7 @@ export const upsertColumn = async (column: Column) => {
 };
 
 // upsert new card
-export const createNewCard = async (
+export const upsertCard = async (
   title: string,
   description: string,
   columnIndex: number,

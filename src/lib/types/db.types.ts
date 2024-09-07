@@ -96,15 +96,20 @@ export enum status {
   "Done",
 }
 
-export type Person = {
-  firstName: string;
-  lastName: string;
-  age: number;
-  visits: number;
-  status: string;
-  progress: number;
+export type StatePerson = {
+  fullName: string;
+  image: string;
+  bio: string;
+  username: string;
+  password: string
 };
-
+export type PersonAction = {
+  updateFullName: (firstName: StatePerson['fullName']) => void
+  updateImage: (image: StatePerson['image']) => void
+  updateBio: (status: StatePerson['bio']) => void
+  updateUsername: (username: StatePerson['username']) => void
+  updatePassword: (password: StatePerson['password']) => void
+}
 export type AuthUserOrganization =
   | Prisma.PrismaClientKnownRequestError
   | Prisma.PrismaClientUnknownRequestError;

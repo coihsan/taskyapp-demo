@@ -1,29 +1,15 @@
 model Board {
   id          String   @id @default(uuid())
-  title       String
+  title       String  @default("")
   description String?
-  projectId   String
-  project     Projects @relation(fields: [projectId], references: [id], onDelete: Cascade)
-  columns     Column[]
-  isPinned    Boolean  @default(false)
-  created_at  DateTime @default(now())
-  updated_at  DateTime @updatedAt
-  labels      Label[]
-
-  @@index([projectId])
-}
-
-model Column {
-  id          String   @id @default(uuid())
-  title       String
   column_index Int
   created_at  DateTime @default(now())
   updated_at  DateTime @updatedAt
-  boardId     String
-  board       Board    @relation(fields: [boardId], references: [id], onDelete: Cascade)
   cards       Card[]
+  projectId   String
+  project     Projects @relation(fields: [projectId], references: [id], onDelete: Cascade)
 
-  @@index([boardId])
+  @@index([projectId])
 }
 
 model Card {
@@ -32,17 +18,17 @@ model Card {
   description       String?
   content           String    
   is_complete       Boolean   @default(false)
-  sub_task          SubTask[]
-  card_labels       CardLabels[]
   column_index      Int
   row_index         Int
-  assignees         CardAssignees[]
-  comments          Comment[]
-  columnId          String
-  column            Column    @relation(fields: [columnId], references: [id], onDelete: Cascade)
   created_at        DateTime @default(now())
   updated_at        DateTime @updatedAt
+  sub_task          SubTask[]
+  labels            Labels[]
+  assignees         CardAssignees[]
+  comments          Comment[]
   attachment        Attachment[]
+  boardId           String
+  board             Board    @relation(fields: [boardId], references: [id], onDelete: Cascade)
 }
 
 model CardAssignees {
@@ -50,12 +36,12 @@ model CardAssignees {
   cardId    String
   card      Card    @relation(fields: [cardId], references: [id], onDelete: Cascade)
   userId    String
-  user      User    @relation(fields: [userId], references: [id])
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model SubTask {
   id                String     @id @default(uuid())
-  title             String?
+  title             String
   content           String     @db.Text
   is_complete       Boolean    @default(false)
   created_at        DateTime   @default(now())
@@ -65,32 +51,25 @@ model SubTask {
   card              Card       @relation(fields: [cardId], references: [id], onDelete: Cascade)
 }
 
-model Label {
+model Labels {
   id                String       @id @default(uuid())
   name              String
   color             String
-  cards             CardLabels[]
-  boardId           String
-  board             Board        @relation(fields: [boardId], references: [id], onDelete: Cascade)
-}
-
-model CardLabels {
-  id                String @id @default(uuid())
   cardId            String
-  card              Card   @relation(fields: [cardId], references: [id])
-  labelId           String
-  label             Label  @relation(fields: [labelId], references: [id])
+  created_at        DateTime   @default(now())
+  updated_at        DateTime   @updatedAt
+  card              Card       @relation(fields: [cardId], references: [id], onDelete: Cascade)
 }
 
 model Attachment {
   id                  String         @id @default(uuid())
   path                String
-  title               String?
+  name                String?
   type                AttachmentType
   commentId           String?
-  comment             Comment?       @relation(fields: [commentId], references: [id])
+  comment             Comment?       @relation(fields: [commentId], references: [id], onDelete: Cascade)
   cardId              String?
-  card                Card?          @relation(fields: [cardId], references: [id])
+  card                Card?          @relation(fields: [cardId], references: [id], onDelete: Cascade)
 }
 
 model Comment {
@@ -99,8 +78,8 @@ model Comment {
   authorId              String
   cardId                String
   attachments           Attachment[]
-  card                  Card         @relation(fields: [cardId], references: [id])
-  author                User         @relation(fields: [authorId], references: [id])
+  card                  Card         @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  author                User         @relation(fields: [authorId], references: [id], onDelete: Cascade)
   createdAt             DateTime     @default(now())
   updateAt              DateTime     @updatedAt
 }

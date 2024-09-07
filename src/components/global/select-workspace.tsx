@@ -15,8 +15,10 @@ import {
 import { shortText } from "@/lib/utils";
 import { useUserDetails } from "@/lib/hooks/use-swr";
 import { useRouter } from "next/navigation";
-import CreateWorkspaceButton from "./create-workspace-btn";
 import { Skeleton } from "../ui/skeleton";
+import CreateButtonGlobal from "./create-button-global";
+import NewWorkspaceForm from "../form/new-workspace-form";
+import { FluentAdd24Filled } from "../icons/add-24-filled";
 
 const SelectWorkspace = () => {
   const router = useRouter();
@@ -70,7 +72,15 @@ const SelectWorkspace = () => {
                 ))
               )}
               <SelectSeparator />
-              <CreateWorkspaceButton />
+              <CreateButtonGlobal
+              className="w-full flex items-center justify-center gap-2"
+              title="Create New Workspace"
+              subheading="Create New Workspace"
+              useIcon
+              buttonName="New Workspace"
+              size="default"
+              variant="default"
+              ><NewWorkspaceForm /></CreateButtonGlobal>
             </SelectGroup>
           </SelectContent>
         </Select>

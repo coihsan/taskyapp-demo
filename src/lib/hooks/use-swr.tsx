@@ -1,7 +1,7 @@
 import useSWR from 'swr';
 import { Workspace } from "@prisma/client";
 import { checkUser, getAuthUserDetails } from '../action/user';
-import { getAllBoardsByProjectId, getAllProjectsByWorkspaceId, getProjectDetails } from '../action/projects';
+import { getAllProjectsByWorkspaceId, getProjectDetails } from '../action/projects';
 import { getNotificationAndUser } from '../action/workspace';
 
 
@@ -36,17 +36,6 @@ export function useUserDetails() {
 export function useGetProjectDetails(projectsid: string){
   const { data, isLoading, error, mutate } = useSWR('projectsid', ()=> getProjectDetails(projectsid))
   return {
-    data: data,
-    isLoading,
-    isError: error,
-    mutate
-  }
-}
-
-export function useGetAllBoardsByProjectId(projectsid: string){
-  const { data, isLoading, error, mutate } = useSWR('boards', ()=> getAllBoardsByProjectId(projectsid))
-
-  return{
     data: data,
     isLoading,
     isError: error,

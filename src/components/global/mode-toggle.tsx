@@ -6,36 +6,36 @@ import { Button } from "../ui/button";
 import { FluentWeatherSunny24Regular } from "../icons/weather-sunny-24-regular";
 import { FluentWeatherMoon24Regular } from "../icons/weather-moon-24-regular";
 import { FluentLaptop24Regular } from "../icons/laptop-24-regular";
-
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+ 
 export function ModeToggle() {
-  const { setTheme } = useTheme();
-
+  const { setTheme } = useTheme()
+ 
   return (
-    <div className="flex w-max space-x-2">
-      <Button
-        size={"icon"}
-        variant={"ghost"}
-        onClick={() => setTheme("light")}
-        aria-label="toggle light theme"
-      >
-        <FluentWeatherSunny24Regular />
-      </Button>
-      <Button
-        size={"icon"}
-        variant={"ghost"}
-        onClick={() => setTheme("dark")}
-        aria-label="dark theme"
-      >
-        <FluentWeatherMoon24Regular />
-      </Button>
-      <Button
-        size={"icon"}
-        variant={"ghost"}
-        onClick={() => setTheme("system")}
-        aria-label="toggle system theme"
-      >
-        <FluentLaptop24Regular />
-      </Button>
-    </div>
-  );
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" size="icon">
+          <FluentWeatherSunny24Regular className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+          <FluentWeatherMoon24Regular className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          <span className="sr-only">Toggle theme</span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem onClick={() => setTheme("light")}>
+          Light
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("dark")}>
+          Dark
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("system")}>
+          System
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  )
 }

@@ -1,50 +1,55 @@
-import React from "react";
-import { db } from "@/lib/server/db";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import Link from "next/link";
-import CreateNewBoardButton from "../../../../../../components/global/create-new-board-btn";
-type Props = {
-  params: {
-    workspaceid: string;
-    projectsid: string;
-    boardid: string;
-  };
-};
-const BoardPage = async ({ params }: Props) => {
-  const boardData = await db.board.findMany({
-    where: {
-      id: params.boardid,
-    },
-  });
-  if (!boardData) return null;
+"use client";
 
+import { useModal } from "@/providers/modal-provider";
+import React, { useCallback, useEffect, useState } from "react";
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
+import { DragDropContext, DropResult, Droppable } from "react-beautiful-dnd";
+import { Button } from "@/components/ui/button"
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer"
+import BoardDetails from "./_components/board-details";
+import { useParams } from "next/navigation";
+
+const Page = () => {
+  const onBeforeCapture = useCallback(() => {
+    /*...*/
+  }, []);
+  const onBeforeDragStart = useCallback(() => {
+    /*...*/
+  }, []);
+  const onDragStart = useCallback(() => {
+    /*...*/
+  }, []);
+  const onDragUpdate = useCallback(() => {
+  }, []);
+  const onDragEnd = useCallback(() => {
+    // the only one that is required
+  }, []);
+
+  const { setOpen } = useModal();
+  const params = useParams<{projectsid: string}>()
   return (
-    <div className="relative h-screen">
-      <h1 className="text-xs">Board : {params.projectsid}</h1>
-      <div className="grid grid-cols-4 gap-3 mt-4">
-        {boardData.map((board) => (
-          <Card className="w-full" key={board.id}>
-            <Link
-              className=""
-              href={`/app/${params.workspaceid}/projects/${params.projectsid}/board/${board.id}`}
-            >
-              <CardHeader>
-                <CardTitle>{board.title}</CardTitle>
-                <CardDescription>Description example</CardDescription>
-              </CardHeader>
-            </Link>
-          </Card>
-        ))}
-      </div>
-      <CreateNewBoardButton className="absolute top-0 right-0" />
-    </div>
+    <ScrollArea className="relative pb-32 h-screen w-full">
+      <DragDropContext
+        onBeforeCapture={onBeforeCapture}
+        onBeforeDragStart={onBeforeDragStart}
+        onDragStart={onDragStart}
+        onDragUpdate={onDragUpdate}
+        onDragEnd={onDragEnd}
+      >
+        <h1>Board Page ID : {params.projectsid}</h1>
+      </DragDropContext>
+      <ScrollBar />
+    </ScrollArea>
   );
 };
-export default BoardPage;
+
+export default Page;
