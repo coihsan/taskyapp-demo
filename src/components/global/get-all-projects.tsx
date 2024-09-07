@@ -7,7 +7,7 @@ import { useParams, usePathname } from "next/navigation";
 import { useGetAllProjectsByWorkspaceId } from "@/lib/hooks/use-swr";
 import clsx from "clsx";
 import { Skeleton } from "../ui/skeleton";
-import CreateButtonGlobal from "./create-button-global";
+import CreateButtonGlobal from "../primitive/create-button-global";
 import { FluentAdd24Filled } from "../icons/add-24-filled";
 import NewProjectsForm from "../form/new-projects-form";
 

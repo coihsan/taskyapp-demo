@@ -3,22 +3,13 @@
 import { useModal } from "@/providers/modal-provider";
 import React, { useCallback, useEffect, useState } from "react";
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
-import { DragDropContext, DropResult, Droppable } from "react-beautiful-dnd";
-import { Button } from "@/components/ui/button"
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer"
-import BoardDetails from "./board-details";
+import { DragDropContext, DropResult, Droppable, Draggable } from "react-beautiful-dnd";
 import { useParams } from "next/navigation";
+import ColumnBoard from "./column-board";
+import CardBoard from "./card-board";
 
-const Page = () => {
+const CanvasBoard = () => {
+  const [board, setBoard] = useState({ columns: {}, columnOrder: [] });
   const onBeforeCapture = useCallback(() => {
     /*...*/
   }, []);
@@ -37,19 +28,19 @@ const Page = () => {
   const { setOpen } = useModal();
   const params = useParams<{projectsid: string}>()
   return (
-    <ScrollArea className="relative pb-32 h-screen w-full">
-      <DragDropContext
-        onBeforeCapture={onBeforeCapture}
-        onBeforeDragStart={onBeforeDragStart}
-        onDragStart={onDragStart}
-        onDragUpdate={onDragUpdate}
-        onDragEnd={onDragEnd}
-      >
-        <h1>Board Page ID : {params.projectsid}</h1>
+      <DragDropContext onDragEnd={onDragEnd}>
+        <div className="flex items-center flex-nowrap gap-2">
+          <ColumnBoard>
+            <CardBoard />
+            <CardBoard />
+          </ColumnBoard>
+          <ColumnBoard>
+            <CardBoard />
+            <CardBoard />
+          </ColumnBoard>
+        </div>
       </DragDropContext>
-      <ScrollBar />
-    </ScrollArea>
   );
 };
 
-export default Page;
+export default CanvasBoard;

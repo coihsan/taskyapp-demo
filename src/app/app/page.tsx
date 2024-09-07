@@ -26,7 +26,7 @@ const Page = async ({ searchParams } : Props) => {
 
     if(user){
       if(data){
-        return redirect(`/app/${searchParams.workspaceId}`)
+        return redirect(`/app/${data.id}`)
       } else if(!data){
         return <OnboardingPage />
       }

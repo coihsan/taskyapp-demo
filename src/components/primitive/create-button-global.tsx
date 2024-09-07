@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useModal } from "@/providers/modal-provider";
-import CustomModal from "@/components/global/custom-modal";
+import CustomModal from "@/components/primitive/custom-modal";
 import {
   Tooltip,
   TooltipContent,

@@ -16,7 +16,7 @@ import { shortText } from "@/lib/utils";
 import { useUserDetails } from "@/lib/hooks/use-swr";
 import { useRouter } from "next/navigation";
 import { Skeleton } from "../ui/skeleton";
-import CreateButtonGlobal from "./create-button-global";
+import CreateButtonGlobal from "../primitive/create-button-global";
 import NewWorkspaceForm from "../form/new-workspace-form";
 import { FluentAdd24Filled } from "../icons/add-24-filled";
 

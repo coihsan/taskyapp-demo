@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 
-export default function Component() {
+export default function SubCard() {
   const [tasks, setTasks] = useState([
     { id: 1, title: "Finish project proposal", completed: false },
     { id: 2, title: "Schedule meeting with client", completed: false },

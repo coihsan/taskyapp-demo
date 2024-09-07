@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button'
 import { useModal } from '@/providers/modal-provider'
 import { FluentAdd24Filled } from '@/components/icons/add-24-filled'
-import CustomModal from '@/components/global/custom-modal'
+import CustomModal from '@/components/primitive/custom-modal'
 import NewProjectsForm from '@/components/form/new-projects-form'
 import {
     Tooltip,

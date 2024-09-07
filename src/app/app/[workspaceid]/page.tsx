@@ -1,5 +1,5 @@
 import React from 'react'
-import PageWrapper from '@/components/global/page-wrapper'
+import PageWrapper from '@/components/primitive/page-wrapper'
 
 type Props = {
     params: { workspaceid: string;  }
