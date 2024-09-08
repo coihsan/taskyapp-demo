@@ -12,16 +12,6 @@ export const DetailsUserProfileSchema = z.object({
     createdAt: z.date().optional(),
 })
 
-export const DetailsWorkspaceSchema = z.object({
-    name: z.string().min(1, 'Required'),
-    workspace_logo: z.any().optional(),
-    subDomainName: z.string().min(1, 'Required'),
-    createdAt: z.date().optional(),
-    status: z.string().optional(),
-    userId: z.number(),
-})
-
-
 export const NewWorkflowFormSchema = z.object({
     name: z.string().min(1, 'Required'),
 })
@@ -39,12 +29,12 @@ export const SignupSchema = z.object({
     password: z.string().min(1, { message: "Password is required" }),
 })
 
-export const CreateNewBoardSchema = z.object({
+export const CreateNewCardSchema = z.object({
     title: z.string().min(1, {
         message: "Title is required"
     }),
 })
-export const CreateNewColumnSchema = z.object({
+export const CreateNewBoardSchema = z.object({
     title: z.string().min(1, {
         message: "Title is required"
     }),

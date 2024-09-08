@@ -110,7 +110,8 @@ export const getAuthUserDetails = async () => {
                 include:{
                     workspace: true
                 }
-            }
+            },
+            permissions: true
         }
     })
     return response

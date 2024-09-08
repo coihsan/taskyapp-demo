@@ -1,10 +1,7 @@
-"use server";
-
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import { sitelink } from "@/lib/const";
 import Logo from "@/components/global/logo";
-import { Button } from "@/components/ui/button";
 import ChevronRight from "@/components/icons/chevron-right";
 import {
   NavigationMenu,
@@ -40,7 +37,7 @@ const Navigation = async () => {
         <NavigationMenuItem>
           <Link href={user ? "/app" : "/sign-in"} legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-            {user ? "Dashboard" : "Sign In"}
+              {user ? "Dashboard" : "Sign In"}
             <ChevronRight />
             </NavigationMenuLink>
           </Link>

@@ -15,22 +15,23 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { useParams, useRouter } from 'next/navigation'
-import { CreateNewColumnSchema } from '@/lib/schema'
-import { upsertColumn } from '@/lib/action/projects'
-import { Board, Column } from '@prisma/client'
+import { CreateNewBoardSchema } from '@/lib/schema'
+import { upsertBoard } from '@/lib/action/projects'
+import { Board } from '@prisma/client'
 import Loading from '../global/loading'
 import { v4 } from 'uuid'
-type FormValues = z.infer<typeof CreateNewColumnSchema>
+
+type FormValues = z.infer<typeof CreateNewBoardSchema>
 
 type Props = {
-    data?: Column,
+    data?: Board,
 }
 
-const CreateNewColumnForm = ({ data } : Props) =>{
-    const params = useParams<{boardid: string}>();
+const CreateNewBoard = ({ data } : Props) =>{
+    const params = useParams<{boardid: string, projectsid: string}>();
     const [isPending, startTransition] = useTransition();
     const form = useForm<FormValues>({
-        resolver: zodResolver(CreateNewColumnSchema),
+        resolver: zodResolver(CreateNewBoardSchema),
         mode: "onChange",
         defaultValues:{
             title: data?.title || "",
@@ -40,17 +41,21 @@ const CreateNewColumnForm = ({ data } : Props) =>{
 
     const onSubmit = async (values: FormValues) =>{
         try {
-            const response = await upsertColumn({
-                ...values,
-                boardId: params.boardid,
+            const response = await upsertBoard(
+            {
                 id: data?.id || v4(),
                 title: values.title,
                 column_index: values.columnIndex,
                 created_at: data?.created_at || new Date(),
-                updated_at: data?.created_at || new Date()
-            })
+                updated_at: data?.created_at || new Date(),
+                projectId: params.projectsid
+            },
+            params.projectsid
+        );
+
+            return response
         } catch (error) {
-            
+            console.log(error)
         }
     }
 
@@ -76,16 +81,10 @@ const CreateNewColumnForm = ({ data } : Props) =>{
                         variant={'default'}
                         type="submit"
                     >
-                        {isPending ? (
-                            <>
-                                <Loading /> Creating...
-                            </>
-                        ) : (
-                            'Create'
-                        )}
+                        Create
                     </Button> 
             </form>
         </Form>
     )
 }
-export default CreateNewColumnForm
+export default CreateNewBoard

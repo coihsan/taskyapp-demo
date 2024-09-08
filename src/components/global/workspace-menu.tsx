@@ -13,7 +13,7 @@ export const sidebar = [
   { id: 1, title: "View", url: `/view`, icon: WorkspaceIcons },
   {
     id: 2,
-    title: "Upcomming",
+    title: "Upcoming",
     url: "/schedule",
     icon: CalenderDate,
   },

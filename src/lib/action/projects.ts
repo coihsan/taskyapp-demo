@@ -1,6 +1,6 @@
 "use server";
 
-import { Card, Column, Prisma, Projects, SubTask } from "@prisma/client";
+import { Card, Board, Prisma, Projects, SubTask } from "@prisma/client";
 import { db } from "@/lib/server/db";
 import { v4 } from "uuid";
 
@@ -82,14 +82,20 @@ export const featureOptionAction = async (
   return response
 }
 
-// Upsert new column
-export const upsertColumn = async (column: Column) => {
-  const response = await db.column.upsert({
+// Upsert new board
+export const upsertBoard = async (board: Board, projectId: string) => {
+  const projectData = await db.projects.findUnique({
+    where: {id: projectId}
+  })
+  const response = await db.board.upsert({
     where: {
       id: v4(),
     },
-    update: column,
-    create: column,
+    update: board,
+    create: {
+       ...board,
+       projectId: projectData?.id as string
+      },
   });
   return response;
 };
@@ -100,7 +106,7 @@ export const upsertCard = async (
   description: string,
   columnIndex: number,
   rowIndex: number,
-  columnId: string,
+  boardId: string,
   content: string,
   cards: Card
 ) => {
@@ -114,9 +120,9 @@ export const upsertCard = async (
       title: title,
       content: content,
       description: description,
-      column: {
+      board: {
         connect: {
-          id: columnId,
+          id: boardId,
         },
       },
       column_index: columnIndex,

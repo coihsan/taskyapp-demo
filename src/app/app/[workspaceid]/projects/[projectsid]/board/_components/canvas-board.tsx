@@ -7,6 +7,7 @@ import { DragDropContext, DropResult, Droppable, Draggable } from "react-beautif
 import { useParams } from "next/navigation";
 import ColumnBoard from "./column-board";
 import CardBoard from "./card-board";
+import CardDetails from "./card-details";
 
 const CanvasBoard = () => {
   const [board, setBoard] = useState({ columns: {}, columnOrder: [] });
@@ -29,14 +30,14 @@ const CanvasBoard = () => {
   const params = useParams<{projectsid: string}>()
   return (
       <DragDropContext onDragEnd={onDragEnd}>
-        <div className="flex items-center flex-nowrap gap-2">
+        <div className="flex items-start flex-nowrap gap-2">
           <ColumnBoard>
-            <CardBoard />
-            <CardBoard />
+            <CardDetails />
+            <CardDetails />
           </ColumnBoard>
           <ColumnBoard>
-            <CardBoard />
-            <CardBoard />
+            <CardDetails />
+            <CardDetails />
           </ColumnBoard>
         </div>
       </DragDropContext>

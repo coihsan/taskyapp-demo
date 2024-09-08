@@ -29,6 +29,8 @@ const Page = async ({ searchParams } : Props) => {
         return redirect(`/app/${data.id}`)
       } else if(!data){
         return <OnboardingPage />
+      } else if(!user.permissions){
+        return <Unauthorized />
       }
     } else {
       return redirect('/sign-in')

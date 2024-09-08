@@ -31,8 +31,6 @@ export interface UserDataTypes {
   emailUser?: string;
 };
 
-
-
 export interface SpaceDataTypes {
   id: string;
   name: string ;
@@ -45,7 +43,6 @@ export interface workspaceTypes {
   id: string;
   name: string;
   status: string | null;
-  workspace_logo: string | null;
   created_at: Date;
   updated_at: Date;
 }

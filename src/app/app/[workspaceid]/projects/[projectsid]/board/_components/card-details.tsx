@@ -21,14 +21,17 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { isDesktop } from 'react-detect';
+import CardBoard from "./card-board";
 
 const CardDetails = () => {
 
   if (isDesktop()) {
     return (
       <Sheet>
-        <SheetTrigger asChild>
-          <Button variant="outline">Sheet</Button>
+        <SheetTrigger className="h-full w-full" asChild>
+          <button>
+            <CardBoard />
+          </button>
         </SheetTrigger>
         <SheetContent>
           <SheetHeader>
@@ -50,7 +53,11 @@ const CardDetails = () => {
 
   return (
     <Drawer>
-      <DrawerTrigger>Drawer</DrawerTrigger>
+      <DrawerTrigger className="h-full w-full">
+        <button>
+          <CardBoard />
+        </button>
+      </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader>
           <DrawerTitle>Are you absolutely sure?</DrawerTitle>

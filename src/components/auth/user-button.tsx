@@ -27,12 +27,12 @@ const UserButtonCustom = () => {
   const { user } = useUserDetails()
   
   return (
-    <div className="flex items-center rounded-full">
+    <div>
       <DropdownMenu>  
-        <DropdownMenuTrigger asChild>
+        <DropdownMenuTrigger className="w-full h-13" asChild>
           <Button
             variant="outline"
-            className="flex items-center gap-2 rounded-lg"
+            className="flex items-center justify-start gap-2 rounded-xl w-full"
           >
             <Avatar>
               <AvatarImage src={`${user?.image}`} alt="@taskyapp" />

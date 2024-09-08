@@ -3,7 +3,7 @@ import ProjectProfile from "../project-profile"
 
 const HeaderBarProject = () =>{
     return(
-        <nav className="flex flex-col">
+        <nav className="flex flex-col pb-6">
             <ProjectProfile />
             <div className="flex justify-between items-center mt-4">
                 <ButtonFilter />

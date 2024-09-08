@@ -1,7 +1,6 @@
 model Board {
   id          String   @id @default(uuid())
   title       String  @default("")
-  description String?
   column_index Int
   created_at  DateTime @default(now())
   updated_at  DateTime @updatedAt

@@ -11,7 +11,7 @@ const ColumnBoard = ({ children }: Props) => {
       {(provided, snapshot) => (
         <div
           ref={provided.innerRef}
-          className="bg-muted dark:bg-black p-2 rounded-lg shadow-sm max-w-72 w-full flex flex-col gap-2"
+          className="bg-muted dark:bg-black p-2 rounded-xl shadow-sm max-w-72 w-full flex flex-col gap-2"
           {...provided.droppableProps}
         >
             <div className="mb-1 p-2 flex items-center gap-2">
