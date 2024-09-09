@@ -3,7 +3,7 @@
 import { useGetProjectDetails } from "@/lib/hooks/use-swr";
 import Image from "next/image";
 import { useParams } from "next/navigation";
-import Loading from "../../../../../../components/global/loading";
+import Loading from "../../../../../components/global/loading";
 
 const ProjectProfile = () => {
   const params = useParams<{projectsid: string}>()

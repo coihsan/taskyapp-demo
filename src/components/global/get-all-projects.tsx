@@ -10,6 +10,7 @@ import { Skeleton } from "../ui/skeleton";
 import CreateButtonGlobal from "../primitive/create-button-global";
 import { FluentAdd24Filled } from "../icons/add-24-filled";
 import NewProjectsForm from "../form/new-projects-form";
+import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 
 const GetAllProjects = () => {
   const params = useParams<{ workspaceid: string, projectsid: string }>();
@@ -41,17 +42,17 @@ const GetAllProjects = () => {
           <NewProjectsForm />
         </CreateButtonGlobal>
       </div>
-      <div className="mt-4 h-60">
+      <ScrollArea className="mt-4 h-56">
         {spaceByWorkspaceId.map((list) => (
           <div className="grid w-full" key={list.id}>
             <Link
-              href={`/app/${params.workspaceid}/projects/${list.id}`}
+              href={`/app/${params.workspaceid}/${list.id}`}
               className={clsx(
                 "flex items-center text-sm h-9 gap-3 pl-3 text-black dark:text-foreground hover:bg-onyx-100 dark:hover:bg-onyx-800 hover:ring-2 hover:ring-onyx-100 dark:hover:ring-onyx-800 rounded-md transitionAll",
                 {
                   "bg-muted rounded-lg font-bold":
                     pathname ===
-                    `/app/${params.workspaceid}/projects/${list.id}`,
+                    `/app/${params.workspaceid}/${list.id}`,
                 }
               )}
             >
@@ -64,7 +65,8 @@ const GetAllProjects = () => {
             </Link>
           </div>
         ))}
-      </div>
+        <ScrollBar orientation="vertical" />
+      </ScrollArea>
     </SidebarContent>
   );
 };

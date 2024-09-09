@@ -42,12 +42,12 @@ const UserButtonCustom = () => {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent
-          className="CardStyle max-w-64 w-full"
+          className="CardStyle w-full min-w-60"
           align="end"
         >
-          <DropdownMenuLabel className="grid gap-1">
-            <span>{user?.email}</span>
-            <span className="text-xs text-muted-foreground">
+          <DropdownMenuLabel className="grid gap-1 overflow-x-hidden">
+            <span className="line-clamp-1">{user?.email}</span>
+            <span className="text-xs text-muted-foreground line-clamp-1">
               {user?.name}
             </span>
           </DropdownMenuLabel>

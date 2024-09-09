@@ -6,20 +6,21 @@ import FooterOnSidebar from "@/components/global/footer-on-sidebar";
 import SelectWorkspace from "../select-workspace";
 import WorkspaceMenu from "../workspace-menu";
 import { SidebarContent } from "@/components/global/sidebar-content";
-import { useGetAllProjectsByWorkspaceId } from "@/lib/hooks/use-swr";
 import GetAllProjects from "../get-all-projects";
+import NotificationUser from "../notification-user";
 
 interface Props {
-  workspaceId: string;
+  workspaceid: string;
 }
 
-const Sidebar = ({ workspaceId }: Props) => {
+const Sidebar = ({ workspaceid }: Props) => {
   return (
     <aside className="w-full h-screen min-h-dvh max-w-64 relative">
-      <SidebarContent>
-        <Logo />
-      </SidebarContent>
-      <div className="pt-3 px-2">
+      <div className="flex items-center justify-between px-2 py-4">
+          <Logo />
+        <NotificationUser />
+      </div>
+      <div className="px-2">
         <SelectWorkspace />
       </div>
       <WorkspaceMenu />

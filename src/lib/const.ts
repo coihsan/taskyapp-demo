@@ -9,9 +9,31 @@ import { FluentSignOut24Regular } from '@/components/icons/sign-out'
 import { FluentDataUsage24Regular } from '@/components/icons/data-usage'
 import { FluentColor24Regular } from '@/components/icons/color-icons'
 import { FluentAppFolder24Regular } from '@/components/icons/app-folder-24-regular'
-import { FluentBuildingPeople24Regular } from '@/components/icons/building-people-24-regular'
-import { Edge } from '@xyflow/react';
 import { FluentHome24Regular } from '@/components/icons/home'
+import CalenderDate from '@/components/icons/calender-date'
+import FluentPeopleTeam24Regular from '@/components/icons/people-team'
+
+export const sidebar = [
+  { id: 0, title: "Home", url: `/`, icon: FluentHome24Regular },
+  {
+    id: 2,
+    title: "Upcoming",
+    url: "/schedule",
+    icon: CalenderDate,
+  },
+  {
+    id: 7,
+    title: "Teams",
+    url: "/members",
+    icon: FluentPeopleTeam24Regular,
+  },
+  {
+    id: 3,
+    title: "Settings",
+    url: "/settings",
+    icon: FluentSettings24Regular,
+  },
+];
 
 export const RoleTeam = [
     { id: 0, role: 'View', values: 'view', desc: 'Only view and comment' },

@@ -35,7 +35,11 @@ export const getAllProjectsByWorkspaceId = async (workspaceId: string) => {
       workspaceId: workspaceId,
     },
     include: {
-      workspace: true,
+      workspace: {
+        include: {
+          project: true
+        },
+      },
     },
   });
   if (workspaceById) {

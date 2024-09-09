@@ -26,14 +26,12 @@ const NotificationUser = () => {
       <Sheet>
         <SheetTrigger>
           <Button
-            size={"icon"}
-            className="aspect-[1/1] rounded-full"
-            variant={"ghost"}
+            variant="outline" size="icon" className="ml-auto h-8 w-8"
           >
             <FluentAlertBadge24Filled />
           </Button>
         </SheetTrigger>
-        <SheetContent className="CardStyle">
+        <SheetContent side={'left'} className="CardStyle">
           <SheetHeader>
             <SheetTitle>Notification</SheetTitle>
             <SheetDescription>

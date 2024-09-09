@@ -20,8 +20,7 @@ const ColumnBoard = ({ children }: Props) => {
         >
           <div className="mb-1 p-2 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <label />
-              <input className="w-2 border-0 ring-0 focus:ring-0 cursor-pointer outline-none rounded-full" type="color" value={"#fff"} />
+              <div className="h-6 w-[5px] rounded-md bg-green-500"></div>
               <h1 className="text-base">Todo</h1>
               <Badge
                 variant={"secondary"}

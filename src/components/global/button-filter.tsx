@@ -17,13 +17,15 @@ const ButtonFilter = () =>{
     const [tableView, setTableView] = useState(false);
 
     return(
-        <Tabs defaultValue="board" activationMode="manual">
+        <Tabs defaultValue="board" activationMode="automatic">
         <TabsList>
-            <TabsTrigger value="board">
-                <BoardIcons className="size-5" />
+            <TabsTrigger className="flex items-center gap-2" value="board">
+                <BoardIcons />
+                Board
             </TabsTrigger>
-            <TabsTrigger value="table">
-                <FluentAppsListDetail24Regular className="size-5" />
+            <TabsTrigger className="flex items-center gap-2" value="table">
+                <FluentAppsListDetail24Regular />
+                List
             </TabsTrigger>
         </TabsList>
         </Tabs>

@@ -8,7 +8,7 @@ import { Toaster as ToasterSonner } from "@/components/ui/sonner";
 
 const myFont = DM_Sans({
   subsets: ['latin'],
-  weight: ["300", "400", "500", "600", "700", "800", "900", "1000"],
+  weight: ["400", "500", "600", "700", "800", "900", "1000"],
 })
 
 export const metadata: Metadata = {

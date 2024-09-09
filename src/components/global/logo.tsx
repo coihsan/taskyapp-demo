@@ -10,7 +10,7 @@ export default function Logo({ className, center }: LogoProps) {
   return (
     <div
       className={clsx(
-        center ? "w-full mx-auto flex justify-center" : "",
+        center ? "flex justify-center" : "",
         `${className}`,
       )}
     >
