@@ -32,12 +32,6 @@ const CanvasBoard = () => {
       <DragDropContext onDragEnd={onDragEnd}>
         <div className="flex items-start flex-nowrap gap-2">
           <ColumnBoard>
-            <CardDetails />
-            <CardDetails />
-          </ColumnBoard>
-          <ColumnBoard>
-            <CardDetails />
-            <CardDetails />
           </ColumnBoard>
         </div>
       </DragDropContext>

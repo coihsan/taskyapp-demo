@@ -1,9 +1,10 @@
 model Board {
-  id          String   @id @default(uuid())
-  title       String  @default("")
-  column_index Int
-  created_at  DateTime @default(now())
-  updated_at  DateTime @updatedAt
+  id          String    @id @default(uuid())
+  title       String    @default("")
+  column_index Int      @default(0)
+  color       String?   @default("#fff")
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
   cards       Card[]
   projectId   String
   project     Projects @relation(fields: [projectId], references: [id], onDelete: Cascade)

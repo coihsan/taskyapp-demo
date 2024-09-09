@@ -39,6 +39,7 @@ export const CreateNewBoardSchema = z.object({
         message: "Title is required"
     }),
     columnIndex: z.number(),
+    color: z.string().optional()
 })
 
 export const NewCalenderSchema = z.object({

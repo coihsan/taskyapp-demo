@@ -42,7 +42,7 @@ const UserButtonCustom = () => {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent
-          className="CardStyle min-w-[200px] w-full"
+          className="CardStyle max-w-64 w-full"
           align="end"
         >
           <DropdownMenuLabel className="grid gap-1">

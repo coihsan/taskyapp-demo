@@ -132,6 +132,17 @@ export const upsertCard = async (
   return response;
 };
 
+// get all board
+
+export const getAllBoard = async () =>{
+  const response = await db.board.findMany({
+    include:{
+      cards: true
+    }
+  })
+  return response
+}
+
 // upsert sub task
 export const createSubTask = async (
   title: string,

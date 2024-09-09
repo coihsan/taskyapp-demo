@@ -1,5 +1,6 @@
 "use client"
 import React from 'react'
+import StoreProvider from '@/providers/store-provider';
 
 type Props = {
   children: React.ReactNode;
@@ -8,9 +9,11 @@ type Props = {
 const MainLayout = ({ children }: Props) => {
   
   return (
-    <main className="overflow-hidden h-screen min-h-[100dvh] w-full">
-      {children}
-    </main>
+    <StoreProvider>
+      <main className="overflow-hidden h-screen min-h-[100dvh] w-full">
+        {children}
+      </main>
+    </StoreProvider>
   );
 };
 

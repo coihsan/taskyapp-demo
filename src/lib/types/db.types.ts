@@ -19,16 +19,16 @@ export type AppState = {
   setEdges: (edges: Edge[]) => void;
 };
 
-export interface UserDataTypes {
-  userId: string;
-  username: string;
-  createdAt: Date | undefined;
-  clerkId: string;
-  password?: string;
-  bio?: string;
-  fullName?: string;
-  imageUrl?: string;
-  emailUser?: string;
+export interface StateUser {
+  id: string,
+  name: string,
+  email: string,
+  emailVerified: Date | null,
+  image: string,
+  username: string,
+  bio: string,
+  preferences: string,
+  password: string,
 };
 
 export interface SpaceDataTypes {
@@ -45,18 +45,6 @@ export interface workspaceTypes {
   status: string | null;
   created_at: Date;
   updated_at: Date;
-}
-
-export interface userProps {
-  imageUrl: string;
-  id: string;
-  clerkId: string;
-  emailUser: string;
-  username: string;
-  fullName: string;
-  password: string;
-  bio: string;
-  createdAt: Date;
 }
 
 export interface cardType {
@@ -83,30 +71,12 @@ export interface navlink {
   icons: any;
 }
 
-export type boardProps = {
-  status: "Backlogs" | "Inprogress" | "Review" | "Done";
-};
-export enum status {
-  "Backlogs",
-  "Inprogress",
-  "Review",
-  "Done",
+export interface StateBoard {
+  title: string;
+  column_index: number,
+  color: string
 }
 
-export type StatePerson = {
-  fullName: string;
-  image: string;
-  bio: string;
-  username: string;
-  password: string
-};
-export type PersonAction = {
-  updateFullName: (firstName: StatePerson['fullName']) => void
-  updateImage: (image: StatePerson['image']) => void
-  updateBio: (status: StatePerson['bio']) => void
-  updateUsername: (username: StatePerson['username']) => void
-  updatePassword: (password: StatePerson['password']) => void
-}
 export type AuthUserOrganization =
   | Prisma.PrismaClientKnownRequestError
   | Prisma.PrismaClientUnknownRequestError;

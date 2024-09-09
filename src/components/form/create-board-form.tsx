@@ -18,8 +18,8 @@ import { useParams, useRouter } from 'next/navigation'
 import { CreateNewBoardSchema } from '@/lib/schema'
 import { upsertBoard } from '@/lib/action/projects'
 import { Board } from '@prisma/client'
-import Loading from '../global/loading'
 import { v4 } from 'uuid'
+import { color } from 'framer-motion'
 
 type FormValues = z.infer<typeof CreateNewBoardSchema>
 
@@ -35,7 +35,8 @@ const CreateNewBoard = ({ data } : Props) =>{
         mode: "onChange",
         defaultValues:{
             title: data?.title || "",
-            columnIndex: data?.column_index || 0
+            columnIndex: data?.column_index || 0,
+            color: data?.color || ""
         }
     })
 
@@ -48,7 +49,8 @@ const CreateNewBoard = ({ data } : Props) =>{
                 column_index: values.columnIndex,
                 created_at: data?.created_at || new Date(),
                 updated_at: data?.created_at || new Date(),
-                projectId: params.projectsid
+                projectId: params.projectsid,
+                color: values.color || ""
             },
             params.projectsid
         );
