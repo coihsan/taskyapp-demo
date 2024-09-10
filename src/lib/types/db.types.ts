@@ -9,6 +9,12 @@ import {
 
 export type AppNode = Node;
 
+export interface FeatureOptionsType {
+  id: string,
+  name: string,
+  link: string
+}
+
 export type AppState = {
   nodes: AppNode[];
   edges: Edge[];
