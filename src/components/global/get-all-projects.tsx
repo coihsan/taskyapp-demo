@@ -44,11 +44,11 @@ const GetAllProjects = () => {
       </div>
       <ScrollArea className="mt-4 h-56">
         {spaceByWorkspaceId.map((list) => (
-          <div className="grid w-full" key={list.id}>
+          <div className="grid gap-2 w-full" key={list.id}>
             <Link
               href={`/app/${params.workspaceid}/${list.id}`}
               className={clsx(
-                "flex items-center text-sm h-9 gap-3 pl-3 text-black dark:text-foreground hover:bg-onyx-100 dark:hover:bg-onyx-800 hover:ring-2 hover:ring-onyx-100 dark:hover:ring-onyx-800 rounded-md transitionAll",
+                "flex items-center text-sm h-9 gap-3 pl-3 text-black dark:text-foreground hover:bg-onyx-100 dark:hover:bg-onyx-800 hover:ring-2 hover:ring-onyx-100 dark:hover:ring-onyx-800 rounded-md transitionAll line-clamp-1",
                 {
                   "bg-muted rounded-lg font-bold":
                     pathname ===

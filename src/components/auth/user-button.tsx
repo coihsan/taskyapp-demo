@@ -1,4 +1,5 @@
 "use client"
+
 import React, { useEffect } from "react";
 import {
   DropdownMenu,
@@ -10,12 +11,11 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { SignOutButton } from "./signout-button";
+import { signOut } from "next-auth/react"
 import { FluentPerson24Regular } from "../icons/person";
 import { FluentSettings24Regular } from "../icons/settings";
 import { FluentSignOut24Regular } from "../icons/sign-out";
 import { useUserDetails } from "@/lib/hooks/use-swr";
-import { signOut } from "next-auth/react";
 import {
   Avatar,
   AvatarFallback,
@@ -25,6 +25,15 @@ import { shortText } from "@/lib/utils";
 
 const UserButtonCustom = () => {
   const { user } = useUserDetails()
+
+  const handleSignOut = async () =>{
+    try {
+      await signOut()
+      console.log('signout success')
+    } catch (error) {
+      console.log(error)
+    }
+  }
   
   return (
     <div>
@@ -48,7 +57,7 @@ const UserButtonCustom = () => {
           <DropdownMenuLabel className="grid gap-1 overflow-x-hidden">
             <span className="line-clamp-1">{user?.email}</span>
             <span className="text-xs text-muted-foreground line-clamp-1">
-              {user?.name}
+              {user?.username}
             </span>
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
@@ -65,7 +74,7 @@ const UserButtonCustom = () => {
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <button className="flex items-center gap-2" onClick={() => signOut()}>
+            <button className="flex items-center gap-2" onClick={handleSignOut}>
               <FluentSignOut24Regular />
               Sign Out
             </button>

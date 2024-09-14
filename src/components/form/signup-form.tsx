@@ -32,6 +32,7 @@ const SignupForm = () => {
       name: "",
       email: "",
       password: "",
+      username: ""
     },
   });
 
@@ -84,6 +85,24 @@ const SignupForm = () => {
                   <FormControl>
                     <Input
                       type="email"
+                      placeholder="achonk@gmail.com"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="username"
+              disabled={isPending}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Username</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="text"
                       placeholder="achonk@gmail.com"
                       {...field}
                     />

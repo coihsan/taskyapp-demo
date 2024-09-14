@@ -23,6 +23,7 @@ export const loginAction = async (values : z.infer<typeof LoginSchema>) =>{
             password,
             redirectTo: DEFAULT_LOGIN_REDIRECT
         });
+        return {success: "Sign in Successful"}
     } catch (error) {
         if (error instanceof AuthError) {
             switch (error.type) {
@@ -43,7 +44,7 @@ export const SignupAction = async (values : z.infer<typeof SignupSchema>) =>{
     if (!validatedFields.success){
         return {error : "Invalid credentials!" }
     }
-    const {email, password, name} = validatedFields.data;
+    const {email, password, name, username} = validatedFields.data;
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const existingUser = await getUserByEmail(email)
@@ -57,6 +58,7 @@ export const SignupAction = async (values : z.infer<typeof SignupSchema>) =>{
             email,
             name,
             password: hashedPassword,
+            username
         }
     });
 

@@ -26,6 +26,7 @@ export const SignupSchema = z.object({
         message: "Name is required"
     }),
     email: z.string().email({ message: "Invalid email address" }),
+    username: z.string().min(1, {message: "Username is required"}),
     password: z.string().min(1, { message: "Password is required" }),
 })
 
@@ -47,4 +48,9 @@ export const NewCalenderSchema = z.object({
     dates: z.date().min(new Date(), 'Invalid date'),
     notes: z.string().optional(),
     times: z.string()
+})
+
+export const userDataSchema = z.object({
+    email: z.string().email(),
+    role: z.enum(['OWNER', 'ADMIN']),
 })

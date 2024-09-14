@@ -29,6 +29,7 @@ import {
     TableRow,
   } from "@/components/ui/table"
 import { getAuthUserDetails } from "@/lib/action/user";
+import { db } from "@/lib/server/db";
 
 type Props = {
     params:{
@@ -37,14 +38,19 @@ type Props = {
     }
   }
 const WorkspaceIDPage = async ({ params }: Props) => {
-  const data = await getAllProjectsByWorkspaceId(params.workspaceid);
-  const user = await  getAuthUserDetails()
+  const user = await getAuthUserDetails()
+  const data = await db.workspace.findUnique({
+    where: {
+      id: params.workspaceid,
+    },
+  });
 
   return (
     <PageWrapper className="relative pb-32 h-screen w-full">
-      
       <div>
-        <h1 className="text-4xl font-semibold">Workspace</h1>
+        <h1 className="text-4xl font-semibold">{data?.name}</h1>
+        <p>Workspace ID : {params.workspaceid}</p>
+        <p>Who is the owner of this workspace? {data?.name}</p>
         <Card className="bg-transparent">
       <CardHeader>
         <CardTitle>Workspace</CardTitle>

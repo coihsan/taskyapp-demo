@@ -1,7 +1,6 @@
 "use client";
 
-import React, { Suspense, useEffect, useState } from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import React, { useEffect, useState } from "react";
 import {
   Select,
   SelectContent,
@@ -12,13 +11,11 @@ import {
   SelectValue,
   SelectSeparator,
 } from "@/components/ui/select";
-import { shortText } from "@/lib/utils";
 import { useUserDetails } from "@/lib/hooks/use-swr";
 import { useRouter } from "next/navigation";
 import { Skeleton } from "../ui/skeleton";
 import CreateButtonGlobal from "../primitive/create-button-global";
 import NewWorkspaceForm from "../form/new-workspace-form";
-import { FluentAdd24Filled } from "../icons/add-24-filled";
 
 const SelectWorkspace = () => {
   const router = useRouter();
@@ -26,8 +23,7 @@ const SelectWorkspace = () => {
   const { user, isLoading, isError } = useUserDetails();
 
   useEffect(() => {
-    const storedWorkspaceId = localStorage.getItem("workspaceId");
-
+    const storedWorkspaceId = localStorage.getItem("workspaceid");
     if (storedWorkspaceId) {
       setSelectedWorkspace(storedWorkspaceId);
     }
@@ -40,9 +36,10 @@ const SelectWorkspace = () => {
     return <div>Error: {isError.message}</div>;
   }
 
+
   const handleWorkspaceChange = (workspaceid: string) => {
     setSelectedWorkspace(workspaceid);
-    localStorage.setItem("workspaceId", workspaceid);
+    localStorage.setItem("workspaceid", workspaceid);
     router.replace(`/app/${workspaceid}`);
   };
 

@@ -14,9 +14,9 @@
  @type {string[]}
  */
 export const authRoutes = [
-    "/sign-in",
-    "/sign-up",
-    "/app/(.*)"
+    `/sign-in`,
+    `/sign-up`,
+    `/app`,
 ]
 
 /**

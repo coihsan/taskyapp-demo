@@ -1,6 +1,6 @@
 "use server";
 
-import { User } from "@prisma/client";
+import { Role, User } from "@prisma/client";
 import { db } from "@/lib/server/db";
 import { v4 } from "uuid";
 import { auth } from "@/lib/server/auth";
@@ -70,4 +70,35 @@ export const getNotificationAndUser = async (workspaceid: string) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+
+export const sendInvitation = async (
+  role: Role,
+  email: string,
+  workspaceId: string
+) => {
+  const invitation = await db.invitation.create({
+    data: { email, workspaceId, role },
+  });
+
+  const invitationToken = v4();
+
+  await db.invitation.update({
+    where: { id: invitation.id },
+    data:{
+      workspaceId: invitation.workspaceId,
+      role: invitation.role,
+      email: invitation.email,
+      status: invitation.status,
+    },
+  });
+
+  await sendInvitationEmail(email, invitationToken);
+
+  return invitation;
+};
+
+const sendInvitationEmail = async (email: string, workspaceid: string) => {
+  const invitationLink = `${process.env.NEXT_PUBLIC_URL}/${workspaceid}`;
 };

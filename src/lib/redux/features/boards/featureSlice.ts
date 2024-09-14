@@ -7,11 +7,44 @@ export const addFeatureOptions = createSlice({
     name: 'feature',
     initialState,
     reducers:{
-        setFeatureOption: (state, action) => {
-            state = action.payload
-        }
+        addBoard: (state) =>{
+            // do something
+        },
+        removeBoard: (state) =>{
+            // do something
+        },
+        addMedia: (state) =>{
+            // do something
+        },
+        removeMedia: (state) =>{
+            // do something
+        },
+        addWorkflow: (state) =>{
+            // do something
+        },
+        removeWorkflow: (state) =>{
+            // do something
+        },
+        addNotes: (state) =>{
+            // do something
+        },
+        removeNotes: (state) =>{
+            // do something
+        },
+        addCalender: (state) =>{
+            // do something
+        },
+        removeCalender: (state) =>{
+            // do something
+        },
+        addFunnel: (state) =>{
+            // do something
+        },
+        removeFunnel: (state) =>{
+            // do something
+        },
     }
 })
 
-export const {setFeatureOption} = addFeatureOptions.actions
+export const {} = addFeatureOptions.actions
 export default addFeatureOptions.reducer

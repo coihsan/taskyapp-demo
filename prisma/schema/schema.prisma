@@ -32,11 +32,8 @@ model Invitation {
   created_at  DateTime         @default(now())
   updated_at  DateTime         @updatedAt
   workspaceId String
-  projectId   String
   status      InvitationStatus @default(PENDING)
   workspace   Workspace        @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
-  project     Projects         @relation(fields: [projectId], references: [id], onDelete: Cascade)
 
   @@index([workspaceId])
-  @@index([projectId])
 }

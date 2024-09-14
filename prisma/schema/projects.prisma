@@ -2,7 +2,6 @@ model Projects {
   id             String          @id @default(uuid())
   name           String
   status         Status          @default(ACTIVE)
-  Invitation     Invitation[]
   notification   Notification[]
   workspaceId    String          
   workspace      Workspace       @relation(fields: [workspaceId], references: [id], onDelete: Cascade)

@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import boardReducer from './features/boards/boardSlice'
+import featureReducer from './features/boards/featureSlice'
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       board: boardReducer,
+      feature: featureReducer
     }
   })
 }

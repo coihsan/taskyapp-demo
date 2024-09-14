@@ -1,5 +1,5 @@
 export { auth as middleware } from "@/lib/server/auth"
-import { redirect } from "next/navigation";
+import type { NextResponse, NextRequest } from 'next/server'
 import NextAuth from "next-auth"
 import { 
   apiAuthPrefix,
@@ -9,9 +9,9 @@ import {
  } from "../routes"
 import authConfig from "./lib/config /auth.config";
 
- const { auth } = NextAuth(authConfig)
+const { auth } = NextAuth(authConfig)
 
-export default auth((req) => {
+export default auth((req ) => {
   const { nextUrl } = req;
   const isLoggedIn = !!req.auth;
   console.log(isLoggedIn)

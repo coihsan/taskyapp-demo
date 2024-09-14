@@ -16,9 +16,9 @@ import { auth } from "@/lib/server/auth";
 const Navigation = async () => {
   const user = await auth();
   return (
-    <NavigationMenu orientation="horizontal" className="flex w-full max-w-screen-xl mx-auto fixed top-2 left-0 right-0 z-50 px-6">
-      <NavigationMenuList className="flex items-center w-full max-w-screen-xl justify-between px-4 py-2 bg-white/50 borderStyle dark:bg-white/5 backdrop-blur-xl rounded-full drop-shadow-md">
-        <div className="flex">
+    <NavigationMenu orientation="horizontal" className="w-full max-w-5xl mx-auto fixed top-2 left-0 right-0 z-50 px-6">
+      <NavigationMenuList className="w-full max-w-5xl border borderStyle justify-between px-4 gap-6 py-2 bg-white/50 borderStyle dark:bg-white/5 backdrop-blur-xl rounded-full">
+        <div className="flex space-x-6">
           <Link className="flex items-center gap-2" href={"/"}>
             <Logo />
             <span className="borderStyle bg-white/5 px-1 py-px text-onyx-500 rounded-full text-[10px] font-semibold">

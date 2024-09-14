@@ -17,7 +17,14 @@ import { Separator } from "@/components/ui/separator";
 import { FluentEmojiHand24Regular } from "@/components/icons/emoji-hand-24-regular";
 import { Input } from "@/components/ui/input";
 
-const SettingsPage = () => {
+type Props = {
+  params:{
+    workspaceid: string,
+    projectsid: string
+  }
+}
+
+const SettingsPage = ({params} : Props) => {
   const [progress, setProgress] = React.useState(13);
   React.useEffect(() => {
     const timer = setTimeout(() => setProgress(66), 500);
@@ -28,7 +35,7 @@ const SettingsPage = () => {
       <h1>Settings</h1>
       <div>
         <h3>Workspace Name</h3>
-        <Input type="text" value="TaskyApp" />
+        <Input type="text" value={params.workspaceid} />
       </div>
       <h1 className="py-6">Data Usage</h1>
       <main className="grid gap-3">
