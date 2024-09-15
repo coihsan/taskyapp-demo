@@ -11,20 +11,6 @@ model Projects {
   funnel         Funnel[]
   media          Media[]
   memos          Memos[]
-  featureOption  FeatureOptions[]
   
   @@index([workspaceId])
-}
-
-
-model FeatureOptions {
-  id         String   @id @default(uuid())
-  name       String
-  link       String   @default("#")
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-  projectId  String   
-  project    Projects @relation(fields: [projectId], references: [id], onDelete: Cascade)
-
-  @@index([projectId])
 }

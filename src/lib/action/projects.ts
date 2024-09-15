@@ -1,6 +1,6 @@
 "use server";
 
-import { Card, Board, Prisma, Projects, SubTask } from "@prisma/client";
+import { Card, Board, Prisma, Projects, SubTask, IconOption } from "@prisma/client";
 import { db } from "@/lib/server/db";
 import { v4 } from "uuid";
 
@@ -57,37 +57,6 @@ export const getAllProjectsByWorkspaceId = async (workspaceId: string) => {
   }
   return [];
 };
-
-// create projects option
-export const featureOptionAction = async ({
-  projectsid,
-  workspaceid,
-  name} : {
-  projectsid: string,
-  workspaceid: string,
-  name: string,
-  }) =>{
-  const projectDetails = await db.projects.findUnique({
-    where:{
-      id: projectsid
-    }
-  })
-  if (!projectDetails) return null;
-
-  const response = await db.featureOptions.create({
-    data:{
-      id: v4(),
-      name: name,
-      link: `app/${workspaceid}/projects/${projectsid}/${name}`,
-      project:{
-        connect:{
-          id: projectDetails.id
-        }
-      }
-    }
-  })
-  return response
-}
 
 // Upsert new board
 export const upsertBoard = async (board: Board, projectId: string) => {

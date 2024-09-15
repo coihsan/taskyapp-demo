@@ -1,14 +1,14 @@
 import { ThemeProvider } from "@/providers/theme-provider";
 import type { Metadata } from "next";
-import { DM_Sans } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import "./globals.css";
 import ModalProvider from "@/providers/modal-provider";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as ToasterSonner } from "@/components/ui/sonner";
 
-const myFont = DM_Sans({
+const myFont = Inter({
   subsets: ['latin'],
-  weight: ["400", "500", "600", "700", "800", "900", "1000"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 })
 
 export const metadata: Metadata = {

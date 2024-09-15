@@ -99,37 +99,37 @@ export const sidebaraccountuser = [
         icon: FluentSettings24Regular,
     },
 ]
-export const workspaceMenu = [
+export const projectsMenu = [
+    {
+        id: 1,
+        title: 'Overview',
+        url: '/',
+    },
     {
         id: 9,
         title: 'Board',
-        url: '/app/board',
-        icon: BoardIcons,
-    },
-    {
-        id: 4,
-        title: 'Memos',
-        url: '/app/memos',
-        icon: FluentDocumentFolder24Regular,
-    },
-    {
-        id: 5,
-        title: 'Funnel',
-        url: '/app/funnel',
-        icon: FluentDataFunnel24Regular,
+        url: 'board',
     },
     {
         id: 6,
-        title: 'Workflows',
-        url: '/app/workflow',
-        icon: WorkflowsIcons,
+        title: 'Workflow',
+        url: 'workflow',
+    },
+    {
+        id: 12,
+        title: 'Calender',
+        url: 'calender',
     },
     {
         id: 8,
         title: 'Todos',
-        url: '/app/todos',
-        icon: FluentTaskListSquare24Regular,
+        url: 'todos',
     },
+    {
+        id: 4,
+        title: 'Notes',
+        url: 'notes',    
+    }
 ]
 export const coreFeature = [
     {

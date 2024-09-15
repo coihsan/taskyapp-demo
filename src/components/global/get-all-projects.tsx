@@ -44,8 +44,9 @@ const GetAllProjects = () => {
         </CreateButtonGlobal>
       </div>
       <ScrollArea className="mt-4 h-56">
+        <div className="grid gap-1">
         {spaceByWorkspaceId.map((list) => (
-          <div className="grid gap-2 w-full" key={list.id}>
+          <div className="grid w-full" key={list.id}>
             <Link
               href={`/app/${params.workspaceid}/${list.id}`}
               className={clsx(
@@ -66,6 +67,7 @@ const GetAllProjects = () => {
             </Link>
           </div>
         ))}
+        </div>
         <ScrollBar orientation="vertical" />
       </ScrollArea>
     </SidebarContent>
