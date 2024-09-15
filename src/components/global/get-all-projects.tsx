@@ -1,5 +1,6 @@
 "use client";
 
+import React from 'react'
 import { SidebarContent } from "@/components/global/sidebar-content";
 import Link from "next/link";
 import { FluentFolder24Regular } from "@/components/icons/folder-24-regular";
@@ -8,7 +9,6 @@ import { useGetAllProjectsByWorkspaceId } from "@/lib/hooks/use-swr";
 import clsx from "clsx";
 import { Skeleton } from "../ui/skeleton";
 import CreateButtonGlobal from "../primitive/create-button-global";
-import { FluentAdd24Filled } from "../icons/add-24-filled";
 import NewProjectsForm from "../form/new-projects-form";
 import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 
@@ -25,6 +25,7 @@ const GetAllProjects = () => {
   if (isError) {
     return <div>Error: {isError.message}</div>;
   }
+
 
   return (
     <SidebarContent borderTop>

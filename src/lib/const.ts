@@ -35,16 +35,6 @@ export const sidebar = [
   },
 ];
 
-export const RoleTeam = [
-    { id: 0, role: 'View', values: 'view', desc: 'Only view and comment' },
-    { id: 1, role: 'User', values: 'user', desc: 'Can view, comment and edit' },
-    {
-        id: 2,
-        role: 'Admin',
-        values: 'admin',
-        desc: 'Admin level access to all resource',
-    },
-]
 export const sitelink = [
     { id: 0, title: 'Home', url: '/' },
     { id: 1, title: 'Demo', url: '/demo' },
@@ -131,7 +121,7 @@ export const workspaceMenu = [
     {
         id: 6,
         title: 'Workflows',
-        url: '/app/workflows',
+        url: '/app/workflow',
         icon: WorkflowsIcons,
     },
     {

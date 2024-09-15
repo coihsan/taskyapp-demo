@@ -52,5 +52,5 @@ export const NewCalenderSchema = z.object({
 
 export const userDataSchema = z.object({
     email: z.string().email(),
-    role: z.enum(['OWNER', 'ADMIN']),
+    role: z.enum(['USER', 'ADMIN', 'VIEW']),
 })

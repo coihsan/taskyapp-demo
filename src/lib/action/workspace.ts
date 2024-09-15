@@ -84,21 +84,52 @@ export const sendInvitation = async (
 
   const invitationToken = v4();
 
-  await db.invitation.update({
-    where: { id: invitation.id },
-    data:{
-      workspaceId: invitation.workspaceId,
-      role: invitation.role,
-      email: invitation.email,
-      status: invitation.status,
-    },
-  });
+  try {
+    await db.invitation.update({
+      where: { id: invitation.id },
+      data: { 
+        role
+       },
+    });
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
 
   await sendInvitationEmail(email, invitationToken);
 
   return invitation;
 };
 
-const sendInvitationEmail = async (email: string, workspaceid: string) => {
-  const invitationLink = `${process.env.NEXT_PUBLIC_URL}/${workspaceid}`;
+const sendInvitationEmail = async (email: string, workspaceId: string) => {
+  const invitationLink = `${process.env.NEXT_PUBLIC_URL}/${workspaceId}`;
+
 };
+
+
+export const saveActivityLogsNotification = async ({
+  workspaceId,
+  message
+} : {
+  workspaceId: string,
+  message: string
+}) => {
+  const session = await auth()
+  let userData
+
+  if(!session?.user?.email){
+    const response = await db.user.findFirst({
+      where:{
+        email: session?.user?.email as string
+      }
+    })
+    userData = response
+  } else{
+    userData = await db.user.findFirst({
+      where:{
+        email: session?.user?.email as string
+      }
+    })
+  }
+  
+}

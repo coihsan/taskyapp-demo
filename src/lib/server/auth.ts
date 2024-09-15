@@ -41,40 +41,35 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   secret: process.env.AUTH_SECRET,
   basePath: "/api/auth",
   callbacks: {
-    async signIn({ profile, account }) {
-      try {
-        const user = await db.user.findUnique({
-          where: {
-            email: profile?.email as string,
-          },
-        });
-        if (user) {
-          return true;  
-        }
-        if (!user && profile?.email) {
-          if (account?.provider === "google" && profile?.email_verified) {
-            return true;
-          }
-          return await createUser(profile, account);
-        }
-      } catch (error) {
-        console.error("Error in signIn callback:", error);
-        return false;
-      }
-      return false;
-    },
+    // async signIn({ profile, account,  }) {
+    //   try {
+    //     const user = await db.user.findUnique({
+    //       where: {
+    //         email: profile?.email as string,
+    //       },
+    //     });
+    //     if (user) {
+    //       return true;  
+    //     }
+    //     if (!user && profile?.email) {
+    //       if (account?.provider === "google" && profile?.email_verified) {
+    //         return true;
+    //       }
+    //       return await createUser(profile, account);
+    //     }
+    //   } catch (error) {
+    //     console.error("Error in signIn callback:", error);
+    //     return false;
+    //   }
+    //   return false;
+    // },
     async redirect({ url, baseUrl }) {
       return baseUrl;
     },
-    async session({ session, user, token }) {
+    async session({ session, user }) {
       if (user) {
         session.user = {
           ...session.user,
-          id: user.id,
-          email: user.email,
-          username: user.name as string,
-          name: user.name as string,
-          image: user.image as string,
         };
       }
       return session;

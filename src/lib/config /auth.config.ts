@@ -35,6 +35,15 @@ export default {
     Google({
       clientId: process.env.AUTH_WEBAPP_GOOGLE_CLIENT_ID,
       clientSecret: process.env.AUTH_WEBAPP_GOOGLE_CLIENT_SECRET,
+      profile(profile){
+        return{
+          id: profile.id,
+          name: profile.name,
+          email: profile.email,
+          image: profile.picture,
+          role: profile.role ?? "USER",
+        }
+      },
       authorization: {
         params: {
           prompt: "consent",

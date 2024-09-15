@@ -23,7 +23,7 @@ model FeatureOptions {
   link       String   @default("#")
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
-  projectId  String   @unique
+  projectId  String   
   project    Projects @relation(fields: [projectId], references: [id], onDelete: Cascade)
 
   @@index([projectId])

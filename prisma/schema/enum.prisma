@@ -1,5 +1,4 @@
 enum Role {
-  CREATOR
   USER
   ADMIN
   VIEW

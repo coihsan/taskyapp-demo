@@ -34,7 +34,6 @@ import {
     SelectTrigger,
     SelectValue,
 } from '@/components/ui/select'
-import { RoleTeam } from '@/lib/const'
 import { Role } from '@prisma/client'
 
 export default function AddTeam() {

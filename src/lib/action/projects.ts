@@ -59,11 +59,14 @@ export const getAllProjectsByWorkspaceId = async (workspaceId: string) => {
 };
 
 // create projects option
-export const featureOptionAction = async (
+export const featureOptionAction = async ({
+  projectsid,
+  workspaceid,
+  name} : {
   projectsid: string,
   workspaceid: string,
   name: string,
-) =>{
+  }) =>{
   const projectDetails = await db.projects.findUnique({
     where:{
       id: projectsid

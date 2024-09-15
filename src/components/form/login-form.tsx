@@ -57,7 +57,6 @@ const LoginForm = () => {
           onSubmit={form.handleSubmit(onSubmit)}
           className="space-y-4 w-full"
         >
-          <div className="space-y-4">
             <FormField
               control={form.control}
               disabled={isPending}
@@ -68,7 +67,7 @@ const LoginForm = () => {
                   <FormControl>
                     <Input
                       type="email"
-                      placeholder="achonk@gmail.com"
+                      placeholder="your@gmail.com"
                       {...field}
                     />
                   </FormControl>
@@ -90,7 +89,6 @@ const LoginForm = () => {
                 </FormItem>
               )}
             />
-          </div>
           <Button className="w-full" variant={"default"} type="submit">
           {isPending ? (
               <>
