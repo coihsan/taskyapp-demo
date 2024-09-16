@@ -1,14 +1,17 @@
-model Memos {
+model Notes {
   id          String   @id @default(uuid())
   title       String?
   description String?
   created_at  DateTime @default(now())
   updated_at  DateTime @updatedAt
   content     String   @db.Text
+  category    String[]
   published   Boolean  @default(false)
-  projectId     String
-  userId      String
-  project       Projects    @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  projectId   String
+  attachment  Attachment[]
+  authorId    String
+  author      User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  project     Projects    @relation(fields: [projectId], references: [id], onDelete: Cascade)
 
   @@index([projectId])
 }

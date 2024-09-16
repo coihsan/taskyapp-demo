@@ -1,0 +1,14 @@
+model Todos{
+    id              String      @id @default(uuid())
+    title           String
+    description     String?
+    is_complete     Boolean
+    start_date      DateTime?
+    end_date        DateTime?
+    created_at      DateTime    @default(now())
+    updated_at      DateTime    @updatedAt
+    userId          String
+    user            User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+    projectsId      String
+    projects        Projects    @relation(fields: [projectsId], references: [id], onDelete: Cascade)
+}

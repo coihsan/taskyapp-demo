@@ -19,9 +19,9 @@ const WorkspaceMenu = () => {
         {sidebar.map((item) => (
           <Link
             className={clsx(
-              "flex items-center text-sm h-9 gap-3 pl-3 text-black dark:text-foreground hover:bg-onyx-100 dark:hover:bg-onyx-800 hover:ring-2 hover:ring-onyx-100 dark:hover:ring-onyx-800 rounded-md transitionAll",
+              "flex items-center text-sm text-foreground h-9 gap-3 pl-3 hover:bg-onyx-100 dark:hover:bg-onyx-800 hover:ring-2 hover:ring-onyx-100 dark:hover:ring-onyx-800 rounded-md transitionAll",
               {
-                "bg-muted rounded-lg font-bold": pathname === `/app/${params.workspaceid}${item.url}`,
+                "bg-muted rounded-lg font-bold text-primary": pathname === `/app/${params.workspaceid}${item.url}`,
               }
             )}
             href={`/app/${params.workspaceid}${item.url}`}

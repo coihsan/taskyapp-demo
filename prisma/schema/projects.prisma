@@ -8,9 +8,8 @@ model Projects {
   Schedule       Schedule[]
   workflows      Workflows[]
   board          Board[]
-  funnel         Funnel[]
-  media          Media[]
-  memos          Memos[]
+  notes          Notes[]
+  todos          Todos[]
   
   @@index([workspaceId])
 }

@@ -19,6 +19,8 @@ model User {
   cards          CardAssignees[]
   accounts       Account[]
   sessions       Session[]
+  todos          Todos[]
+  notes          Notes[]
 }
 
 model Account {

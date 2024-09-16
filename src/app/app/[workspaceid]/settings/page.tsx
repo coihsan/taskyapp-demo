@@ -38,7 +38,7 @@ const SettingsPage = ({params} : Props) => {
         <Input type="text" value={params.workspaceid} />
       </div>
       <h1 className="py-6">Data Usage</h1>
-      <main className="grid gap-3">
+      <main className="grid gap-4">
         <Card className="bg-transparent">
           <CardHeader className="flex flex-row items-center w-full">
             <div>

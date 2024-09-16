@@ -1,0 +1,12 @@
+model Attachment {
+  id                  String         @id @default(uuid())
+  path                String
+  name                String?
+  type                AttachmentType
+  commentId           String?
+  comment             Comment?       @relation(fields: [commentId], references: [id], onDelete: Cascade)
+  cardId              String?
+  card                Card?          @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  notesId             String
+  notes               Notes          @relation(fields: [notesId], references: [id], onDelete: Cascade)
+}

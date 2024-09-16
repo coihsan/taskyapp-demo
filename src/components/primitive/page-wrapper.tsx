@@ -7,9 +7,9 @@ type Props = {
     className?: string
 }
 
-const PageWrapper = ({ children, orientation }: Props) =>{
+const PageWrapper = ({ children, orientation, className }: Props) =>{
     return(
-        <ScrollArea>
+        <ScrollArea className={className}>
             {children}
             <ScrollBar orientation={orientation} />
         </ScrollArea>

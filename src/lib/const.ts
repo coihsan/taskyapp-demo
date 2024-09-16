@@ -105,7 +105,7 @@ export const sidebaraccountuser = [
 export const projectsMenu = [
     {
         id: 9,
-        title: 'Board',
+        title: 'Kanban',
         url: 'board',
         icon: BoardIcons
     },

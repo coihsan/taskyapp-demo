@@ -30,6 +30,7 @@ import {
   } from "@/components/ui/table"
 import { getAuthUserDetails } from "@/lib/action/user";
 import { db } from "@/lib/server/db";
+import { FluentShiftsActivity24Regular } from "@/components/icons/shifts-activity-24-regular";
 
 type Props = {
     params:{
@@ -48,72 +49,33 @@ const WorkspaceIDPage = async ({ params }: Props) => {
   return (
     <PageWrapper className="relative h-screen w-full">
       <div className="p-4">
-        <h1 className="titleHeader">{data?.name}</h1>
-        <p>Workspace ID : {params.workspaceid}</p>
-        <p>Who is the owner of this workspace? {data?.name}</p>
+        <div className="pb-6">
+          <h1 className="titleHeader">{data?.name}</h1>
+        </div>
+        <div className="grid grid-cols-2 gap-4 w-full">
         <Card className="bg-transparent">
       <CardHeader>
-        <CardTitle>Workspace</CardTitle>
+        <CardTitle>Project List</CardTitle>
         <CardDescription>
           Manage your workspace and view their sales performance.
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Name</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead className="hidden md:table-cell">Price</TableHead>
-              <TableHead className="hidden md:table-cell">
-                Total Project
-              </TableHead>
-              <TableHead className="hidden md:table-cell">Created at</TableHead>
-              <TableHead>
-              Actions
-              </TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {user?.user_workspace.map((workspace) =>(
-                <TableRow key={workspace.workspace.id}>
-                <TableCell className="font-medium">
-                  {workspace.workspace.name}
-                </TableCell>
-                <TableCell>
-                  <Badge variant="outline">{workspace.workspace.status}</Badge>
-                </TableCell>
-                <TableCell className="hidden md:table-cell">$499.99</TableCell>
-                <TableCell className="hidden md:table-cell">{workspace.workspace.id[0].length}</TableCell>
-                <TableCell className="hidden md:table-cell">
-                    {workspace.workspace.created_at.toDateString()}
-                </TableCell>
-                <TableCell>
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button aria-haspopup="true" size="icon" variant="ghost">
-                        <MoreHorizontal className="h-4 w-4" />
-                        <span className="sr-only">Toggle menu</span>
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                      <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                      <DropdownMenuItem>Edit</DropdownMenuItem>
-                      <DropdownMenuItem>Delete</DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+        User activity is here
       </CardContent>
-      <CardFooter>
-        <div className="text-xs text-muted-foreground">
-          Showing <strong>1-10</strong> of <strong>32</strong> products
-        </div>
-      </CardFooter>
     </Card>
+        <Card className="bg-transparent">
+      <CardHeader>
+        <div className="flex items-center gap-3">
+          <FluentShiftsActivity24Regular className="size-9 border borderStyle rounded-lg p-2" />
+          <CardTitle>Activity</CardTitle>
+        </div>
+      </CardHeader>
+      <CardContent>
+        User activity is here
+      </CardContent>
+    </Card>
+        </div>
       </div>
     </PageWrapper>
   );

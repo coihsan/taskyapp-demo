@@ -50,11 +50,16 @@ const GetAllProjects = () => {
             <Link
               href={`/app/${params.workspaceid}/${list.id}`}
               className={clsx(
-                "flex items-center text-sm gap-3 h-8 pl-3 text-black dark:text-foreground hover:bg-onyx-100 dark:hover:bg-onyx-800 hover:ring-2 hover:ring-onyx-100 dark:hover:ring-onyx-800 rounded-md transitionAll line-clamp-1",
+                "flex items-center text-sm gap-3 h-8 pl-3 text-muted-foreground hover:bg-onyx-100 dark:hover:bg-onyx-800 hover:ring-2 hover:ring-onyx-100 dark:hover:ring-onyx-800 rounded-md transitionAll line-clamp-1",
                 {
-                  "bg-muted rounded-lg font-bold":
+                  "bg-muted rounded-lg font-bold text-primary":
                     pathname ===
-                    `/app/${params.workspaceid}/${list.id}`,
+                    `/app/${params.workspaceid}/${list.id}` || 
+                    pathname === `/app/${params.workspaceid}/${list.id}/board` ||
+                    pathname === `/app/${params.workspaceid}/${list.id}/workflow` ||
+                    pathname === `/app/${params.workspaceid}/${list.id}/calender` ||
+                    pathname === `/app/${params.workspaceid}/${list.id}/notes` ||
+                    pathname === `/app/${params.workspaceid}/${list.id}/calender` 
                 }
               )}
             >

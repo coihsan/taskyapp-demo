@@ -15,7 +15,7 @@ const FeatureOption = () => {
     <nav className="flex items-center space-x-2 border-y-[1px] h-12 borderStyle px-4">
       <Link
         className={clsx(
-          "flex px-3 gap-2 py-1.5  h-12 items-center justify-center whitespace-nowrap text-sm",
+          "flex px-3 gap-2 py-1.5  h-12 items-center justify-center whitespace-nowrap text-sm text-muted-foreground",
           {
             "text-lime-600 dark:text-lime-400 border-lime-600 dark:border-lime-400 border-b-2 font-bold":
               pathname === `/app/${params.workspaceid}/${params.projectsid}`
@@ -30,7 +30,7 @@ const FeatureOption = () => {
         <Link
           key={menu.id}
           className={clsx(
-            "flex px-3 gap-2 py-1.5  h-12 items-center justify-center whitespace-nowrap text-sm",
+            "flex px-3 gap-2 py-1.5  h-12 items-center justify-center whitespace-nowrap text-sm text-muted-foreground",
             {
               "text-lime-600 dark:text-lime-400 border-lime-600 dark:border-lime-400 border-b-2 font-bold":
                 pathname ===
