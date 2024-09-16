@@ -10,7 +10,7 @@ import {
 import React from "react";
 const FunnelPage = () => {
   return (
-    <section>
+    <section className="p-4">
       <Command>
         <CommandInput placeholder="Type a command or search..." />
         <CommandList>

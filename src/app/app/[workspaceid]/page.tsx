@@ -46,9 +46,9 @@ const WorkspaceIDPage = async ({ params }: Props) => {
   });
 
   return (
-    <PageWrapper className="relative pb-32 h-screen w-full">
-      <div>
-        <h1 className="text-4xl font-semibold">{data?.name}</h1>
+    <PageWrapper className="relative h-screen w-full">
+      <div className="p-4">
+        <h1 className="titleHeader">{data?.name}</h1>
         <p>Workspace ID : {params.workspaceid}</p>
         <p>Who is the owner of this workspace? {data?.name}</p>
         <Card className="bg-transparent">

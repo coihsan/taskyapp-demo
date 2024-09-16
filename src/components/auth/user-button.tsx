@@ -22,9 +22,18 @@ import {
   AvatarImage,
 } from "@/components/ui/avatar"
 import { shortText } from "@/lib/utils";
+import { Skeleton } from "../ui/skeleton";
 
 const UserButtonCustom = () => {
-  const { user } = useUserDetails()
+  const { user, isError, isLoading } = useUserDetails()
+
+  if(isLoading){
+    return <Skeleton className="h-13 w-64" />
+  }
+
+  if(isError){
+    return <div>Error</div>
+  }
 
   const handleSignOut = async () =>{
     try {

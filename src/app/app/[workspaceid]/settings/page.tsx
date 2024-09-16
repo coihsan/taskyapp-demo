@@ -31,8 +31,8 @@ const SettingsPage = ({params} : Props) => {
     return () => clearTimeout(timer);
   }, []);
   return (
-    <section>
-      <h1>Settings</h1>
+    <section className="p-4">
+      <h1 className="titleHeader">Settings</h1>
       <div>
         <h3>Workspace Name</h3>
         <Input type="text" value={params.workspaceid} />

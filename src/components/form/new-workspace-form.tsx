@@ -74,13 +74,12 @@ const NewWorkspaceForm = () => {
                         name="name"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Workspace Name</FormLabel>
                                 <FormControl>
                                     <Input
                                         type="text"
                                         id="name"
                                         disabled={isPending}
-                                        placeholder="Name"
+                                        placeholder="Workspace name"
                                         {...field}
                                     />
                                 </FormControl>

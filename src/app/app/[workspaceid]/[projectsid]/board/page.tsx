@@ -7,7 +7,7 @@ import CardDetails from "./_components/card-details";
 
 const Page = () => {
   return (
-    <ScrollArea className="relative pb-32 h-screen w-full">
+    <ScrollArea className="relative pb-32 h-screen w-full p-4">
       <CanvasBoard />
       <ScrollBar />
     </ScrollArea>

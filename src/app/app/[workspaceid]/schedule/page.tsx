@@ -10,7 +10,7 @@ import CreateNewCalenderButton from "@/components/global/create-new-calender-but
 
 export default function Page() {
   return (
-    <div className="flex min-h-screen w-full">
+    <div className="flex min-h-screen w-full p-4">
       <div className="flex-1 grid grid-cols-[1fr_300px] gap-8">
         <div className="grid gap-8">
           <div className="flex items-center justify-between">

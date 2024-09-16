@@ -15,12 +15,12 @@ import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 const GetAllProjects = () => {
   const params = useParams<{ workspaceid: string, projectsid: string }>();
   const pathname = usePathname();
-  const { spaceByWorkspaceId, isLoading, isError } =
-    useGetAllProjectsByWorkspaceId(params.workspaceid);
+  const { spaceByWorkspaceId, isLoading, isError } = useGetAllProjectsByWorkspaceId(params.workspaceid);
+
   if (!spaceByWorkspaceId) return null;
 
   if (isLoading) {
-    return <Skeleton className="w-full h-9" />;
+    return <Skeleton className="w-64 h-9" />;
   }
   if (isError) {
     return <div>Error: {isError.message}</div>;
@@ -43,14 +43,14 @@ const GetAllProjects = () => {
           <NewProjectsForm />
         </CreateButtonGlobal>
       </div>
-      <ScrollArea className="mt-4 h-56">
-        <div className="grid gap-1">
+      <ScrollArea className="h-56">
+        <div className="grid gap-1 mt-2">
         {spaceByWorkspaceId.map((list) => (
-          <div className="grid w-full" key={list.id}>
+          <div className="grid w-full w-64" key={list.id}>
             <Link
               href={`/app/${params.workspaceid}/${list.id}`}
               className={clsx(
-                "flex items-center text-sm h-9 gap-3 pl-3 text-black dark:text-foreground hover:bg-onyx-100 dark:hover:bg-onyx-800 hover:ring-2 hover:ring-onyx-100 dark:hover:ring-onyx-800 rounded-md transitionAll line-clamp-1",
+                "flex items-center text-sm gap-3 h-8 pl-3 text-black dark:text-foreground hover:bg-onyx-100 dark:hover:bg-onyx-800 hover:ring-2 hover:ring-onyx-100 dark:hover:ring-onyx-800 rounded-md transitionAll line-clamp-1",
                 {
                   "bg-muted rounded-lg font-bold":
                     pathname ===

@@ -79,11 +79,10 @@ const NewProjectsForm = () => {
                         name="name"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Project Name</FormLabel>
                                 <FormControl>
                                     <Input
                                         disabled={isPending}
-                                        placeholder="Name"
+                                        placeholder="Project name"
                                         {...field}
                                     />
                                 </FormControl>

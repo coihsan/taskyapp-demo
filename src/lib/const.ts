@@ -1,8 +1,11 @@
 import { BoardIcons } from '@/components/icons/board-split'
 import FluentTaskListSquare24Regular from '@/components/icons/task-square'
 import FluentDocumentFolder24Regular from '@/components/icons/document-folder'
-import FluentDataFunnel24Regular from '@/components/icons/data-funnel'
 import { WorkflowsIcons } from '@/components/icons/workflows'
+import WorkspaceIcons from "@/components/icons/workspace";
+import { FluentNotepad24Regular } from "@/components/icons/notepad-24-regular";
+import { FluentTaskListSquareRtl24Regular } from "@/components/icons/task-list-square-rtl-24-regular";
+import { FluentImage24Regular } from "@/components/icons/image-24-regular";
 import { FluentPerson24Regular } from '@/components/icons/person'
 import { FluentSettings24Regular } from '@/components/icons/settings'
 import { FluentSignOut24Regular } from '@/components/icons/sign-out'
@@ -101,34 +104,34 @@ export const sidebaraccountuser = [
 ]
 export const projectsMenu = [
     {
-        id: 1,
-        title: 'Overview',
-        url: '/',
-    },
-    {
         id: 9,
         title: 'Board',
         url: 'board',
+        icon: BoardIcons
     },
     {
         id: 6,
         title: 'Workflow',
         url: 'workflow',
+        icon: WorkflowsIcons
     },
     {
         id: 12,
         title: 'Calender',
         url: 'calender',
+        icon: CalenderDate
     },
     {
         id: 8,
         title: 'Todos',
         url: 'todos',
+        icon: FluentTaskListSquareRtl24Regular
     },
     {
         id: 4,
         title: 'Notes',
-        url: 'notes',    
+        url: 'notes', 
+        icon:  FluentNotepad24Regular  
     }
 ]
 export const coreFeature = [

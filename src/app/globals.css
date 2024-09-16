@@ -89,4 +89,7 @@
   .CardTask {
     @apply border border-black/20 dark:border-white/10 rounded-2xl bg-white dark:bg-onyx-950
   }
+  .titleHeader{
+    @apply text-2xl font-semibold
+  }
 }

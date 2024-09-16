@@ -33,7 +33,7 @@ const NotificationUser = () => {
         </SheetTrigger>
         <SheetContent side={'left'} className="CardStyle">
           <SheetHeader>
-            <SheetTitle>Notification</SheetTitle>
+            <SheetTitle>Notifications</SheetTitle>
             <SheetDescription>
               <div>
                 {allNotification?.length === 0 ? (
