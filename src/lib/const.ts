@@ -1,40 +1,37 @@
-import { BoardIcons } from '@/components/icons/board-split'
-import FluentTaskListSquare24Regular from '@/components/icons/task-square'
-import FluentDocumentFolder24Regular from '@/components/icons/document-folder'
-import { WorkflowsIcons } from '@/components/icons/workflows'
-import WorkspaceIcons from "@/components/icons/workspace";
-import { FluentNotepad24Regular } from "@/components/icons/notepad-24-regular";
-import { FluentTaskListSquareRtl24Regular } from "@/components/icons/task-list-square-rtl-24-regular";
-import { FluentImage24Regular } from "@/components/icons/image-24-regular";
-import { FluentPerson24Regular } from '@/components/icons/person'
-import { FluentSettings24Regular } from '@/components/icons/settings'
-import { FluentSignOut24Regular } from '@/components/icons/sign-out'
-import { FluentDataUsage24Regular } from '@/components/icons/data-usage'
-import { FluentColor24Regular } from '@/components/icons/color-icons'
-import { FluentAppFolder24Regular } from '@/components/icons/app-folder-24-regular'
-import { FluentHome24Regular } from '@/components/icons/home'
-import CalenderDate from '@/components/icons/calender-date'
-import FluentPeopleTeam24Regular from '@/components/icons/people-team'
+import { 
+    Grid24Regular,
+    Flowchart24Regular,
+    Notepad24Regular,
+    TaskListSquareRtl24Regular,
+    Person24Regular,
+    SignOut24Regular,
+    DataUsage24Regular,
+    Settings24Regular,
+    Home24Regular,
+    Calendar24Regular,
+    PeopleTeam24Regular,
+    Color24Regular,
+    AppFolder24Regular
+ } from '@fluentui/react-icons'
 
 export const sidebar = [
-  { id: 0, title: "Home", url: `/`, icon: FluentHome24Regular },
   {
     id: 2,
     title: "Upcoming",
     url: "/schedule",
-    icon: CalenderDate,
+    icon: Calendar24Regular,
   },
   {
     id: 7,
     title: "Teams",
     url: "/members",
-    icon: FluentPeopleTeam24Regular,
+    icon: PeopleTeam24Regular,
   },
   {
     id: 3,
     title: "Settings",
     url: "/settings",
-    icon: FluentSettings24Regular,
+    icon: Settings24Regular,
   },
 ];
 
@@ -48,19 +45,19 @@ export const menuUser = [
         id: 1,
         title: 'Profile',
         url: '/account/profile',
-        icon: FluentPerson24Regular,
+        icon: Person24Regular,
     },
     {
         id: 3,
         title: 'Settings',
         url: '/account/profilesettings',
-        icon: FluentSettings24Regular,
+        icon: Settings24Regular,
     },
     {
         id: 2,
         title: 'Sign Out',
         url: '/workspace/sign-out',
-        icon: FluentSignOut24Regular,
+        icon: SignOut24Regular,
     },
 ]
 
@@ -69,37 +66,37 @@ export const sidebaraccountuser = [
         id: 9,
         title: 'Home',
         url: '/app',
-        icon: FluentHome24Regular,
+        icon: Home24Regular,
     },
     {
         id: 0,
         title: 'Profile',
         url: '/app/profile',
-        icon: FluentPerson24Regular,
+        icon: Person24Regular,
     },
     {
         id: 1,
         title: 'Integration',
         url: '/app/integration',
-        icon: FluentAppFolder24Regular,
+        icon: AppFolder24Regular,
     },
     {
         id: 2,
         title: 'Preferences',
         url: '/app/preferences',
-        icon: FluentColor24Regular,
+        icon: Color24Regular,
     },
     {
         id: 3,
         title: 'Usage',
         url: '/app/usage',
-        icon: FluentDataUsage24Regular,
+        icon: DataUsage24Regular,
     },
     {
         id: 4,
         title: 'Settings',
         url: '/app/settings',
-        icon: FluentSettings24Regular,
+        icon: Settings24Regular,
     },
 ]
 export const projectsMenu = [
@@ -107,31 +104,31 @@ export const projectsMenu = [
         id: 9,
         title: 'Kanban',
         url: 'board',
-        icon: BoardIcons
+        icon: Grid24Regular
     },
     {
         id: 6,
         title: 'Workflow',
         url: 'workflow',
-        icon: WorkflowsIcons
+        icon: Flowchart24Regular
     },
     {
         id: 12,
         title: 'Calender',
         url: 'calender',
-        icon: CalenderDate
+        icon: Calendar24Regular
     },
     {
         id: 8,
         title: 'Todos',
         url: 'todos',
-        icon: FluentTaskListSquareRtl24Regular
+        icon: TaskListSquareRtl24Regular
     },
     {
         id: 4,
         title: 'Notes',
         url: 'notes', 
-        icon:  FluentNotepad24Regular  
+        icon:  Notepad24Regular  
     }
 ]
 export const coreFeature = [
@@ -140,20 +137,20 @@ export const coreFeature = [
         title: "Don't Miss Out!",
         description:
             'Emphasize the reminder and notification system of your account, ensuring that users never miss important deadlines or tasks.',
-        icon: BoardIcons,
+        icon: Grid24Regular,
     },
     {
         id: 2,
         title: 'Work Together!',
         description:
             'Highlight the collaboration features of your account, allowing users to share tasks with others, assign tasks to team members, and track progress together.',
-        icon: BoardIcons,
+        icon: Grid24Regular,
     },
     {
         id: 4,
         title: "It's Safe!",
         description:
             'Assure users of the data security and privacy measures implemented in your account, protecting their sensitive information',
-        icon: BoardIcons,
+        icon: Grid24Regular,
     },
 ]

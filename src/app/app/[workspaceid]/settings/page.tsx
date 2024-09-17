@@ -1,20 +1,17 @@
 "use client";
 
 import * as React from "react";
-
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { FluentBuildingCloud24Regular } from "@/components/icons/building-cloud-24-regular";
+import { BuildingCloud24Regular, EmojiHand24Regular } from "@fluentui/react-icons";
 import { Separator } from "@/components/ui/separator";
-import { FluentEmojiHand24Regular } from "@/components/icons/emoji-hand-24-regular";
 import { Input } from "@/components/ui/input";
 
 type Props = {
@@ -42,7 +39,7 @@ const SettingsPage = ({params} : Props) => {
         <Card className="bg-transparent">
           <CardHeader className="flex flex-row items-center w-full">
             <div>
-              <FluentBuildingCloud24Regular className="size-11" />
+              <BuildingCloud24Regular className="size-11" />
             </div>
             <div className="ml-3">
               <CardTitle>Storage for Actions and Packages</CardTitle>
@@ -69,7 +66,7 @@ const SettingsPage = ({params} : Props) => {
         <Card className="flex items-center justify-between bg-transparent">
           <CardHeader className="flex flex-row items-center w-full">
             <div>
-              <FluentEmojiHand24Regular className="size-11" />
+              <EmojiHand24Regular className="size-11" />
             </div>
             <div className="ml-3">
               <CardTitle>TaskyApp Sponsors</CardTitle>

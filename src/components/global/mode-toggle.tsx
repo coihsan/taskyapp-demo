@@ -3,9 +3,7 @@
 import * as React from "react";
 import { useTheme } from "next-themes";
 import { Button } from "../ui/button";
-import { FluentWeatherSunny24Regular } from "../icons/weather-sunny-24-regular";
-import { FluentWeatherMoon24Regular } from "../icons/weather-moon-24-regular";
-import { FluentLaptop24Regular } from "../icons/laptop-24-regular";
+import { WeatherSunny24Regular, WeatherMoon24Regular, Laptop24Regular } from "@fluentui/react-icons";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -20,8 +18,8 @@ export function ModeToggle() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="icon">
-          <FluentWeatherSunny24Regular className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <FluentWeatherMoon24Regular className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          <WeatherSunny24Regular className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+          <WeatherMoon24Regular className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>

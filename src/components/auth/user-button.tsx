@@ -12,9 +12,7 @@ import {
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { signOut } from "next-auth/react"
-import { FluentPerson24Regular } from "../icons/person";
-import { FluentSettings24Regular } from "../icons/settings";
-import { FluentSignOut24Regular } from "../icons/sign-out";
+import { Person24Regular, Settings24Regular, SignOut24Regular } from "@fluentui/react-icons";
 import { useUserDetails } from "@/lib/hooks/use-swr";
 import {
   Avatar,
@@ -72,19 +70,19 @@ const UserButtonCustom = () => {
           <DropdownMenuSeparator />
           <DropdownMenuItem>
             <Link className="flex items-center gap-2" href="/account/profile">
-              <FluentPerson24Regular />
+              <Person24Regular />
               <span>Profile</span>
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
             <Link className="flex items-center gap-2" href="/account/settings">
-              <FluentSettings24Regular />
+              <Settings24Regular />
               <span>Settings</span>
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
             <button className="flex items-center gap-2" onClick={handleSignOut}>
-              <FluentSignOut24Regular />
+              <SignOut24Regular />
               Sign Out
             </button>
           </DropdownMenuItem>

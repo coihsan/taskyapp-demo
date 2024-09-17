@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { FluentAlertBadge24Filled } from "../icons/alert-notif";
+import { AlertBadge24Filled } from "@fluentui/react-icons";
 import { Button } from "../ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -28,7 +28,7 @@ const NotificationUser = () => {
           <Button
             variant="outline" size="icon" className="ml-auto h-8 w-8"
           >
-            <FluentAlertBadge24Filled />
+            <AlertBadge24Filled />
           </Button>
         </SheetTrigger>
         <SheetContent side={'left'} className="CardStyle">

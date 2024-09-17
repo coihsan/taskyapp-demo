@@ -3,7 +3,7 @@
 import React from 'react'
 import { SidebarContent } from "@/components/global/sidebar-content";
 import Link from "next/link";
-import { FluentFolder24Regular } from "@/components/icons/folder-24-regular";
+import { Folder24Regular } from "@fluentui/react-icons";
 import { useParams, usePathname } from "next/navigation";
 import { useGetAllProjectsByWorkspaceId } from "@/lib/hooks/use-swr";
 import clsx from "clsx";
@@ -64,7 +64,7 @@ const GetAllProjects = () => {
               )}
             >
               <div className="flex items-center gap-4">
-                <FluentFolder24Regular className="size-5" />
+                <Folder24Regular className="size-[22px]" />
                 <span className="overflow-hidden text-clip-1 text-nowrap">
                   {list.name}
                 </span>

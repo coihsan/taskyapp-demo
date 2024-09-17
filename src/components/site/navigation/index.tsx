@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import { sitelink } from "@/lib/const";
 import Logo from "@/components/global/logo";
-import ChevronRight from "@/components/icons/chevron-right";
+import {ChevronRight24Regular} from "@fluentui/react-icons";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -38,7 +38,7 @@ const Navigation = async () => {
           <Link href={user ? "/app" : "/sign-in"} legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               {user ? "Dashboard" : "Sign In"}
-            <ChevronRight />
+            <ChevronRight24Regular />
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>

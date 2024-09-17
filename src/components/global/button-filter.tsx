@@ -5,8 +5,7 @@ import {
     TabsList,
     TabsTrigger,
   } from "@/components/ui/tabs"
-import { BoardIcons } from "@/components/icons/board-split";
-import { FluentAppsListDetail24Regular } from "@/components/icons/apps-list-detail-24-regular";
+import { Grid24Regular, AppsListDetail24Regular } from "@fluentui/react-icons";
 
   type Props = {
     onChange?: () => void;
@@ -20,11 +19,11 @@ const ButtonFilter = () =>{
         <Tabs defaultValue="board" activationMode="automatic">
         <TabsList>
             <TabsTrigger className="flex items-center gap-2" value="board">
-                <BoardIcons />
+                <Grid24Regular />
                 Board
             </TabsTrigger>
             <TabsTrigger className="flex items-center gap-2" value="table">
-                <FluentAppsListDetail24Regular />
+                <AppsListDetail24Regular />
                 List
             </TabsTrigger>
         </TabsList>

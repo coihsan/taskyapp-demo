@@ -21,7 +21,7 @@ export function SignInButton({
           redirect("/app")
         }}
       >
-        <Button size={'lg'} type="submit" variant={'default'} className="flex items-center justify-center gap-2 w-full">
+        <Button size={'lg'} type="submit" variant={'outline'} className="flex items-center justify-center gap-2 w-full">
             {provider === 'google' ? <RiGoogleFill /> : <RiGithubFill />}
             {provider === 'google' ? 'Google' : 'GitHub'}
         </Button>

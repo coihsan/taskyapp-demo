@@ -2,9 +2,8 @@
 
 import { Button } from '@/components/ui/button'
 import { useModal } from '@/providers/modal-provider'
-import { FluentAdd24Filled } from '@/components/icons/add-24-filled'
+import { Add24Filled } from '@fluentui/react-icons'
 import CustomModal from '@/components/primitive/custom-modal'
-import NewProjectsForm from '@/components/form/new-projects-form'
 import {
     Tooltip,
     TooltipContent,
@@ -35,7 +34,7 @@ const CreateNewCalenderButton = () => {
                         }}
                         >
                             New
-                        <FluentAdd24Filled />
+                        <Add24Filled />
                     </Button>
                 </TooltipTrigger>
                 <TooltipContent>

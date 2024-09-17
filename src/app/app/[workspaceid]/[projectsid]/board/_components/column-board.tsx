@@ -1,5 +1,4 @@
-import { FluentAdd24Filled } from "@/components/icons/add-24-filled";
-import { MoreHorizontal } from "@/components/icons/more-horizontal";
+import { Add24Filled, MoreHorizontal24Regular } from "@fluentui/react-icons";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import React from "react";
@@ -30,8 +29,8 @@ const ColumnBoard = ({ children }: Props) => {
               </Badge>
             </div>
             <div className="flex items-center gap-2">
-              <FluentAdd24Filled />
-              <MoreHorizontal />
+              <Add24Filled />
+              <MoreHorizontal24Regular />
             </div>
           </div>
           {children}

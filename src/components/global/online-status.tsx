@@ -17,7 +17,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 
-import { FluentWifiWarning24Regular } from "../icons/wifi-error";
+import { WifiWarning24Regular } from "@fluentui/react-icons";
 import { Badge } from "../ui/badge";
 
 type Props = {
@@ -29,7 +29,7 @@ const UseDisplayMessage = ({ message, title }: Props) => {
     <AlertDialog defaultOpen={true}>
       <AlertDialogContent>
         <AlertDialogHeader className="flex">
-          <FluentWifiWarning24Regular className="size-11" />
+          <WifiWarning24Regular className="size-11" />
           <div className="ml-3">
             <AlertDialogTitle>{title}</AlertDialogTitle>
             <AlertDialogDescription>{message}</AlertDialogDescription>

@@ -15,7 +15,7 @@ import Navigation from "@/components/site/navigation";
 import FooterSite from "@/components/site/footer";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { FluentArrowUpRight24Filled } from "@/components/icons/arrow-up-right";
+import { ArrowUpRight24Filled } from "@fluentui/react-icons"
 
 const Section = ({ children }: { children: React.ReactNode }) => {
   return <section className="container py-12">{children}</section>;
@@ -24,7 +24,6 @@ export default function Home() {
   return (
     <section className="relative">
       <Navigation />
-      <GradientHero />
       <main className="container mx-auto pt-12">
         <div className="absolute inset-0 h-full w-full items-center px-5 py-24 -z-50 dark:bg-radial-gradient" />
         <section className="flex flex-col items-center justify-center pb-12 pt-12 md:pt-16 lg:pt-20 mx-auto">
@@ -46,14 +45,14 @@ export default function Home() {
                 as="button"
                 className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
               >
-                <span>Free! Get Started</span>
+                <Link href={"/sign-up"}>Free! Get Started</Link>
               </HoverBorderGradient>
               <Button
                 className="rounded-full flex items-center gap-2"
                 variant={"link"}
               >
                 <Link href={"/how"}>How it's works</Link>
-                <FluentArrowUpRight24Filled />
+                <ArrowUpRight24Filled />
               </Button>
             </div>
           </div>
@@ -70,18 +69,18 @@ export default function Home() {
           <h1 className="text-center text-4xl font-semibold pb-6">
             Some Features You Don’t Care About It
           </h1>
-          <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-[950px] mx-auto">
+          <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-screen-lg w-full mx-auto">
             {coreFeature.map((feature) => (
-              <Card key={feature.id} className="p-4 CardStyle drop-shadow-xl">
-                <CardHeader className="flex items-center flex-col gap-3">
+              <Card key={feature.id} className="CardStyle drop-shadow-xl">
+                <CardHeader className="flex flex-col items-center">
                   <div className="w-12 h-12 flex items-center justify-center rounded-xl borderStyle bg-gradient-to-b from-onyx-50 to-onyx-200 dark:from-onyx-600 dark:to-onyx-800 shadow-2xl">
                     <feature.icon />
                   </div>
                   <CardTitle className="text-xl">{feature.title}</CardTitle>
-                </CardHeader>
-                <CardDescription className="text-center text-onyx-500">
+                <CardDescription className="text-center">
                   {feature.description}
                 </CardDescription>
+                </CardHeader>
               </Card>
             ))}
           </ul>

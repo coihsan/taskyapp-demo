@@ -6,10 +6,9 @@ import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
-    DropdownMenuLabel,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { MoreHorizontal } from '@/components/icons/more-horizontal';
+import { MoreHorizontal24Regular } from '@fluentui/react-icons';
 
 type Props = {
     projectId: string
@@ -21,7 +20,7 @@ const ProjectsOptionsButton = ({ projectId }: Props) => {
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                     <Button aria-haspopup="true" size="icon" variant="ghost">
-                        <MoreHorizontal className="h-4 w-4" />
+                        <MoreHorizontal24Regular className="h-4 w-4" />
                         <span className="sr-only">Setting project</span>
                     </Button>
                 </DropdownMenuTrigger>

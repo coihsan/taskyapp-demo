@@ -9,7 +9,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { FluentAdd24Filled } from "../icons/add-24-filled";
+import { Add24Regular } from "@fluentui/react-icons";
 
 interface Props {
   className?: string;
@@ -50,7 +50,7 @@ const CreateButtonGlobal = ({
               );
             }}
           >
-            {useIcon && <FluentAdd24Filled />}
+            {useIcon && <Add24Regular className="size-[22px]" />}
             <span>{buttonName}</span>
           </Button>
         </TooltipTrigger>

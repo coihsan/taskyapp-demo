@@ -5,7 +5,7 @@ import React from "react";
 import Link from "next/link";
 import clsx from "clsx";
 import { projectsMenu } from "@/lib/const";
-import { FluentNotepadPerson24Regular } from "@/components/icons/notepad-person-24-regular";
+import { NotepadPerson24Regular } from "@fluentui/react-icons";
 
 const FeatureOption = () => {
   const params = useParams<{ workspaceid: string; projectsid: string }>();
@@ -23,7 +23,7 @@ const FeatureOption = () => {
         )}
         href={`/app/${params.workspaceid}/${params.projectsid}`}
       >
-        <FluentNotepadPerson24Regular />
+        <NotepadPerson24Regular className="size-[22px]" />
         <span>Summary</span>
       </Link>
       {projectsMenu.map((menu) => (
@@ -39,7 +39,7 @@ const FeatureOption = () => {
           )}
           href={`/app/${params.workspaceid}/${params.projectsid}/${menu.url}`}
         >
-          <menu.icon />
+          <menu.icon className="size-[22px]" />
           <span>{menu.title}</span>
         </Link>
       ))}

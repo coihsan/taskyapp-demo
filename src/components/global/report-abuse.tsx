@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { FluentAlertBadge24Filled } from "../icons/alert-notif";
+import { AlertBadge24Filled } from "@fluentui/react-icons";
 import { useParams } from "next/navigation";
 import { useState } from "react";
 import { useFormStatus } from "react-dom";
@@ -20,7 +20,7 @@ export default function ReportAbuse() {
         className="rounded-full bg-black p-4 text-white shadow-lg transition-all hover:-translate-y-1 hover:shadow-2xl active:translate-y-0 active:shadow-sm"
         onClick={() => setOpen(!open)}
       >
-        <FluentAlertBadge24Filled className="" />
+        <AlertBadge24Filled />
       </Button>
       {open && (
         <form

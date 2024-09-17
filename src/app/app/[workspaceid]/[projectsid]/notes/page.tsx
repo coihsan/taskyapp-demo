@@ -1,14 +1,27 @@
 import React from "react"
-import PageWrapper from "@/components/primitive/page-wrapper";
-import Notes from "./_components/notes";
+import { db } from "@/lib/server/db";
+import { redirect } from "next/navigation";
 
-const Page = () => {
+type PageProps = {
+  searchParams:{
+      workspaceid: string,
+      projectsid: string,
+      notesid: string
+  }
+}
+const Page = async ({searchParams} : PageProps) => {
+  const data = await db.notes.findFirst({
+    where:{
+      id: searchParams.notesid
+    }
+  })
 
-  return (
-    <>
-      <Notes />
-    </>
-  );
+  if(data){
+    return redirect(`/app/${searchParams.workspaceid}/${searchParams.projectsid}/notes/${searchParams.notesid}`)
+  } else {
+    return null
+  }
+
 };
 
 export default Page;

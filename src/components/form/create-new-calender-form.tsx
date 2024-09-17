@@ -25,7 +25,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { NewCalenderSchema } from "@/lib/schema";
 import { Textarea } from "../ui/textarea";
-import CalenderDate from "../icons/calender-date";
+import {Calendar24Regular} from "@fluentui/react-icons
 import { cn } from "@/lib/utils";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 
@@ -79,7 +79,7 @@ const CreateNewCalenderForm = () => {
                         !date && "text-muted-foreground"
                       )}
                     >
-                      <CalenderDate className="mr-2 h-4 w-4" />
+                      <Calendar24Regular className="mr-2 h-4 w-4" />
                       {date ? format(date, "PPP") : <span>Pick a date</span>}
                     </Button>
                   </PopoverTrigger>
