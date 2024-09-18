@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/card";
 import { getAuthUserDetails } from "@/lib/action/user";
 import { db } from "@/lib/server/db";
-import {ShiftsActivity24Regular} from "@fluentui/react-icons"
+import {ShiftsActivity24Regular, NotepadPerson24Regular, TasksApp24Regular} from "@fluentui/react-icons"
 
 type Props = {
     params:{
@@ -35,9 +35,12 @@ const WorkspaceIDPage = async ({ params }: Props) => {
           <p className="text-sm">Workspace ID : {params.workspaceid} </p>
         </div>
         <div className="grid grid-cols-2 gap-4 w-full">
-        <Card className="bg-transparent">
+        <Card className="">
       <CardHeader>
-        <CardTitle>Project List</CardTitle>
+        <div className="flex items-center gap-3">
+          <NotepadPerson24Regular className="size-10 border borderStyle rounded-lg p-2" />
+          <CardTitle>Task</CardTitle>
+        </div>
         <CardDescription>
           Manage your workspace and view their sales performance.
         </CardDescription>
@@ -46,10 +49,24 @@ const WorkspaceIDPage = async ({ params }: Props) => {
         User activity is here
       </CardContent>
     </Card>
-        <Card className="bg-transparent">
+        <Card className="">
       <CardHeader>
         <div className="flex items-center gap-3">
-          <ShiftsActivity24Regular className="size-9 border borderStyle rounded-lg p-2" />
+          <TasksApp24Regular className="size-10 border borderStyle rounded-lg p-2" />
+          <CardTitle>Project List</CardTitle>
+        </div>
+        <CardDescription>
+          Manage your workspace and view their sales performance.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        User activity is here
+      </CardContent>
+    </Card>
+        <Card className="">
+      <CardHeader>
+        <div className="flex items-center gap-3">
+          <ShiftsActivity24Regular className="size-10 border borderStyle rounded-lg p-2" />
           <CardTitle>Activity</CardTitle>
         </div>
       </CardHeader>

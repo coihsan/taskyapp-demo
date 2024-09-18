@@ -25,7 +25,7 @@ const WorkspaceMenu = () => {
                 pathname === `/app/${params.workspaceid}`,
             }
           )}
-          href={`/app/${params.workspaceid}/${params.workspaceid}`}
+          href={`/app/${params.workspaceid}`}
         >
           <div
             className={clsx("text-black dark:text-foreground", {

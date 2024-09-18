@@ -13,7 +13,7 @@ import NewProjectsForm from "../form/new-projects-form";
 import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 
 const GetAllProjects = () => {
-  const params = useParams<{ workspaceid: string, projectsid: string }>();
+  const params = useParams<{ workspaceid: string, projectsid: string, notesid: string }>();
   const pathname = usePathname();
   const { spaceByWorkspaceId, isLoading, isError } = useGetAllProjectsByWorkspaceId(params.workspaceid);
 
@@ -59,7 +59,8 @@ const GetAllProjects = () => {
                     pathname === `/app/${params.workspaceid}/${list.id}/workflow` ||
                     pathname === `/app/${params.workspaceid}/${list.id}/calender` ||
                     pathname === `/app/${params.workspaceid}/${list.id}/notes` ||
-                    pathname === `/app/${params.workspaceid}/${list.id}/calender` 
+                    pathname === `/app/${params.workspaceid}/${list.id}/notes/${params.notesid}` ||
+                    pathname === `/app/${params.workspaceid}/${list.id}/calender`
                 }
               )}
             >

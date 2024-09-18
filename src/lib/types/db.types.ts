@@ -103,3 +103,14 @@ export interface SidebarProps {
   
 
 export type useMediaQueryType = (query: string) => boolean;
+
+export interface NoteItem {
+  id: string
+  text: string
+  created: string
+  lastUpdated: string
+  category?: string
+  scratchpad?: boolean
+  trash?: boolean
+  favorite?: boolean
+}

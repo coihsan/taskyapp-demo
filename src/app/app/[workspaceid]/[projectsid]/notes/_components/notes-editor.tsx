@@ -50,7 +50,7 @@ const NotesEditor: React.FC = () => {
 
   return (
     <div className="">
-      <div className="justify-between items-center flex">
+      <div className="justify-between items-center flex border-b-[1px] p-1">
         <div className="space-x-2">
         <Toggle onClick={handleBold} aria-label="Toggle bold">
           <TextBold24Regular className="h-4 w-4" />
@@ -108,19 +108,21 @@ const NotesEditor: React.FC = () => {
           <AttachText24Regular className="size-4" />
         </Toggle>
         </div>
-        <div className="space-x-2">
-          <Button size={'icon'} variant={'secondary'}>
+        <div className="flex items-center gap-2">
+          <Button variant={'secondary'} className="flex items-center gap-2">
             <Eye24Regular className="size-5" />
+            Preview
           </Button>
-          <Button size={'icon'} variant={'default'}>
+          <Button variant={'default'} className="flex items-center gap-2">
             <Save24Regular className="size-5" />
+            Save
           </Button>
         </div>
       </div>
       <div
         ref={divRef}
         contentEditable
-        className="w-full h-screen focus-none ring-none border-none outline-none"
+        className="w-full h-screen focus-none ring-none border-none outline-none p-2"
         onInput={handleInput}
       />
       <div>

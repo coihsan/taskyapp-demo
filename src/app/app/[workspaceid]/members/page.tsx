@@ -13,7 +13,7 @@ import {
     getSortedRowModel,
     useReactTable,
 } from '@tanstack/react-table'
-import { MoreHorizontal } from '@/components/icons/more-horizontal'
+import { MoreHori } from '@fluentui/react-icons'
 import { ArrowUpDown } from '@/components/icons/arrow-up-down'
 import { ChevronDown } from '@/components/icons/chevron-down'
 import { Button } from '@/components/ui/button'
