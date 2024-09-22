@@ -13,9 +13,7 @@ import {
     getSortedRowModel,
     useReactTable,
 } from '@tanstack/react-table'
-import { MoreHori } from '@fluentui/react-icons'
-import { ArrowUpDown } from '@/components/icons/arrow-up-down'
-import { ChevronDown } from '@/components/icons/chevron-down'
+import { MoreVertical24Regular, ChevronDown24Regular, ChevronUpDown24Regular } from '@fluentui/react-icons'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import {
@@ -123,7 +121,7 @@ export const columns: ColumnDef<Payment>[] = [
                     }
                 >
                     Email
-                    <ArrowUpDown className="ml-2 h-4 w-4" />
+                    <ChevronUpDown24Regular className="ml-2 h-4 w-4" />
                 </Button>
             )
         },
@@ -157,7 +155,7 @@ export const columns: ColumnDef<Payment>[] = [
                     <DropdownMenuTrigger asChild>
                         <Button variant="ghost" className="h-8 w-8 p-0">
                             <span className="sr-only">Open menu</span>
-                            <MoreHorizontal className="h-4 w-4" />
+                            <MoreVertical24Regular className="h-4 w-4" />
                         </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
@@ -236,7 +234,7 @@ export default function OrganizationMembers() {
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             <Button variant="outline" className="ml-auto">
-                                Columns <ChevronDown className="ml-2 h-4 w-4" />
+                                Columns <ChevronDown24Regular className="ml-2 h-4 w-4" />
                             </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">

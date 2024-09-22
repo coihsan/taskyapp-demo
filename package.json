@@ -1,5 +1,6 @@
 {
-  "name": "out",
+  "name": "taskyapp",
+  "author": "coihsan",
   "version": "0.1.0",
   "private": true,
   "scripts": {
