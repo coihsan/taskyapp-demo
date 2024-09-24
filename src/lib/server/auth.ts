@@ -89,5 +89,4 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     error: '/authError',
   },
   ...authConfig,
-  debug: true
 })

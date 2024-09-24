@@ -1,6 +1,6 @@
 "use client";
 
-import { useParams, usePathname, useRouter } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import React from "react";
 import Link from "next/link";
 import clsx from "clsx";
@@ -15,9 +15,9 @@ const FeatureOption = () => {
     <nav className="flex items-center gap-4 border-y-[1px] h-12 borderStyle px-4">
       <Link
         className={clsx(
-          "flex gap-2 py-1.5 h-12 items-center justify-center whitespace-nowrap text-sm text-muted-foreground",
+          "flex gap-2 py-1.5 h-12 items-center justify-center whitespace-nowrap text-sm",
           {
-            "text-lime-600 dark:text-lime-400 border-lime-600 dark:border-lime-400 border-b-2 font-bold":
+            "border-black dark:border-white border-b-2 font-bold":
               pathname === `/app/${params.workspaceid}/${params.projectsid}`
           }
         )}
@@ -31,9 +31,9 @@ const FeatureOption = () => {
         <Link
           key={menu.id}
           className={clsx(
-            "flex gap-2 py-1.5  h-12 items-center justify-center whitespace-nowrap text-sm text-muted-foreground",
+            "flex gap-2 py-1.5  h-12 items-center justify-center whitespace-nowrap text-sm",
             {
-              "text-lime-600 dark:text-lime-400 border-lime-600 dark:border-lime-400 border-b-2 font-bold":
+              "border-black dark:border-white border-b-2 font-bold":
                 pathname ===
                 `/app/${params.workspaceid}/${params.projectsid}/${menu.url}` ||
                 pathname ===

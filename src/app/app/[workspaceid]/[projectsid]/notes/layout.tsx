@@ -14,7 +14,6 @@ import {
   } from "@/components/ui/select"
   import { Input } from "@/components/ui/input"
   import PageWrapper from "@/components/primitive/page-wrapper";
-import NotesList from './_components/notes-list';
   
 type NotesLayoutProps = {
     children: React.ReactNode
@@ -42,7 +41,7 @@ const NotesLayout = ({ children } : NotesLayoutProps) =>{
             </SelectContent>
           </Select>
           </div>
-          <NotesList />
+          <span>List</span>
           </PageWrapper>
         </ResizablePanel>
         <ResizableHandle />

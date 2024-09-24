@@ -25,7 +25,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { NewCalenderSchema } from "@/lib/schema";
 import { Textarea } from "../ui/textarea";
-import {Calendar24Regular} from "@fluentui/react-icons
+import { Calendar24Regular } from "@fluentui/react-icons";
 import { cn } from "@/lib/utils";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 

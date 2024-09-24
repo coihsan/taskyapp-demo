@@ -25,7 +25,7 @@ const WorkspaceLayout = async ({ children, params }: Props) => {
   return (
     <main className="flex overflow-hidden h-screen min-h-[100vh] p-1 w-full">
       <Sidebar workspaceid={workspaceDetails.id} />
-      <div className="w-full rounded-2xl bg-onyx-100 dark:bg-onyx-900 border borderStyle">
+      <div className="w-full rounded-2xl bg-white dark:bg-onyx-900 border borderStyle">
         {children}
       </div>
     </main>

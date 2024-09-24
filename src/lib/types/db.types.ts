@@ -1,11 +1,4 @@
 import { Prisma } from '@prisma/client'
-import {
-  Edge,
-  Node,
-  OnNodesChange,
-  OnEdgesChange,
-  OnConnect,
-} from '@xyflow/react';
 
 export type AppNode = Node;
 
@@ -14,16 +7,6 @@ export interface FeatureOptionsType {
   name: string,
   link: string
 }
-
-export type AppState = {
-  nodes: AppNode[];
-  edges: Edge[];
-  onNodesChange: OnNodesChange<AppNode>;
-  onEdgesChange: OnEdgesChange;
-  onConnect: OnConnect;
-  setNodes: (nodes: AppNode[]) => void;
-  setEdges: (edges: Edge[]) => void;
-};
 
 export interface StateUser {
   id: string,
@@ -113,4 +96,12 @@ export interface NoteItem {
   scratchpad?: boolean
   trash?: boolean
   favorite?: boolean
+}
+
+export type ToggleTypes = {
+  editor: any,
+  action: string,
+  isActive: string,
+  icon?: React.ReactNode,
+  label?: string,
 }

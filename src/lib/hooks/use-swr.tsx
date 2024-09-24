@@ -53,3 +53,11 @@ export function useGetNotificationAndUser(workspaceid: string){
     mutate
   }
 }
+
+export function useGetNotesData(notesid: string){
+  const { data } = useSWR('notes', ()=> getProjectDetails(notesid))
+
+  return {
+    notesData : data
+  }
+}

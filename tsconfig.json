@@ -19,6 +19,7 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
+      "@styles/*": ["./src/app/styles/*"],
       "auth": ["./src/lib/server/auth"]
     }
   },
