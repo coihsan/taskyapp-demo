@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import React from "react";
 import { Droppable } from "react-beautiful-dnd";
+import ColumnOptions from "./column-options";
 
 type Props = {
   children?: React.ReactNode;
@@ -28,10 +29,7 @@ const ColumnBoard = ({ children }: Props) => {
                 10
               </Badge>
             </div>
-            <div className="flex items-center gap-2">
-              <Add24Filled />
-              <MoreHorizontal24Regular />
-            </div>
+            <ColumnOptions />
           </div>
           {children}
           {provided.placeholder}

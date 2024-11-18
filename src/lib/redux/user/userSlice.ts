@@ -1,7 +1,22 @@
-import { StateUser } from '@/lib/types/db.types'
+import { UserState } from '@/lib/types/db.types'
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState: StateUser | null = null
+const initialState: UserState ={
+  loading: false,
+  status: "pending",
+  error: null,
+  user: {
+    id: "",
+    name: "",
+    email: "",
+    emailVerified: null,
+    image: "",
+    username: "",
+    bio: "",
+    preferences: "",
+    password: "",
+  },
+}
 
 export const userSlice = createSlice({
   name: 'user',

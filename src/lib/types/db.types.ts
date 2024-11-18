@@ -1,14 +1,7 @@
 import { Prisma } from '@prisma/client'
+import { EntityState } from '@reduxjs/toolkit';
 
-export type AppNode = Node;
-
-export interface FeatureOptionsType {
-  id: string,
-  name: string,
-  link: string
-}
-
-export interface StateUser {
+export interface User {
   id: string,
   name: string,
   email: string,
@@ -20,39 +13,13 @@ export interface StateUser {
   password: string,
 };
 
-export interface SpaceDataTypes {
-  id: string;
-  name: string ;
-  description: string | null;
-  created_at: Date; 
-  updated_at: Date;
+export interface UserState {
+  user: User;
+  loading: boolean;
+  error: string | null;
+  status: "pending" | "fulfilled" | "rejected" | null;
 }
 
-export interface workspaceTypes {
-  id: string;
-  name: string;
-  status: string | null;
-  created_at: Date;
-  updated_at: Date;
-}
-
-export interface cardType {
-  id: number;
-  title?: string;
-  tags?: string;
-  createDate?: Date;
-  subtask?: [
-    {
-      id: number;
-      title?: string;
-      isComplete?: boolean;
-    },
-  ];
-  member?: string[];
-  comment?: boolean;
-  attachment?: boolean;
-  media?: boolean;
-}
 export interface navlink {
   id: number;
   title: string;
@@ -60,10 +27,36 @@ export interface navlink {
   icons: any;
 }
 
-export interface StateBoard {
+export interface Board {
+  id: string;
   title: string;
-  column_index: number,
-  color: string
+  column_index: number;
+  color: string;
+  created_at: string;
+  updated_at: string;
+  projectId: string;
+}
+
+export interface BoardState extends EntityState<Board, string> {
+  activeBoardId: string;
+  activeColumnId: string;
+  activeCardId: string;
+}
+
+export interface CardItem {
+  id: string;
+  title: string;
+  description: string;
+  content: string;
+  is_complete: boolean;
+  column_index: number;
+  row_index: number;
+  created_at: Date;
+  updated_at: Date;
+}
+
+export interface CardState extends EntityState<CardItem, string>{
+  activeCardId: string;
 }
 
 export type AuthUserOrganization =
@@ -83,25 +76,3 @@ export interface SidebarProps {
     index: IndexProps[];
     className: string;
   }
-  
-
-export type useMediaQueryType = (query: string) => boolean;
-
-export interface NoteItem {
-  id: string
-  text: string
-  created: string
-  lastUpdated: string
-  category?: string
-  scratchpad?: boolean
-  trash?: boolean
-  favorite?: boolean
-}
-
-export type ToggleTypes = {
-  editor: any,
-  action: string,
-  isActive: string,
-  icon?: React.ReactNode,
-  label?: string,
-}

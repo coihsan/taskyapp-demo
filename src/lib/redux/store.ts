@@ -1,15 +1,13 @@
-import { configureStore } from '@reduxjs/toolkit'
-import boardReducer from './features/boards/boardSlice'
-import featureReducer from './features/boards/featureSlice'
-import textEditorReducer from './features/notes/textEditorSlice'
+import { configureStore, combineReducers } from '@reduxjs/toolkit'
+import boardReducer from './boards/boardSlice'
+
+const rootState = combineReducers({
+    board: boardReducer
+})
 
 export const makeStore = () => {
   return configureStore({
-    reducer: {
-      board: boardReducer,
-      feature: featureReducer,
-      textEditor: textEditorReducer
-    }
+    reducer: rootState,
   })
 }
 

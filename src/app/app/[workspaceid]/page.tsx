@@ -1,7 +1,5 @@
 import React from "react";
 import PageWrapper from "@/components/primitive/page-wrapper";
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,

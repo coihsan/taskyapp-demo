@@ -1,11 +1,6 @@
-import { NoteItem } from "../types/db.types"
 
-export const isDraftNote = (note: NoteItem) => {
-    return !note.scratchpad && note.text === ''
+  export function shortText(text: string | undefined | null ): string {
+    const safeText = text ?? ""; 
+    return safeText.charAt(0).toUpperCase() + safeText.charAt(safeText.length - 1).toUpperCase();
   }
-export const isPrivateNote = (note: NoteItem) => {
-    return !note.scratchpad && note.text === ''
-  }
-export const isPublicNote = (note: NoteItem) => {
-    return !note.scratchpad && note.text === ''
-  }
+  

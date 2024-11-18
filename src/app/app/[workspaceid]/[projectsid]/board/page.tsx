@@ -3,7 +3,7 @@
 import React from "react";
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
 import CanvasBoard from "./_components/canvas-board";
-import CardDetails from "./_components/card-details";
+import CardDetails from "./_components/board/card-details";
 
 const Page = () => {
   return (

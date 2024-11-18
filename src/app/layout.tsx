@@ -5,6 +5,7 @@ import  "./styles/globals.css"
 import ModalProvider from "@/providers/modal-provider";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as ToasterSonner } from "@/components/ui/sonner";
+import StoreProvider from "@/providers/store-provider";
 
 const myFont = Inter({
   subsets: ['latin'],
@@ -21,18 +22,20 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={myFont.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <ModalProvider>
-            {children}
-            <Toaster />
-            <ToasterSonner position="top-center" />
-          </ModalProvider>
-        </ThemeProvider>
+        <StoreProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <ModalProvider>
+              {children}
+              <Toaster />
+              <ToasterSonner position="top-center" />
+            </ModalProvider>
+          </ThemeProvider>
+        </StoreProvider>
       </body>
     </html>
   );

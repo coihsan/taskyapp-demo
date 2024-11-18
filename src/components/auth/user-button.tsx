@@ -19,7 +19,7 @@ import {
   AvatarFallback,
   AvatarImage,
 } from "@/components/ui/avatar"
-import { shortText } from "@/lib/utils";
+import { shortText } from "@/lib/utils/helpers";
 import { Skeleton } from "../ui/skeleton";
 
 const UserButtonCustom = () => {
